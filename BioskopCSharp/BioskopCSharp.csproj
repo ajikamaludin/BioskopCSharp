@@ -70,6 +70,36 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\cRuang.cs" />
+    <Compile Include="Controllers\cUser.cs" />
+    <Compile Include="Models\mRuang.cs" />
+    <Compile Include="Models\mUser.cs" />
+    <Compile Include="SetupRDBMS\Command.cs" />
+    <Compile Include="SetupRDBMS\Connect.cs" />
+    <Compile Include="Views\FilmView\FilmView.xaml.cs">
+      <DependentUpon>FilmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JadwalView\JadwalView.xaml.cs">
+      <DependentUpon>JadwalView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RuangView\RuangView.xaml.cs">
+      <DependentUpon>RuangView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TiketView\TiketView.xaml.cs">
+      <DependentUpon>TiketView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserView\UserAct.xaml.cs">
+      <DependentUpon>UserAct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserView\UserLogin.xaml.cs">
+      <DependentUpon>UserLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserView\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -98,44 +128,40 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Resource Include="docs\MySqlTransaction.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="docs\MySqlParameterCollection.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="docs\MySqlParameter.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="docs\MySqlHelper.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="docs\MySqlException.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="docs\MySqlDataReader.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="docs\MySqlDataAdapter.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="docs\MySqlConnectionStringBuilder.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="docs\MySqlConnection.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="docs\MySqlCommandBuilder.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="docs\MySqlCommand.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
-    <Folder Include="SetupRDBMS\" />
-    <Folder Include="Views\" />
+    <Page Include="Views\FilmView\FilmView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\JadwalView\JadwalView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RuangView\RuangView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TiketView\TiketView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserView\UserAct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserView\UserLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserView\UserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
