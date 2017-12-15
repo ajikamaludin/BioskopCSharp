@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BioskopCSharp.Models
+﻿namespace BioskopCSharp.Models
 {
-    class MTiket
+    public class MTiket
     {
+        public int idTiket { get; set; }
+        public int idJadwal { get; set; }
+        public string kursi { get; set; }
     }
 }

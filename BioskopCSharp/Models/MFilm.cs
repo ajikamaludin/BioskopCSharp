@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BioskopCSharp.Models
+﻿namespace BioskopCSharp.Models
 {
-    class MFilm
+    public class MFilm
     {
+        public int id { get; set; }
+        public string judul { get; set; }
+        public int harga { get; set; }
     }
 }
