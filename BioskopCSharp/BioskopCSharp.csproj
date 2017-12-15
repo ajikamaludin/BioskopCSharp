@@ -70,10 +70,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\CFilm.cs" />
+    <Compile Include="Controllers\CJadwal.cs" />
     <Compile Include="Controllers\CMain.cs" />
     <Compile Include="Controllers\CRuang.cs" />
+    <Compile Include="Controllers\CTiket.cs" />
     <Compile Include="Controllers\CUser.cs" />
+    <Compile Include="Models\MFilm.cs" />
+    <Compile Include="Models\MJadwal.cs" />
     <Compile Include="Models\MRuang.cs" />
+    <Compile Include="Models\MTiket.cs" />
     <Compile Include="Models\MUser.cs" />
     <Compile Include="SetupRDBMS\Command.cs" />
     <Compile Include="SetupRDBMS\Connect.cs" />
