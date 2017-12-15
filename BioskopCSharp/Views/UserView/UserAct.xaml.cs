@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using BioskopCSharp.Models;
+using BioskopCSharp.Controllers;
 
 namespace BioskopCSharp.Views.UserView
 {
@@ -19,19 +9,41 @@ namespace BioskopCSharp.Views.UserView
     /// </summary>
     public partial class UserAct : Window
     {
+        
         public UserAct()
         {
             InitializeComponent();
         }
 
+        private MUser CreateModel
+        {
+            get
+            {
+                return new MUser()
+                {
+                    nama = TxtNama.Text,
+                    username = TxtUsername.Text,
+                    password = TxtPassword.Password
+                };
+            }
+        }
+
         private void BtnSimpan_Click(object sender, RoutedEventArgs e)
         {
-
+            if(CUser.GetInstance.Code != string.Empty)
+            {
+                CUser.GetInstance.Update(CreateModel);
+            }
+            else
+            {
+                CUser.GetInstance.Create(CreateModel);
+            }
+            
         }
 
         private void BtnBatal_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

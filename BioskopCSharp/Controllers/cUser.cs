@@ -57,7 +57,6 @@ namespace BioskopCSharp.Controllers
 
         public void Index()
         {
-            Dispose();
             _view.Show();
             _table = Read();
         }
@@ -146,7 +145,7 @@ namespace BioskopCSharp.Controllers
             }
 
             var table = new DataTable();
-            var header = new string[] { "ID","NO","NAMA","USERNAME" };
+            var header = new string[] { "ID","NO","NAMA","USERNAME","PASSWORD" };
             int i = 1;
             try
             {
@@ -160,6 +159,7 @@ namespace BioskopCSharp.Controllers
                         row[1] = i;
                         row[2] = value.nama as string;
                         row[3] = value.username as string;
+                        row[4] = value.password as string;
                         table.Rows.Add(row);
                         i++;
                     }
@@ -187,8 +187,9 @@ namespace BioskopCSharp.Controllers
                 {
                     foreach (DataRow tbl in table.Rows)
                     {
-                        _viewact.TxtNama.Text = tbl[1].ToString();
-                        _viewact.TxtPassword.Password = tbl[2].ToString();
+                        _viewact.TxtNama.Text = tbl[2].ToString();
+                        _viewact.TxtUsername.Text = tbl[3].ToString();
+                        _viewact.TxtPassword.Password = tbl[4].ToString();
                     }
                 }
             }
@@ -201,13 +202,13 @@ namespace BioskopCSharp.Controllers
                 var isflaged = false;
                 if (App.LocData)
                 {
-                    _sql.Query = string.Format("INSERT INTO user VALUES ('{0}', '{1}', '{2}')", data.nama, data.username , data.password);
+                    _sql.Query = string.Format("INSERT INTO user (`nama_user`,`username_user`,`password_user`) VALUES ('{0}', '{1}', '{2}')", data.nama, data.username , data.password);
                     isflaged = _sql.ExecuteUpdate();
                 }
 
                 if (isflaged)
                 {
-                    GetInstance.Index();
+                    _table = Read();
                     _viewact.Close();
                 }
                 else
@@ -240,9 +241,9 @@ namespace BioskopCSharp.Controllers
             }
         }
 
-        public void Delete(MUser data)
+        public void Delete()
         {
-            if (IsValidate())
+            if (Code != string.Empty)
             {
                 var msg = MessageBox.Show("Yakin akan dihapus?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (msg == MessageBoxResult.Yes)
@@ -256,8 +257,7 @@ namespace BioskopCSharp.Controllers
 
                     if (isflaged)
                     {
-                        GetInstance.Index();
-                        _viewact.Close();
+                        _table = Read();
                     }
                     else
                     {
