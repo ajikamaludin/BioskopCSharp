@@ -2,7 +2,6 @@
 using System.Windows.Input;
 using System.Windows.Controls;
 using System.Data;
-using BioskopCSharp.Models;
 using BioskopCSharp.Controllers;
 
 namespace BioskopCSharp.Views.UserView
@@ -14,19 +13,6 @@ namespace BioskopCSharp.Views.UserView
     {
         //Class Deklarasi
         private CUser _ctrl;
-
-        private MUser CreateModel
-        {
-            get
-            {
-                return new MUser()
-                {
-                    Nama = ((DataRowView)TblDataUser.SelectedItems[0])[1].ToString(),
-                    Username = ((DataRowView)TblDataUser.SelectedItems[0])[2].ToString(),
-                    Password = ((DataRowView)TblDataUser.SelectedItems[0])[3].ToString(),
-                };
-            }
-        }
 
         public UserView()
         {

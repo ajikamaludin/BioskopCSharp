@@ -4,14 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.FilmView"
-        mc:Ignorable="d"
-        Title="FilmView" Height="300" Width="387" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        mc:Ignorable="d" x:Name="FrmFilm" Loaded="FrmFilm_Loaded" Closing="FrmFilm_Closing"
+        Title="Film" Height="300" Width="387" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/BioskopCSharp;component/Asset/logo2.png">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="189" Margin="10,10,0,0" VerticalAlignment="Top" Width="359"/>
-        <Button Content="Baru" HorizontalAlignment="Left" Margin="13,225,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.16,-0.2"/>
-        <Button Content="Edit" HorizontalAlignment="Left" Margin="108,225,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Hapus" HorizontalAlignment="Left" Margin="201,225,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Kembali" HorizontalAlignment="Left" Margin="289,225,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid x:Name="TblDataFilm" ItemsSource="{Binding}" AutoGeneratingColumn="TblDataFilm_AutoGeneratingColumn"
+                  SelectedCellsChanged="TblDataFilm_SelectedCellsChanged" MouseDoubleClick="TblDataFilm_MouseDoubleClick"
+                  PreviewKeyDown="TblDataFilm_PreviewKeyDown"
+                  HorizontalAlignment="Left" Height="189" Margin="10,10,0,0" VerticalAlignment="Top" Width="359"/>
+        <Button x:Name="BtnNew" Click="BtnNew_Click" Content="Baru" HorizontalAlignment="Left" Margin="13,225,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.16,-0.2"/>
+        <Button x:Name="BtnEdit" Click="BtnEdit_Click" Content="Edit" HorizontalAlignment="Left" Margin="108,225,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnDelete" Click="BtnDelete_Click" Content="Hapus" HorizontalAlignment="Left" Margin="201,225,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Kembali" HorizontalAlignment="Left" Margin="289,225,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

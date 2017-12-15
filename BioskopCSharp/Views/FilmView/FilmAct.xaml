@@ -4,14 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.FilmView"
-        mc:Ignorable="d"
-        Title="Film Editor" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        mc:Ignorable="d" x:Name="FrmFilmAct" Loaded="FrmFilm_Loaded" Closing="FrmFilm_Closing"
+        Title="Film Editor" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Grid>
-        <ComboBox HorizontalAlignment="Left" Margin="80,41,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="80,90,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox HorizontalAlignment="Left" Margin="80,142,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Simpan" HorizontalAlignment="Left" Margin="35,209,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Batal" HorizontalAlignment="Left" Margin="173,209,0,0" VerticalAlignment="Top" Width="75"/>
+        
+        <TextBox x:Name="TxtJudul" HorizontalAlignment="Left" Height="23" Margin="80,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TxtHarga" PreviewTextInput="TxtHarga_PreviewTextInput"
+                 HorizontalAlignment="Left" Height="23" Margin="80,124,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        
+        <Button x:Name="BtnSimpan" Click="BtnSimpan_Click" Content="Simpan" HorizontalAlignment="Left" Margin="35,209,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnBatal" Click="BtnBatal_Click" Content="Batal" HorizontalAlignment="Left" Margin="173,209,0,0" VerticalAlignment="Top" Width="75"/>
+        
 
     </Grid>
 </Window>

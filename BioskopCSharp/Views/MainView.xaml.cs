@@ -26,6 +26,7 @@ namespace BioskopCSharp.Views
         public MainView()
         {
             InitializeComponent();
+            
         }
 
         //Event On Window
@@ -62,7 +63,7 @@ namespace BioskopCSharp.Views
         //Submenu Edit
         private void MnuFilm_Click(object sender, RoutedEventArgs e)
         {
-
+            CFilm.GetInstance.Index();
         }
 
         private void MnuRuang_Click(object sender, RoutedEventArgs e)

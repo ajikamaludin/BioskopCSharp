@@ -18,11 +18,11 @@
                 <MenuItem Header="E_xit" x:Name="MnuExit" Click="MnuExit_Click" />
             </MenuItem>
             <MenuItem Header="_Edit" x:Name="MnuEdit">
-                <MenuItem Header="_Jadwal" x:Name="MnuAdmin" Click="MnuAdmin_Click" />
                 <MenuItem Header="_Film" x:Name="MnuFilm" Click="MnuFilm_Click"/>
                 <MenuItem Header="_Ruang" x:Name="MnuRuang" Click="MnuRuang_Click" />
                 <MenuItem Header="_User" x:Name="MnuUser" Click="MnuUser_Click" />
                 <MenuItem Header="_Tiket" x:Name="MnuTiket" Click="MnuTiket_Click"/>
+                <MenuItem Header="_Jadwal" x:Name="MnuAdmin" Click="MnuAdmin_Click" />
             </MenuItem>
 
             <MenuItem Header="_Help">
@@ -72,6 +72,7 @@
             <Button Content="Hapus" HorizontalAlignment="Left" Margin="1093,72,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.187,0.077"/>
             <Button Content="Batal" HorizontalAlignment="Left" Margin="393,291,0,0" VerticalAlignment="Top" Width="75"/>
             <Label x:Name="UserAktiv" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            
 
         </Grid>
     </Grid>
