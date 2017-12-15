@@ -7,7 +7,8 @@
         mc:Ignorable="d" x:Name="FrmJadwal"
         Title="Jadwal" Height="300" Width="348" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="202" Margin="10,10,0,0" VerticalAlignment="Top" Width="315"/>
+        <DataGrid x:Name="TblDataJadwal" ItemsSource="{Binding}" 
+                  HorizontalAlignment="Left" Height="202" Margin="10,10,0,0" VerticalAlignment="Top" Width="315"/>
         <Button Content="Baru" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Ubah" HorizontalAlignment="Left" Margin="90,233,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Hapus" HorizontalAlignment="Left" Margin="170,233,0,0" VerticalAlignment="Top" Width="75"/>

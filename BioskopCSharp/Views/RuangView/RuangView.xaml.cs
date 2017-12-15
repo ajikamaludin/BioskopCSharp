@@ -48,6 +48,7 @@ namespace BioskopCSharp.Views.RuangView
             _ctrl = CRuang.GetInstance;
             BtnEdit.IsEnabled = BtnDelete.IsEnabled = TxtNama.IsEnabled = false;
             BtnSav.Visibility = BtnCancel.Visibility = Visibility.Collapsed;
+            TableDecor();
         }
 
         private void TblDataRuang_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -137,6 +138,15 @@ namespace BioskopCSharp.Views.RuangView
             TxtNama.Text = string.Empty;
             BtnNew.Visibility = Visibility.Visible;
             BtnSav.Visibility = BtnCancel.Visibility = Visibility.Collapsed;
+        }
+        private void TableDecor()
+        {
+            if (TblDataRuang.Columns.Count > 0)
+            {
+                TblDataRuang.Columns[1].Width = DataGridLength.Auto;
+                TblDataRuang.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+            }
         }
     }
 }

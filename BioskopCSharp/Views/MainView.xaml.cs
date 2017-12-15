@@ -57,14 +57,10 @@ namespace BioskopCSharp.Views
 
         private void MnuAdmin_Click(object sender, RoutedEventArgs e)
         {
-
+            CJadwal.GetInstance.Index();
         }
         
         //Submenu Edit
-        private void MnuFilm_Click(object sender, RoutedEventArgs e)
-        {
-            CFilm.GetInstance.Index();
-        }
 
         private void MnuRuang_Click(object sender, RoutedEventArgs e)
         {
@@ -78,7 +74,12 @@ namespace BioskopCSharp.Views
 
         private void MnuTiket_Click(object sender, RoutedEventArgs e)
         {
+            CTiket.GetInstance.Index();
+        }
 
+        private void MnuFilm_Click(object sender, RoutedEventArgs e)
+        {
+            CFilm.GetInstance.Index();
         }
 
         //Menu About
