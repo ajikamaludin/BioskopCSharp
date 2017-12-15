@@ -23,5 +23,25 @@ namespace BioskopCSharp.Views.UserView
         {
             InitializeComponent();
         }
+
+        private void BtnNew_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

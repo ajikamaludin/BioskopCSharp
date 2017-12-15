@@ -4,9 +4,26 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views"
-        mc:Ignorable="d"
-        Title="MainView" Height="300" Width="300">
+        mc:Ignorable="d" x:Name="FrmMain" Loaded="FrmMain_Loaded" Closing="FrmMain_Closing"
+        Title="Kasir : BioskopKita" Height="640" Width="1210" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_logout" x:Name="MnuLogout" Click="MnuLogout_Click" />
+                <Separator />
+                <MenuItem Header="E_xit" x:Name="MnuExit" Click="MnuExit_Click" />
+            </MenuItem>
+            <MenuItem Header="_Edit" x:Name="MnuEdit">
+                <MenuItem Header="_Jadwal" x:Name="MnuAdmin" Click="MnuAdmin_Click" />
+                <MenuItem Header="_Film" x:Name="MnuFilm" Click="MnuFilm_Click"/>
+                <MenuItem Header="_Ruang" x:Name="MnuRuang" Click="MnuRuang_Click" />
+                <MenuItem Header="_User" x:Name="MnuUser" Click="MnuUser_Click" />
+                <MenuItem Header="_Tiket" x:Name="MnuTiket" Click="MnuTiket_Click"/>
+            </MenuItem>
+            
+            <MenuItem Header="_Help">
+                <MenuItem Header="About" x:Name="MnuAbout" Click="MnuAbout_Click"/>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

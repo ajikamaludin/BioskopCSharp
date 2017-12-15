@@ -8,7 +8,7 @@ using BioskopCSharp.Views.UserView;
 
 namespace BioskopCSharp.Controllers
 {
-    public class cUser
+    public class CUser
     {
         //Class
         private UserView _view;
@@ -16,7 +16,7 @@ namespace BioskopCSharp.Controllers
         private UserAct _viewact;
         private Command _sql;
 
-        private static cUser _ctrl;
+        private static CUser _ctrl;
 
         //Variabel
         private string[] _column;
@@ -25,7 +25,7 @@ namespace BioskopCSharp.Controllers
 
         public string Code { get; set; }
 
-        public cUser(bool mode)
+        public CUser(bool mode)
         {
             if (mode == true)
             {
@@ -35,21 +35,21 @@ namespace BioskopCSharp.Controllers
 
         }
 
-        public static cUser GetInstance
+        public static CUser GetInstance
         {
             get
             {
                 if (_ctrl == null)
                 {
-                    _ctrl = new cUser(App.LocData);
+                    _ctrl = new CUser(App.LocData);
                 }
                 return _ctrl;
             }
         }
 
-        private mUser Entity(dynamic result)
+        private MUser Entity(dynamic result)
         {
-            var entity = new mUser()
+            var entity = new MUser()
             {
                 id = Convert.ToInt32(result[_column[0]]) as int? ?? 0,
                 nama = result[_column[1]].ToString() as string,
@@ -141,7 +141,7 @@ namespace BioskopCSharp.Controllers
 
         public DataTable Read()
         {
-            List<mUser> list = null;
+            List<MUser> list = null;
             if (App.LocData)
             {
                 _column = new[] { "id_user", "nama_user", "username_user", "password_user" };
@@ -189,7 +189,7 @@ namespace BioskopCSharp.Controllers
             }
         }
 
-        public void Create(mUser data)
+        public void Create(MUser data)
         {
             if (IsValidate())
             {
@@ -212,7 +212,7 @@ namespace BioskopCSharp.Controllers
             }
         }
 
-        public void Update(mUser data)
+        public void Update(MUser data)
         {
             if (IsValidate())
             {
@@ -235,7 +235,7 @@ namespace BioskopCSharp.Controllers
             }
         }
 
-        public void Delete(mUser data)
+        public void Delete(MUser data)
         {
             if (IsValidate())
             {

@@ -70,10 +70,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controllers\cRuang.cs" />
-    <Compile Include="Controllers\cUser.cs" />
-    <Compile Include="Models\mRuang.cs" />
-    <Compile Include="Models\mUser.cs" />
+    <Compile Include="Controllers\CMain.cs" />
+    <Compile Include="Controllers\CRuang.cs" />
+    <Compile Include="Controllers\CUser.cs" />
+    <Compile Include="Models\MRuang.cs" />
+    <Compile Include="Models\MUser.cs" />
     <Compile Include="SetupRDBMS\Command.cs" />
     <Compile Include="SetupRDBMS\Connect.cs" />
     <Compile Include="Views\FilmView\FilmView.xaml.cs">

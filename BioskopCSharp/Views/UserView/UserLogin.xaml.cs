@@ -20,8 +20,8 @@ namespace BioskopCSharp.Views.UserView
     /// </summary>
     public partial class UserLogin : Window
     {
-        private cUser _ctrl;
-        private cRuang _mctrl;
+        private CUser _ctrl;
+        private CMain _mctrl;
 
         public UserLogin()
         {
@@ -44,7 +44,7 @@ namespace BioskopCSharp.Views.UserView
             {
                 if (_ctrl.Register(TxtNama.Text, TxtPassword.Password, out App.UserLog))
                 {
-                    _ctrl.Index();
+                    _mctrl.Index();
                     Close();
                 }
             }
@@ -52,12 +52,14 @@ namespace BioskopCSharp.Views.UserView
 
         private void Btnkeluar_Click(object sender, RoutedEventArgs e)
         {
+            GC.Collect();
             App.Current.Shutdown();
         }
 
         private void FrmUserLogin_Loaded(object sender, RoutedEventArgs e)
         {
-            _ctrl = cUser.GetInstance;
+            _ctrl = CUser.GetInstance;
+            _mctrl = CMain.GetInstance;
         }
     }
 }

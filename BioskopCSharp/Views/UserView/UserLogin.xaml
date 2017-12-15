@@ -5,12 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.UserView"
         mc:Ignorable="d" x:Name="FrmUserLogin" Loaded="FrmUserLogin_Loaded"
-        Title="UserLogin" Height="300" Width="300">
+        Title="Login" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True">
     <Grid>
-        <TextBox x:Name="TxtNama" HorizontalAlignment="Left" Height="23" Margin="90,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Height="23" Margin="90,116,0,0" Width="120" VerticalAlignment="Top"/>
-        <Button x:Name="BtnLogin" Click="BtnLogin_Click" Content="Masuk" HorizontalAlignment="Left" Margin="115,157,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="Btnkeluar" Click="Btnkeluar_Click"  Content="Keluar" HorizontalAlignment="Left" Margin="115,193,0,0" VerticalAlignment="Top" Width="75"/>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="75*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="TxtNama" HorizontalAlignment="Left" Height="23" Margin="90,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Height="23" Margin="90,116,0,0" Width="120" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button x:Name="BtnLogin" Click="BtnLogin_Click" Content="Masuk" HorizontalAlignment="Left" Margin="115,157,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2"/>
+        <Button x:Name="Btnkeluar" Click="Btnkeluar_Click"  Content="Keluar" HorizontalAlignment="Left" Margin="115,193,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2"/>
+
     </Grid>
 </Window>

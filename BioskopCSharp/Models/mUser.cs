@@ -1,6 +1,6 @@
 ﻿namespace BioskopCSharp.Models
 {
-    public class mUser
+    public class MUser
     {
         public int id { get; set;}
         public string nama { get; set; }

@@ -10,13 +10,13 @@ using BioskopCSharp.Views.RuangView;
 
 namespace BioskopCSharp.Controllers
 {
-    class cRuang
+    class CRuang
     {
         //Class
         private RuangView _view;
         private Command _sql;
 
-        private static cRuang _ctrl;
+        private static CRuang _ctrl;
 
         //Variable
         private string[] _column;
@@ -26,11 +26,11 @@ namespace BioskopCSharp.Controllers
         //Fungsi
         public string Code { get; set; }
 
-        public static cRuang GetInstance
+        public static CRuang GetInstance
         {
             get
             {
-                if (_ctrl == null) _ctrl = new cRuang();
+                if (_ctrl == null) _ctrl = new CRuang();
                 return _ctrl;
             }
         }
