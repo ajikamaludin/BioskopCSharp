@@ -79,6 +79,7 @@ namespace BioskopCSharp.Views.RuangView
 
         private void BtnNew_Click(object sender, RoutedEventArgs e)
         {
+            _ctrl.Code = string.Empty;
             TxtNama.IsEnabled = true;
             BtnNew.Visibility = Visibility.Collapsed;
             BtnSav.Visibility = BtnCancel.Visibility = Visibility.Visible;
@@ -95,6 +96,10 @@ namespace BioskopCSharp.Views.RuangView
             {
                 _ctrl.Create(CreateModel);
             }
+            else
+            {
+                MessageBox.Show("System Mengalami Kesalahan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
             
             _ctrl.Code = string.Empty;
             TxtNama.IsEnabled = false;
@@ -105,7 +110,11 @@ namespace BioskopCSharp.Views.RuangView
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            TxtNama.IsEnabled = true;
+            TxtNama.Text = ((DataRowView)TblDataRuang.SelectedItems[0])[2].ToString();
+            TxtNama.Focus();
+            BtnNew.Visibility = Visibility.Collapsed;
+            BtnSav.Visibility = BtnCancel.Visibility = Visibility.Visible;
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
@@ -115,7 +124,11 @@ namespace BioskopCSharp.Views.RuangView
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            if(_ctrl.Code == string.Empty)
+            {
+                _ctrl.Code = ((DataRowView)TblDataRuang.SelectedItems[0])[0].ToString();
+            }
+            _ctrl.Delete();
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)
