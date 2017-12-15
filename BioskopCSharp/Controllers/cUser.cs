@@ -47,10 +47,10 @@ namespace BioskopCSharp.Controllers
         {
             var entity = new MUser()
             {
-                id = Convert.ToInt32(result[_column[0]]) as int? ?? 0,
-                nama = result[_column[1]].ToString() as string,
-                username = result[_column[2]].ToString() as string,
-                password = result[_column[3]].ToString() as string,
+                Id = Convert.ToInt32(result[_column[0]]) as int? ?? 0,
+                Nama = result[_column[1]].ToString() as string,
+                Username = result[_column[2]].ToString() as string,
+                Password = result[_column[3]].ToString() as string,
             };
             return entity;
         }
@@ -80,8 +80,14 @@ namespace BioskopCSharp.Controllers
 
         public void Dispose()
         {
-            _ctrl = null;
-            _table = null;
+            if(_ctrl != null)
+            {
+                _ctrl = null;
+            }
+            if(_table != null)
+            {
+                _table = null;
+            }
         }
 
         public bool Register(string user, string password, out string userlog)
@@ -137,12 +143,10 @@ namespace BioskopCSharp.Controllers
         public DataTable Read()
         {
             List<MUser> list = null;
-            if (App.LocData)
-            {
-                _column = new[] { "id_user", "nama_user", "username_user", "password_user" };
-                _sql.Query = "SELECT * FROM user";
-                list = _sql.ExecuteQuery(Entity);
-            }
+  
+           _column = new[] { "id_user", "nama_user", "username_user", "password_user" };
+           _sql.Query = "SELECT * FROM user";
+           list = _sql.ExecuteQuery(Entity);
 
             var table = new DataTable();
             var header = new string[] { "ID","NO","NAMA","USERNAME","PASSWORD" };
@@ -155,11 +159,11 @@ namespace BioskopCSharp.Controllers
                     foreach (var value in list.ToArray())
                     {
                         var row = table.NewRow();
-                        row[0] = value.id as int? ?? 0;
+                        row[0] = value.Id as int? ?? 0;
                         row[1] = i;
-                        row[2] = value.nama as string;
-                        row[3] = value.username as string;
-                        row[4] = value.password as string;
+                        row[2] = value.Nama as string;
+                        row[3] = value.Username as string;
+                        row[4] = value.Password as string;
                         table.Rows.Add(row);
                         i++;
                     }
@@ -200,11 +204,9 @@ namespace BioskopCSharp.Controllers
             if (IsValidate())
             {
                 var isflaged = false;
-                if (App.LocData)
-                {
-                    _sql.Query = string.Format("INSERT INTO user (`nama_user`,`username_user`,`password_user`) VALUES ('{0}', '{1}', '{2}')", data.nama, data.username , data.password);
-                    isflaged = _sql.ExecuteUpdate();
-                }
+
+                _sql.Query = string.Format("INSERT INTO user (`nama_user`,`username_user`,`password_user`) VALUES ('{0}', '{1}', '{2}')", data.Nama, data.Username , data.Password);
+                isflaged = _sql.ExecuteUpdate();
 
                 if (isflaged)
                 {
@@ -223,11 +225,8 @@ namespace BioskopCSharp.Controllers
             if (IsValidate())
             {
                 var isflaged = false;
-                if (App.LocData)
-                {
-                    _sql.Query = string.Format("UPDATE user SET nama_user = '{0}', username_user = '{1}', password_user = '{2}' WHERE id_user = '{3}'", data.nama, data.username ,data.password, Code);
+                _sql.Query = string.Format("UPDATE user SET nama_user = '{0}', username_user = '{1}', password_user = '{2}' WHERE id_user = '{3}'", data.Nama, data.Username ,data.Password, Code);
                     isflaged = _sql.ExecuteUpdate();
-                }
 
                 if (isflaged)
                 {
@@ -249,11 +248,8 @@ namespace BioskopCSharp.Controllers
                 if (msg == MessageBoxResult.Yes)
                 {
                     var isflaged = false;
-                    if (App.LocData)
-                    {
-                        _sql.Query = string.Format("DELETE FROM user WHERE id_user = '{0}'", Code);
-                        isflaged = _sql.ExecuteUpdate();
-                    }
+                    _sql.Query = string.Format("DELETE FROM user WHERE id_user = '{0}'", Code);
+                    isflaged = _sql.ExecuteUpdate();
 
                     if (isflaged)
                     {

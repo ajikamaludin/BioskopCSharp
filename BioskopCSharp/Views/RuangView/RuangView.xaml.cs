@@ -23,5 +23,10 @@ namespace BioskopCSharp.Views.RuangView
         {
             InitializeComponent();
         }
+
+        private void BtnNew_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

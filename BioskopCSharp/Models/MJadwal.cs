@@ -2,9 +2,9 @@
 {
     public class MJadwal
     {
-        public int idJadwal { get; set; }
-        public int idRuang { get; set; }
-        public string wakti { get; set; }
-        public int idFilm { get; set; }
+        public int IdJadwal { get; set; }
+        public int IdRuang { get; set; }
+        public string Wakti { get; set; }
+        public int IdFilm { get; set; }
     }
 }

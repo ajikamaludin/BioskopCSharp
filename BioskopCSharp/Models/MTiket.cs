@@ -2,8 +2,8 @@
 {
     public class MTiket
     {
-        public int idTiket { get; set; }
-        public int idJadwal { get; set; }
-        public string kursi { get; set; }
+        public int IdTiket { get; set; }
+        public int IdJadwal { get; set; }
+        public string Kursi { get; set; }
     }
 }

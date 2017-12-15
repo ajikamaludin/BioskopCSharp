@@ -20,9 +20,9 @@ namespace BioskopCSharp.Views.UserView
             {
                 return new MUser()
                 {
-                    nama = ((DataRowView)TblDataUser.SelectedItems[0])[1].ToString(),
-                    username = ((DataRowView)TblDataUser.SelectedItems[0])[2].ToString(),
-                    password = ((DataRowView)TblDataUser.SelectedItems[0])[3].ToString(),
+                    Nama = ((DataRowView)TblDataUser.SelectedItems[0])[1].ToString(),
+                    Username = ((DataRowView)TblDataUser.SelectedItems[0])[2].ToString(),
+                    Password = ((DataRowView)TblDataUser.SelectedItems[0])[3].ToString(),
                 };
             }
         }
@@ -64,7 +64,10 @@ namespace BioskopCSharp.Views.UserView
 
         private void FrmUser_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            _ctrl.Dispose();
+            if(_ctrl != null)
+            {
+                _ctrl.Dispose();
+            }
         }
 
         //Click
@@ -115,6 +118,7 @@ namespace BioskopCSharp.Views.UserView
             _ctrl.Dispose();
             Close();
         }
+
         private void TableDecor()
         {
             if (TblDataUser.Columns.Count > 0)

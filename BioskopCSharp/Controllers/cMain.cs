@@ -15,14 +15,9 @@ namespace BioskopCSharp.Controllers
         private Command _sql;
 
         private static CMain _ctrl;
-        private bool locData;
-
-        public CMain(bool mode)
+        public CMain()
         {
-            if (mode == true)
-            {
-                _sql = new Command();
-            }
+            _sql = new Command();
             _view = new MainView();
         }
 
@@ -32,7 +27,7 @@ namespace BioskopCSharp.Controllers
             {
                 if (_ctrl == null)
                 {
-                    _ctrl = new CMain(App.LocData);
+                    _ctrl = new CMain();
                 }
                 return _ctrl;
             }

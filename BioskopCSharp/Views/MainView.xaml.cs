@@ -67,7 +67,7 @@ namespace BioskopCSharp.Views
 
         private void MnuRuang_Click(object sender, RoutedEventArgs e)
         {
-
+            CRuang.GetInstance.Index();
         }
 
         private void MnuUser_Click(object sender, RoutedEventArgs e)

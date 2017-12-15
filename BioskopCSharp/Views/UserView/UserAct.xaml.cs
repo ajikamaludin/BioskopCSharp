@@ -21,9 +21,9 @@ namespace BioskopCSharp.Views.UserView
             {
                 return new MUser()
                 {
-                    nama = TxtNama.Text,
-                    username = TxtUsername.Text,
-                    password = TxtPassword.Password
+                    Nama = TxtNama.Text,
+                    Username = TxtUsername.Text,
+                    Password = TxtPassword.Password
                 };
             }
         }

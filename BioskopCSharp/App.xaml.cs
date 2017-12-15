@@ -15,7 +15,6 @@ namespace BioskopCSharp
     public partial class App : Application
     {
         public static CUser _mCtrl;
-        public static bool LocData = true;
         public static string UserLog = string.Empty;
 
         private void Application_Startup(object sender, StartupEventArgs e)

@@ -2,8 +2,8 @@
 {
     public class MFilm
     {
-        public int id { get; set; }
-        public string judul { get; set; }
-        public int harga { get; set; }
+        public int Id { get; set; }
+        public string Judul { get; set; }
+        public int Harga { get; set; }
     }
 }

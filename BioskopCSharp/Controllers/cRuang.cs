@@ -48,8 +48,8 @@ namespace BioskopCSharp.Controllers
         {
             var entity = new MRuang()
             {
-                id = Convert.ToInt32(result[_column[0]]) as int? ?? 0,
-                nama = result[_column[1]].ToString() as string,
+                Id = Convert.ToInt32(result[_column[0]]) as int? ?? 0,
+                Nama = result[_column[1]].ToString() as string,
             };
             return entity;
         }
@@ -85,7 +85,7 @@ namespace BioskopCSharp.Controllers
                     foreach (var value in list.ToArray())
                     {
                         var row = table.NewRow();
-                        row[0] = value.nama as string;
+                        row[0] = value.Nama as string;
                         table.Rows.Add(row);
                     }
                 }

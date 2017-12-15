@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.RuangView"
         mc:Ignorable="d"
-        Title="Ruang" Height="300" Width="343.934" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Ruang" Height="300" Width="345.934" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
     <Grid>
         <DataGrid HorizontalAlignment="Left" Height="162" Margin="10,10,0,0" VerticalAlignment="Top" Width="315"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="59,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Nama :" HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top"/>
-        <Button Content="Baru" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnNew" Click="BtnNew_Click" Content="Baru" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Simpan" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden"/>
         <Button Content="Ubah" HorizontalAlignment="Left" Margin="90,229,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Content="Hapus" HorizontalAlignment="Left" Margin="170,229,0,0" VerticalAlignment="Top" Width="75"/>
