@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.JadwalView"
         mc:Ignorable="d"
-        Title="JadwalView" Height="300" Width="300">
+        Title="Jadwal" Height="600" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <DataGrid HorizontalAlignment="Left" Height="473" Margin="10,10,0,0" VerticalAlignment="Top" Width="774"/>
+        <Button Content="Baru" HorizontalAlignment="Left" Margin="32,517,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Ubah" HorizontalAlignment="Left" Margin="138,517,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Hapus" HorizontalAlignment="Left" Margin="249,517,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Kembali" HorizontalAlignment="Left" Margin="693,517,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

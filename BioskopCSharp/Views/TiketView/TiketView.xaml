@@ -5,8 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.TiketView"
         mc:Ignorable="d"
-        Title="TiketView" Height="300" Width="300">
+        Title="Tiket" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <DataGrid HorizontalAlignment="Left" Height="210" Margin="10,10,0,0" VerticalAlignment="Top" Width="272"/>
+        <Button Content="Cetak" HorizontalAlignment="Left" Margin="21,232,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Laporan" HorizontalAlignment="Left" Margin="108,232,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Kembali" HorizontalAlignment="Left" Margin="200,232,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

@@ -5,11 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views"
         mc:Ignorable="d" x:Name="FrmMain" Loaded="FrmMain_Loaded" Closing="FrmMain_Closing"
-        Title="Kasir : BioskopKita" Height="640" Width="1210" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="Kasir : BioskopKita" Height="640" Width="1210" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="531*" />
+        </Grid.RowDefinitions>
         <Menu Grid.Row="0">
             <MenuItem Header="_File">
-                <MenuItem Header="_logout" x:Name="MnuLogout" Click="MnuLogout_Click" />
+                <MenuItem Header="_Logout" x:Name="MnuLogout" Click="MnuLogout_Click" />
                 <Separator />
                 <MenuItem Header="E_xit" x:Name="MnuExit" Click="MnuExit_Click" />
             </MenuItem>
@@ -20,10 +24,57 @@
                 <MenuItem Header="_User" x:Name="MnuUser" Click="MnuUser_Click" />
                 <MenuItem Header="_Tiket" x:Name="MnuTiket" Click="MnuTiket_Click"/>
             </MenuItem>
-            
+
             <MenuItem Header="_Help">
                 <MenuItem Header="About" x:Name="MnuAbout" Click="MnuAbout_Click"/>
             </MenuItem>
         </Menu>
+        <Grid Grid.Row="1">
+            <DataGrid HorizontalAlignment="Left" Height="259" Margin="10,52,0,0" VerticalAlignment="Top" Width="335"/>
+            <ComboBox HorizontalAlignment="Left" Margin="373,52,0,0" VerticalAlignment="Top" Width="120"/>
+            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="235" Margin="10,325,0,0" Stroke="Black" VerticalAlignment="Top" Width="483"/>
+            
+            <!-- Start Kursi -->
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,347,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+            <CheckBox Content="A2" HorizontalAlignment="Left" Margin="127,347,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A3" HorizontalAlignment="Left" Margin="224,347,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A4" HorizontalAlignment="Left" Margin="317,347,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A5" HorizontalAlignment="Left" Margin="406,347,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,388,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,431,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,473,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,513,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="127,388,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="127,431,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="127,473,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="127,513,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="224,388,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="224,431,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="224,473,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="224,513,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="317,388,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="317,431,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="317,473,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="317,513,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="406,388,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="406,431,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="406,473,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="406,513,0,0" VerticalAlignment="Top"/>
+            <!-- End Kursi -->
+            
+            <DataGrid HorizontalAlignment="Left" Height="335" Margin="649,52,0,0" VerticalAlignment="Top" Width="414"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="927,417,0,0" TextWrapping="Wrap" Text="Uang Bayar" VerticalAlignment="Top" Width="120"/>
+            <TextBox HorizontalAlignment="Left" Height="23" Margin="927,465,0,0" TextWrapping="Wrap" Text="Uang Kembali" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+            <Button Content="Tambah" HorizontalAlignment="Left" Margin="393,259,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Content="Bayar" HorizontalAlignment="Left" Margin="1093,113,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Content="Cetak" HorizontalAlignment="Left" Margin="1093,149,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Content="Selesai" HorizontalAlignment="Left" Margin="1093,187,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Content="Hapus" HorizontalAlignment="Left" Margin="1093,72,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.187,0.077"/>
+            <Button Content="Batal" HorizontalAlignment="Left" Margin="393,291,0,0" VerticalAlignment="Top" Width="75"/>
+            <Label x:Name="UserAktiv" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+
+        </Grid>
     </Grid>
+
+
 </Window>

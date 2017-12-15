@@ -20,9 +20,7 @@ namespace BioskopCSharp.Views
     /// </summary>
     public partial class MainView : Window
     {
-
-        //Class Deklarate
-        private CUser _ctrl;
+        
 
         //Contructors
         public MainView()
@@ -33,7 +31,7 @@ namespace BioskopCSharp.Views
         //Event On Window
         private void FrmMain_Loaded(object sender, RoutedEventArgs e)
         {
-            _ctrl = CUser.GetInstance;
+            UserAktiv.Content = App.UserLog;
         }
 
         private void FrmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -45,9 +43,9 @@ namespace BioskopCSharp.Views
         //Submenu File
         private void MnuLogout_Click(object sender, RoutedEventArgs e)
         {
-            App.UserLog = string.Empty;
-            Close();
-            _ctrl.Index("Register");
+            Hide();
+            CUser.GetInstance.Index("Register");
+            //App.UserLog = string.Empty;
         }
 
         private void MnuExit_Click(object sender, RoutedEventArgs e)
@@ -74,7 +72,7 @@ namespace BioskopCSharp.Views
 
         private void MnuUser_Click(object sender, RoutedEventArgs e)
         {
-
+            CUser.GetInstance.Index();
         }
 
         private void MnuTiket_Click(object sender, RoutedEventArgs e)
@@ -86,10 +84,18 @@ namespace BioskopCSharp.Views
         private void MnuAbout_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine(App.UserLog);
-            MessageBox.Show("FraemWork menggunakan MVC-DesignPattern\n Oleh: Fairul@Amikom \nAplikasi Dikerjakan Oleh : \n  - Aji Kamaludin \n - Indra \n - Arik \n - Harish \n - Arief", "About", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("FrameWork menggunakan MVC-DesignPattern\n Oleh: Fairul@Amikom \n\nAplikasi Dikerjakan Oleh : \n" +
+                " - Aji Kamaludin ( 16.11.0051 ) \n" +
+                " - Evriyana Indra Saputra ( 16.11.0014 ) \n" +
+                " - Arief Setyo Nugroho ( 16.11.0058 )\n" +
+                " - Harish Setyo Hudnanto ( 16.11.0048 )\n" +
+                " - Arik Andrian Putra Purwajanu ( 16.11.00.55 )",
+                "About", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
 
-
+        }
     }
 }

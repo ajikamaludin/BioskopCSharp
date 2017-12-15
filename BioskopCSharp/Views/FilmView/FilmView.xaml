@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.FilmView"
         mc:Ignorable="d"
-        Title="FilmView" Height="300" Width="300">
+        Title="FilmView" Height="300" Width="387" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        
+        <DataGrid HorizontalAlignment="Left" Height="189" Margin="10,10,0,0" VerticalAlignment="Top" Width="359"/>
+        <Button Content="Baru" HorizontalAlignment="Left" Margin="13,225,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.16,-0.2"/>
+        <Button Content="Edit" HorizontalAlignment="Left" Margin="108,225,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Hapus" HorizontalAlignment="Left" Margin="201,225,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Kembali" HorizontalAlignment="Left" Margin="289,225,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

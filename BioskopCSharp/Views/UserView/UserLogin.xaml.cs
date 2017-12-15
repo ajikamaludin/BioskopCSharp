@@ -20,14 +20,30 @@ namespace BioskopCSharp.Views.UserView
     /// </summary>
     public partial class UserLogin : Window
     {
+        //Class Deklatare
         private CUser _ctrl;
         private CMain _mctrl;
 
+        //Contructor
         public UserLogin()
         {
             InitializeComponent();
         }
 
+        //Window On Event
+        private void FrmUserLogin_Loaded(object sender, RoutedEventArgs e)
+        {
+            _ctrl = CUser.GetInstance;
+            _mctrl = CMain.GetInstance;
+        }
+
+        private void FrmUserLogin_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            GC.Collect();
+            App.Current.Shutdown();
+        }
+
+        //User Interaction
         private void BtnLogin_Click(object sender, RoutedEventArgs e)
         {
             if(TxtNama.Text == string.Empty)
@@ -45,7 +61,7 @@ namespace BioskopCSharp.Views.UserView
                 if (_ctrl.Register(TxtNama.Text, TxtPassword.Password, out App.UserLog))
                 {
                     _mctrl.Index();
-                    Close();
+                    Hide();
                 }
             }
         }
@@ -56,10 +72,6 @@ namespace BioskopCSharp.Views.UserView
             App.Current.Shutdown();
         }
 
-        private void FrmUserLogin_Loaded(object sender, RoutedEventArgs e)
-        {
-            _ctrl = CUser.GetInstance;
-            _mctrl = CMain.GetInstance;
-        }
+        
     }
 }

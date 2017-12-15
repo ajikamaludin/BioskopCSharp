@@ -25,14 +25,10 @@ namespace BioskopCSharp.Controllers
 
         public string Code { get; set; }
 
-        public CUser(bool mode)
+        public CUser()
         {
-            if (mode == true)
-            {
-                _sql = new Command();
-            }
+            _sql = new Command();
             _view = new UserView();
-
         }
 
         public static CUser GetInstance
@@ -41,7 +37,7 @@ namespace BioskopCSharp.Controllers
             {
                 if (_ctrl == null)
                 {
-                    _ctrl = new CUser(App.LocData);
+                    _ctrl = new CUser();
                 }
                 return _ctrl;
             }
@@ -116,10 +112,10 @@ namespace BioskopCSharp.Controllers
                 {
                     foreach (DataRow tbl in data.Rows)
                     {
-                        if (password.ToLower().Equals(tbl[1].ToString().ToLower()))
+                        if (password.ToLower().Equals(tbl[3].ToString().ToLower()))
                         {
                             state = true;
-                            userlog = tbl[0].ToString();
+                            userlog = tbl[2].ToString();
                         }
                         else
                         {
@@ -150,7 +146,8 @@ namespace BioskopCSharp.Controllers
             }
 
             var table = new DataTable();
-            var header = new string[] { "NAMA", "USERNAME" };
+            var header = new string[] { "ID","NO","NAMA","USERNAME" };
+            int i = 1;
             try
             {
                 foreach (var value in header) table.Columns.Add(value);
@@ -159,15 +156,24 @@ namespace BioskopCSharp.Controllers
                     foreach (var value in list.ToArray())
                     {
                         var row = table.NewRow();
-                        row[0] = value.nama as string;
-                        row[1] = value.username as string;
+                        row[0] = value.id as int? ?? 0;
+                        row[1] = i;
+                        row[2] = value.nama as string;
+                        row[3] = value.username as string;
                         table.Rows.Add(row);
+                        i++;
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                _view.TblDataUser.ItemsSource = table.DefaultView;
+                _view.TblDataUser.AutoGenerateColumns = true;
+                _view.TblDataUser.CanUserAddRows = false;
             }
             return table;
         }
@@ -176,14 +182,13 @@ namespace BioskopCSharp.Controllers
         {
             if (Code != string.Empty)
             {
-                table = table.Select("KODE LIKE '%" + Code + "%'").CopyToDataTable();
+                table = table.Select("id LIKE '%" + Code + "%'").CopyToDataTable();
                 if (table.Rows.Count == 1)
                 {
                     foreach (DataRow tbl in table.Rows)
                     {
                         _viewact.TxtNama.Text = tbl[1].ToString();
-                        _viewact.TxtNama.Text = tbl[2].ToString();
-                        _viewact.TxtPassword.Password = tbl[3].ToString();
+                        _viewact.TxtPassword.Password = tbl[2].ToString();
                     }
                 }
             }

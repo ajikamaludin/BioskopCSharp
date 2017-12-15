@@ -83,8 +83,14 @@
     <Compile Include="Models\MUser.cs" />
     <Compile Include="SetupRDBMS\Command.cs" />
     <Compile Include="SetupRDBMS\Connect.cs" />
+    <Compile Include="Views\FilmView\FilmAct.xaml.cs">
+      <DependentUpon>FilmAct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FilmView\FilmView.xaml.cs">
       <DependentUpon>FilmView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JadwalView\JadwalAct.xaml.cs">
+      <DependentUpon>JadwalAct.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\JadwalView\JadwalView.xaml.cs">
       <DependentUpon>JadwalView.xaml</DependentUpon>
@@ -135,9 +141,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Resource Include="Asset\logo2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\FilmView\FilmAct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\FilmView\FilmView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\JadwalView\JadwalAct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
