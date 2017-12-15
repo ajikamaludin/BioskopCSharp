@@ -4,17 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.RuangView"
-        mc:Ignorable="d"
+        mc:Ignorable="d" x:Name="FrmRuang" Loaded="FrmRuang_Loaded" Closing="FrmRuang_Closing"
         Title="Ruang" Height="300" Width="345.934" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="162" Margin="10,10,0,0" VerticalAlignment="Top" Width="315"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="59,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="TblDataRuang" ItemsSource="{Binding}" SelectedCellsChanged="TblDataRuang_SelectedCellsChanged"
+                  AutoGeneratingColumn="TblDataRuang_AutoGeneratingColumn"
+                  HorizontalAlignment="Left" Height="162" Margin="10,10,0,0" VerticalAlignment="Top" Width="315"/>
+        <TextBox x:Name="TxtNama" HorizontalAlignment="Left" Height="23" Margin="59,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Nama :" HorizontalAlignment="Left" Margin="10,177,0,0" VerticalAlignment="Top"/>
         <Button x:Name="BtnNew" Click="BtnNew_Click" Content="Baru" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Simpan" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Width="75" Visibility="Hidden"/>
-        <Button Content="Ubah" HorizontalAlignment="Left" Margin="90,229,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Hapus" HorizontalAlignment="Left" Margin="170,229,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Kembali" HorizontalAlignment="Left" Margin="250,229,-33,0" VerticalAlignment="Top" Width="75" Background="Transparent"/>
+        <Button x:Name="BtnSav" Click="BtnSav_Click" Content="Simpan" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnEdit" Click="BtnEdit_Click" Content="Ubah" HorizontalAlignment="Left" Margin="90,229,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnDelete" Click="BtnDelete_Click" Content="Hapus" HorizontalAlignment="Left" Margin="170,229,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnCancel" Click="BtnCancel_Click"  Content="Batal" HorizontalAlignment="Left" Margin="202,183,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Kembali" HorizontalAlignment="Left" Margin="250,229,-33,0" VerticalAlignment="Top" Width="75" Background="Transparent"/>
 
     </Grid>
 </Window>

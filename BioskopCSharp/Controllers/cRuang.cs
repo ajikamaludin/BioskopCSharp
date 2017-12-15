@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Windows;
 using BioskopCSharp.Models;
 using BioskopCSharp.SetupRDBMS;
 using BioskopCSharp.Views.RuangView;
@@ -22,8 +23,7 @@ namespace BioskopCSharp.Controllers
         private string[] _column;
 
         private static DataTable _table;
-
-        //Fungsi
+        
         public string Code { get; set; }
 
         private CRuang()
@@ -57,15 +57,20 @@ namespace BioskopCSharp.Controllers
 
         public void Index()
         {
-            Dispose();
             _view.Show();
             _table = Read();
         }
 
         public void Dispose()
         {
-            _ctrl = null;
-            _table = null;
+            if (_ctrl != null)
+            {
+                _ctrl = null;
+            }
+            if (_table != null)
+            {
+                _table = null;
+            }
         }
 
         public DataTable Read()
@@ -74,9 +79,9 @@ namespace BioskopCSharp.Controllers
             _column = new[] { "id_ruang", "nama_ruang"};
             _sql.Query = "SELECT * FROM ruang";
             list = _sql.ExecuteQuery(Entity);
-        
+            var i = 1;
             var table = new DataTable();
-            var header = new string[] { "NAMA"};
+            var header = new string[] {"ID","NO","NAMA"};
             try
             {
                 foreach (var value in header) table.Columns.Add(value);
@@ -85,8 +90,11 @@ namespace BioskopCSharp.Controllers
                     foreach (var value in list.ToArray())
                     {
                         var row = table.NewRow();
-                        row[0] = value.Nama as string;
+                        row[0] = value.Id as int? ?? 0;
+                        row[1] = i;
+                        row[2] = value.Nama as string;
                         table.Rows.Add(row);
+                        i++;
                     }
                 }
             }
@@ -94,7 +102,105 @@ namespace BioskopCSharp.Controllers
             {
                 Console.WriteLine(ex.Message);
             }
+            finally
+            {
+                _view.TblDataRuang.ItemsSource = table.DefaultView;
+                _view.TblDataRuang.AutoGenerateColumns = true;
+                _view.TblDataRuang.CanUserAddRows = false;
+            }
             return table;
+        }
+
+        public void Detail(DataTable table)
+        {
+            if (Code != string.Empty)
+            {
+                table = table.Select("id LIKE '%" + Code + "%'").CopyToDataTable();
+                if (table.Rows.Count == 1)
+                {
+                    foreach (DataRow tbl in table.Rows)
+                    {
+                        _view.TxtNama.Text = tbl[2].ToString();
+                    }
+                }
+            }
+        }
+
+        public void Create(MRuang data)
+        {
+            if (IsValidate())
+            {
+                var isflaged = false;
+
+                _sql.Query = string.Format("INSERT INTO ruang (`nama_ruang`) VALUES ('{0}')", data.Nama);
+                isflaged = _sql.ExecuteUpdate();
+
+                if (isflaged)
+                {
+                    _table = Read();
+                }
+                else
+                {
+                    MessageBox.Show("Proses simpan gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+        }
+
+        public void Update(MRuang data)
+        {
+            if (IsValidate())
+            {
+                var isflaged = false;
+                _sql.Query = string.Format("UPDATE ruang SET nama_ruang = '{0}' WHERE id_ruang = '{1}'", data.Nama, Code);
+                isflaged = _sql.ExecuteUpdate();
+
+                if (isflaged)
+                {
+                    GetInstance.Index();
+                }
+                else
+                {
+                    MessageBox.Show("Proses update gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+        }
+
+        public void Delete()
+        {
+            if (Code != string.Empty)
+            {
+                var msg = MessageBox.Show("Yakin akan dihapus?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (msg == MessageBoxResult.Yes)
+                {
+                    var isflaged = false;
+                    _sql.Query = string.Format("DELETE FROM ruang WHERE id_ruang = '{0}'", Code);
+                    isflaged = _sql.ExecuteUpdate();
+
+                    if (isflaged)
+                    {
+                        _table = Read();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Proses hapus gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                }
+            }
+        }
+
+        private bool IsValidate()
+        {
+            var flag = false;
+            if (_view.TxtNama.Text == string.Empty)
+            {
+                MessageBox.Show("Nama masih kosong!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                _view.TxtNama.Focus();
+            }
+            else
+            {
+                flag = true;
+            }
+            return flag;
         }
     }
 }

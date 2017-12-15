@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 using System.Windows.Controls;
 using System.Data;
 using BioskopCSharp.Models;
@@ -62,6 +63,21 @@ namespace BioskopCSharp.Views.UserView
             }
         }
 
+        private void TblDataUser_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            _ctrl.Code = ((DataRowView)TblDataUser.SelectedItems[0])[0].ToString();
+            _ctrl.Index("Action");
+        }
+
+        private void TblDataUser_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                _ctrl.Code = ((DataRowView)TblDataUser.SelectedItems[0])[0].ToString();
+                _ctrl.Index("Action");
+            }
+        }
+
         private void FrmUser_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if(_ctrl != null)
@@ -115,7 +131,6 @@ namespace BioskopCSharp.Views.UserView
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            _ctrl.Dispose();
             Close();
         }
 
