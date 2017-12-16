@@ -9,7 +9,7 @@
     <Grid>
         <ComboBox x:Name="CboRuang" HorizontalAlignment="Left" Margin="90,58,0,0" VerticalAlignment="Top" Width="120"/>
         <ComboBox x:Name="CboFilm" HorizontalAlignment="Left" Margin="90,100,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TxtWaktu" HorizontalAlignment="Left" Height="23" Margin="90,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TxtWaktu" MaxLength="5" HorizontalAlignment="Left" Height="23" Margin="90,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="BtnSave" Click="BtnSave_Click" Content="Simpan" HorizontalAlignment="Left" Margin="44,204,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Batal" HorizontalAlignment="Left" Margin="184,204,0,0" VerticalAlignment="Top" Width="75"/>
 

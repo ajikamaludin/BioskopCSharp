@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using BioskopCSharp.Controllers;
 
 namespace BioskopCSharp.Views.JadwalView
@@ -62,12 +52,17 @@ namespace BioskopCSharp.Views.JadwalView
 
         private void TblDataJadwal_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.Key == Key.Enter)
+            {
+                _ctrl.Code = ((DataRowView)TblDataJadwal.SelectedItems[0])[0].ToString();
+                _ctrl.Index("Action");
+            }
         }
 
         private void TblDataJadwal_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            _ctrl.Code = ((DataRowView)TblDataJadwal.SelectedItems[0])[0].ToString();
+            _ctrl.Index("Action");
         }
 
         private void FrmJadwal_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -101,7 +96,7 @@ namespace BioskopCSharp.Views.JadwalView
             {
                 _ctrl.Code = ((DataRowView)TblDataJadwal.SelectedItems[0])[0].ToString();
             }
-            //_ctrl.Delete(); ;
+            _ctrl.Delete(); ;
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)

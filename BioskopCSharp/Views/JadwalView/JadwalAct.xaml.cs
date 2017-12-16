@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using BioskopCSharp.Controllers;
+using BioskopCSharp.Models;
 
 namespace BioskopCSharp.Views.JadwalView
 {
@@ -19,6 +10,25 @@ namespace BioskopCSharp.Views.JadwalView
     /// </summary>
     public partial class JadwalAct : Window
     {
+        
+        private MJadwal CreateEntity
+        {
+            get
+            {
+                return new MJadwal()
+                {
+                    Ruang = {
+                        Id = Convert.ToInt32(CboRuang.SelectedValue.ToString()),
+                    },
+
+                    Waktu = TxtWaktu.Text.ToString(),
+
+                    Film = {
+                        Id = Convert.ToInt32(CboFilm.SelectedValue.ToString()),
+                    }
+                };
+            }
+        }
 
         public JadwalAct()
         {
@@ -37,7 +47,18 @@ namespace BioskopCSharp.Views.JadwalView
 
         private void BtnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            if(CJadwal.GetInstance.Code != string.Empty)
+            {
+                CJadwal.GetInstance.Update(CreateEntity);
+            }
+            else if(CJadwal.GetInstance.Code == string.Empty)
+            {
+                CJadwal.GetInstance.Create(CreateEntity);
+            }
+            else
+            {
+                MessageBox.Show("System Mengalami Kesalahan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)

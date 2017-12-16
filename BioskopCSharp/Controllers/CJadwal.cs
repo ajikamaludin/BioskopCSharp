@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows;
 using BioskopCSharp.Models;
 using BioskopCSharp.Views.JadwalView;
 using BioskopCSharp.SetupDBS;
@@ -134,7 +135,6 @@ namespace BioskopCSharp.Controllers
                 _view.TblDataJadwal.ItemsSource = table.DefaultView;
                 _view.TblDataJadwal.AutoGenerateColumns = true;
                 _view.TblDataJadwal.CanUserAddRows = false;
-                Console.WriteLine(table.DefaultView.Count);
             }
             return table;
         }
@@ -162,6 +162,93 @@ namespace BioskopCSharp.Controllers
                     }
                 }
             }
+        }
+
+        public void Create(MJadwal data)
+        {
+            if (IsValidate())
+            {
+                var isflaged = false;
+                _sql.Query = string.Format("INSERT INTO jadwal (`id_ruang`,`waktu`,`id_film`) VALUES ('{0}','{1}','{2}')", data.Ruang.Id, data.Waktu, data.Film.Id);
+                isflaged = _sql.ExecuteUpdate();
+
+                if (isflaged)
+                {
+                    _table = Read();
+                    _viewact.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Proses simpan gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+        }
+
+        public void Update(MJadwal data)
+        {
+            if (IsValidate())
+            {
+                var isflaged = false;
+                _sql.Query = string.Format("UPDATE jadwal SET id_ruang = '{0}',waktu = '{1}',id_film = '{2}' WHERE id_jadwal = '{3}'", data.Ruang.Id, data.Waktu, data.Film.Id, Code);
+                isflaged = _sql.ExecuteUpdate();
+
+                if (isflaged)
+                {
+                    _table = Read();
+                    _viewact.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Proses update gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+        }
+
+        public void Delete()
+        {
+            if (Code != string.Empty)
+            {
+                var msg = MessageBox.Show("Yakin akan dihapus?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (msg == MessageBoxResult.Yes)
+                {
+                    var isflaged = false;
+                    _sql.Query = string.Format("DELETE FROM jadwal WHERE id_jadwal = '{0}'", Code);
+                    isflaged = _sql.ExecuteUpdate();
+
+                    if (isflaged)
+                    {
+                        _table = Read();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Proses hapus gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    }
+                }
+            }
+        }
+
+        private bool IsValidate()
+        {
+            var flag = false;
+            if (_viewact.TxtWaktu.Text == string.Empty)
+            {
+                MessageBox.Show("Waktu masih kosong!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                _viewact.TxtWaktu.Focus();
+            }
+            else if (_viewact.CboFilm.SelectedIndex == 0) {
+                MessageBox.Show("Film belum dipilih!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                _viewact.CboFilm.Focus();
+            }
+            else if (_viewact.CboRuang.SelectedIndex == 0)
+            {
+                MessageBox.Show("Ruang belum dipilih!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                _viewact.CboRuang.Focus();
+            }
+            else
+            {
+                flag = true;
+            }
+            return flag;
         }
 
     }

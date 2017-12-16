@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BioskopCSharp.Views;
+using BioskopCSharp.Models;
 using BioskopCSharp.SetupDBS;
 
 namespace BioskopCSharp.Controllers
@@ -43,6 +44,23 @@ namespace BioskopCSharp.Controllers
             _ctrl = null;
         }
 
+        //menampilkan film
+        private void ReadFilm()
+        {
+
+        }
+
+        //menampilkan waktu dari film yang dipilih
+        private void ReadWaktu(MFilm data)
+        {
+
+        }
+
+        //menampilkan kursi yang tersedia dan tidak tersedia
+        private void ReadKursi(MJadwal data)
+        {
+
+        }
 
     }
 }
