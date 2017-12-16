@@ -37,10 +37,15 @@ namespace BioskopCSharp.Controllers
             var entity = new MJadwal()
             {
                 IdJadwal = Convert.ToInt32(result[_column[0]]) as int? ?? 0,
-                IdFilm = Convert.ToInt32(result[_column[1]]) as int? ?? 0,
-                IdRuang = Convert.ToInt32(result[_column[2]]) as int? ?? 0,
-                Waktu = result[_column[3]].ToString() as string,
+                Waktu = result[_column[1]].ToString() as string,
             };
+
+
+            entity.Ruang.Id = Convert.ToInt32(result[_column[2]]) as int? ?? 0;
+            entity.Ruang.Nama = result[_column[3]].ToString() as string;
+            entity.Film.Id = Convert.ToInt32(result[_column[4]]) as int? ?? 0;
+            entity.Film.Judul = result[_column[5]].ToString() as string;
+            
             return entity;
         }
 
@@ -84,19 +89,24 @@ namespace BioskopCSharp.Controllers
             }
         }
 
-        //Read : SELECT film.judul_film,waktu,ruang.nama_ruang FROM `jadwal` JOIN film ON jadwal.id_film = film.id_film JOIN ruang ON jadwal.id_ruang=ruang.id_ruang
-
         public DataTable Read()
         {
             List<MJadwal> list = null;
 
-            _column = new[] { "id_jadwal", "id_ruang", "waktu", "id_film" };
-            //_sql.Query = "SELECT film.judul_film,waktu,ruang.nama_ruang FROM `jadwal` JOIN film ON jadwal.id_film = film.id_film JOIN ruang ON jadwal.id_ruang=ruang.id_ruang";
-            _sql.Query = "SELECT * FROM jadwal";
+            _column = new[] { "id_jadwal", "waktu", "id_ruang", "nama_ruang" , "id_film", "judul_film"};
+
+            _sql.Query = "SELECT " +
+                "jadwal.id_jadwal, jadwal.waktu, " +
+                "ruang.id_ruang, ruang.nama_ruang, " +
+                "film.id_film, film.judul_film " +
+                "FROM `jadwal` " +
+                "JOIN film ON jadwal.id_film = film.id_film " +
+                "JOIN ruang ON jadwal.id_ruang=ruang.id_ruang";
+
             list = _sql.ExecuteQuery(Entity);
 
             var table = new DataTable();
-            var header = new string[] { "ID JADWAL", "NO" , "ID RUANG", "WAKTU", "ID FILM"};
+            var header = new string[] { "IDJADWAL", "NO", "WAKTU", "IDRUANG", "NAMA RUANG", "IDFILM", "JUDUL FILM"};
             int i = 1;
             try
             {
@@ -106,11 +116,13 @@ namespace BioskopCSharp.Controllers
                     foreach (var value in list.ToArray())
                     {
                         var row = table.NewRow();
-                        row[0] = value.IdJadwal as int? ?? 0;
+                        row[0] = value.IdJadwal as int? ?? 0; //hide
                         row[1] = i;
-                        row[2] = value.IdRuang as int? ?? 0;
-                        row[3] = value.Waktu as string;
-                        row[4] = value.IdFilm as int? ?? 0;
+                        row[2] = value.Waktu as string;
+                        row[3] = value.Ruang.Id as int? ?? 0; //hide
+                        row[4] = value.Ruang.Nama as string;
+                        row[5] = value.Film.Id as int? ?? 0; //hide
+                        row[6] = value.Film.Judul as string;
                         table.Rows.Add(row);
                         i++;
                     }

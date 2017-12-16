@@ -2,9 +2,16 @@
 {
     public class MJadwal
     {
+
         public int IdJadwal { get; set; }
-        public int IdRuang { get; set; }
+        public MRuang Ruang { get; set; }
         public string Waktu { get; set; }
-        public int IdFilm { get; set; }
+        public MFilm Film { get; set; }
+
+        public MJadwal() {
+            Film = new MFilm();
+            Ruang = new MRuang();
+        }
+
     }
 }

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BioskopCSharp.Controllers;
 
 namespace BioskopCSharp.Views.JadwalView
 {
@@ -19,9 +20,95 @@ namespace BioskopCSharp.Views.JadwalView
     /// </summary>
     public partial class JadwalView : Window
     {
+        private CJadwal _ctrl;
+        
         public JadwalView()
         {
             InitializeComponent();
         }
+
+        private void TblDataJadwal_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            switch (e.Column.Header.ToString())
+            {
+                case "IDJADWAL":
+                    e.Column.Visibility = Visibility.Collapsed;
+                    break;
+                case "IDRUANG":
+                    e.Column.Visibility = Visibility.Collapsed;
+                    break;
+                case "IDFILM":
+                    e.Column.Visibility = Visibility.Collapsed;
+                    break;
+            }
+        }
+
+        private void FrmJadwal_Loaded(object sender, RoutedEventArgs e)
+        {
+            _ctrl = CJadwal.GetInstance;
+            TableDecor();
+        }
+
+        private void TblDataJadwal_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+
+        }
+
+        private void TblDataJadwal_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void TblDataJadwal_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void FrmJadwal_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if( _ctrl != null)
+            {
+                _ctrl.Dispose();
+            }
+            
+        }
+
+        private void BtnNew_Click(object sender, RoutedEventArgs e)
+        {
+            _ctrl.Code = string.Empty;
+            _ctrl.Index("Action");
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void TableDecor()
+        {
+            if (TblDataJadwal.Columns.Count > 0)
+            {
+                TblDataJadwal.Columns[0].Visibility = Visibility.Hidden;
+                TblDataJadwal.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+                TblDataJadwal.Columns[2].Width = DataGridLength.Auto;
+                TblDataJadwal.Columns[3].Visibility = Visibility.Hidden;
+                TblDataJadwal.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+                TblDataJadwal.Columns[5].Visibility = Visibility.Hidden;
+                TblDataJadwal.Columns[6].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+            }
+        }
+
     }
 }
