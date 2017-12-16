@@ -23,5 +23,25 @@ namespace BioskopCSharp.Views.JadwalView
         {
             InitializeComponent();
         }
+
+        private void FrmJadwalEditor_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FrmJadwalEditor_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnClose_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

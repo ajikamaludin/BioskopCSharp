@@ -4,9 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.JadwalView"
-        mc:Ignorable="d"
-        Title="JadwalAct" Height="300" Width="300">
+        mc:Ignorable="d" x:Name="FrmJadwalEditor" Loaded="FrmJadwalEditor_Loaded" Closing="FrmJadwalEditor_Closing"
+        Title="Jadwal Editor" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
     <Grid>
-        
+        <ComboBox x:Name="CboRuang" HorizontalAlignment="Left" Margin="90,58,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="CboFilm" HorizontalAlignment="Left" Margin="90,100,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TxtWaktu" HorizontalAlignment="Left" Height="23" Margin="90,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="BtnSave" Click="BtnSave_Click" Content="Simpan" HorizontalAlignment="Left" Margin="44,204,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Batal" HorizontalAlignment="Left" Margin="184,204,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

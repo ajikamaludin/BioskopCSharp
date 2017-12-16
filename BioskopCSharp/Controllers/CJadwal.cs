@@ -72,7 +72,7 @@ namespace BioskopCSharp.Controllers
             if (viewstr == "Action")
             {
                 _viewact = new JadwalAct();
-                //Detail(_table);
+                Detail(_table);
                 _viewact.ShowDialog();
             }
         }
@@ -141,5 +141,27 @@ namespace BioskopCSharp.Controllers
             }
             return table;
         }
+
+        public void Detail(DataTable table)
+        {
+            _sql.Query = "SELECT * FROM ruang";
+            _sql.FillCombo(_viewact.CboRuang);
+            _sql.Query = "SELECT * FROM film";
+            _sql.FillCombo(_viewact.CboFilm);
+            if (Code != string.Empty)
+            {
+                table = table.Select("id LIKE '%" + Code + "%'").CopyToDataTable();
+                if (table.Rows.Count == 1)
+                {
+                    foreach (DataRow tbl in table.Rows)
+                    {
+                        //_viewact.TxtNama.Text = tbl[2].ToString();
+                        //_viewact.TxtUsername.Text = tbl[3].ToString();
+                        //_viewact.TxtPassword.Password = tbl[4].ToString();
+                    }
+                }
+            }
+        }
+
     }
 }

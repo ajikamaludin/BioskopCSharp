@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,11 +48,16 @@ namespace BioskopCSharp.Views.JadwalView
         {
             _ctrl = CJadwal.GetInstance;
             TableDecor();
+            BtnEdit.IsEnabled = BtnDelete.IsEnabled = false;
         }
 
         private void TblDataJadwal_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-
+            if (TblDataJadwal.SelectedItems.Count > 0)
+            {
+                BtnEdit.IsEnabled = BtnDelete.IsEnabled = true;
+                _ctrl.Code = ((DataRowView)TblDataJadwal.SelectedItems[0])[0].ToString();
+            }
         }
 
         private void TblDataJadwal_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -82,12 +88,20 @@ namespace BioskopCSharp.Views.JadwalView
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            if(_ctrl.Code == string.Empty)
+            {
+                _ctrl.Code = ((DataRowView)TblDataJadwal.SelectedItems[0])[0].ToString();
+            }
+            _ctrl.Index("Action");
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            if (_ctrl.Code == string.Empty)
+            {
+                _ctrl.Code = ((DataRowView)TblDataJadwal.SelectedItems[0])[0].ToString();
+            }
+            //_ctrl.Delete(); ;
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)

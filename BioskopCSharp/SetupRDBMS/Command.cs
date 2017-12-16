@@ -48,6 +48,38 @@ namespace BioskopCSharp.SetupRDBMS
             return true;
         }
 
+        public void FillCombo(dynamic cbo)
+        {
+            try
+            {
+                using (var state = new Connect())
+                {
+                    var con = state.GetConnect();
+                    var list = new Dictionary<string, string>();
+                    var command = new MySqlCommand(Query, con);
+                    var result = command.ExecuteReader();
+                    if (result.HasRows)
+                    {
+                        list["0"] = "<Pilih Satu>";
+                        while (result.Read())
+                        {
+                            list[result.GetValue(0).ToString()] = result.GetString(1);
+                        }
+                    }
+                    state.CloseConnection();
+                    cbo.Items.Clear();
+                    cbo.ItemsSource = list;
+                    cbo.DisplayMemberPath = "Value";
+                    cbo.SelectedValuePath = "Key";
+                    cbo.SelectedIndex = 0;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: CBO.FillComboRecord at " + e.StackTrace);
+            }
+        }
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 
