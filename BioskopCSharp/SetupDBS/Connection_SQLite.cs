@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.SQLite;
 
-namespace WpfApplication.SetupDBS {
+namespace BioskopCSharp.SetupDBS {
     public class Connection_SQLite : IDisposable {
         private SQLiteConnection _connex;
         private string _dbname;
@@ -9,7 +9,7 @@ namespace WpfApplication.SetupDBS {
 
         public Connection_SQLite() {
             _connex = new SQLiteConnection();
-            _dbname = "DataBioskop.db";
+            _dbname = "bioskop.db";
         }
 
         public object GetConnex {

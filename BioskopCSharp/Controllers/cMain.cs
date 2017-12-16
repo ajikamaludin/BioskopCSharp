@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BioskopCSharp.Views;
-using BioskopCSharp.SetupRDBMS;
+using BioskopCSharp.SetupDBS;
 
 namespace BioskopCSharp.Controllers
 {
@@ -12,12 +12,12 @@ namespace BioskopCSharp.Controllers
     {
         //Class
         private MainView _view;
-        private Command _sql;
+        private Command_SQLite _sql;
 
         private static CMain _ctrl;
         public CMain()
         {
-            _sql = new Command();
+            _sql = new Command_SQLite();
             _view = new MainView();
         }
 

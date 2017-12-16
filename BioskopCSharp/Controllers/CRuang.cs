@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Windows;
 using BioskopCSharp.Models;
-using BioskopCSharp.SetupRDBMS;
+using BioskopCSharp.SetupDBS;
 using BioskopCSharp.Views.RuangView;
 
 namespace BioskopCSharp.Controllers
@@ -12,7 +12,7 @@ namespace BioskopCSharp.Controllers
     {
         //Class
         private RuangView _view;
-        private Command _sql;
+        private Command_SQLite _sql;
 
         private static CRuang _ctrl;
 
@@ -25,7 +25,7 @@ namespace BioskopCSharp.Controllers
 
         private CRuang()
         {
-            _sql = new Command();
+            _sql = new Command_SQLite();
             _view = new RuangView();
         }
 

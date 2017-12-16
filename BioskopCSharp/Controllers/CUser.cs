@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Data;
-using BioskopCSharp.SetupRDBMS;
+using BioskopCSharp.SetupDBS;
 using BioskopCSharp.Models;
 using BioskopCSharp.Views.UserView;
 
@@ -14,7 +14,7 @@ namespace BioskopCSharp.Controllers
         private UserView _view;
         private UserLogin _viewlog;
         private UserAct _viewact;
-        private Command _sql;
+        private Command_SQLite _sql;
 
         private static CUser _ctrl;
 
@@ -27,7 +27,7 @@ namespace BioskopCSharp.Controllers
 
         public CUser()
         {
-            _sql = new Command();
+            _sql = new Command_SQLite();
             _view = new UserView();
         }
 

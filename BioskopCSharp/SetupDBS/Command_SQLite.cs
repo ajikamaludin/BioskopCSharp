@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 
-namespace WpfApplication.SetupDBS {
+namespace BioskopCSharp.SetupDBS {
     public class Command_SQLite {
         public string Query { private get; set; }
 

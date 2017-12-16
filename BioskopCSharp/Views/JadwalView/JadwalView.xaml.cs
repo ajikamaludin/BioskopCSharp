@@ -32,7 +32,7 @@ namespace BioskopCSharp.Views.JadwalView
         {
             switch (e.Column.Header.ToString())
             {
-                case "IDJADWAL":
+                case "ID":
                     e.Column.Visibility = Visibility.Collapsed;
                     break;
                 case "IDRUANG":

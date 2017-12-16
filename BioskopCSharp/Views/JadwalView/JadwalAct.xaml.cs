@@ -19,6 +19,7 @@ namespace BioskopCSharp.Views.JadwalView
     /// </summary>
     public partial class JadwalAct : Window
     {
+
         public JadwalAct()
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace BioskopCSharp.Views.JadwalView
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
-using BioskopCSharp.SetupRDBMS;
+using BioskopCSharp.SetupDBS;
 using BioskopCSharp.Models;
 using BioskopCSharp.Views.TiketView;
 
@@ -14,7 +14,7 @@ namespace BioskopCSharp.Controllers
     {
         //Class
         private TiketView _view;
-        private Command _sql;
+        private Command_SQLite _sql;
 
         private static CTiket _ctrl;
 
@@ -27,7 +27,7 @@ namespace BioskopCSharp.Controllers
 
         public CTiket()
         {
-            _sql = new Command();
+            _sql = new Command_SQLite();
             _view = new TiketView();
         }
 

@@ -4,7 +4,7 @@ using System.Data;
 using System.Windows;
 using BioskopCSharp.Models;
 using BioskopCSharp.Views.FilmView;
-using BioskopCSharp.SetupRDBMS;
+using BioskopCSharp.SetupDBS;
 
 namespace BioskopCSharp.Controllers
 {
@@ -13,7 +13,7 @@ namespace BioskopCSharp.Controllers
         //Class
         private FilmView _view;
         private FilmAct _viewact;
-        private Command _sql;
+        private Command_SQLite _sql;
 
         private static CFilm _ctrl;
 
@@ -26,7 +26,7 @@ namespace BioskopCSharp.Controllers
 
         public CFilm()
         {
-            _sql = new Command();
+            _sql = new Command_SQLite();
             _view = new FilmView();
         }
 

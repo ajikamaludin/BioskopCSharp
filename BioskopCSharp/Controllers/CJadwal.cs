@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
-using BioskopCSharp.SetupRDBMS;
 using BioskopCSharp.Models;
 using BioskopCSharp.Views.JadwalView;
+using BioskopCSharp.SetupDBS;
 
 namespace BioskopCSharp.Controllers
 {
@@ -15,7 +12,7 @@ namespace BioskopCSharp.Controllers
         //Class
         private JadwalView _view;
         private JadwalAct _viewact;
-        private Command _sql;
+        private Command_SQLite _sql;
 
         private static CJadwal _ctrl;
 
@@ -28,7 +25,7 @@ namespace BioskopCSharp.Controllers
 
         public CJadwal()
         {
-            _sql = new Command();
+            _sql = new Command_SQLite();
             _view = new JadwalView();
         }
 
@@ -106,7 +103,7 @@ namespace BioskopCSharp.Controllers
             list = _sql.ExecuteQuery(Entity);
 
             var table = new DataTable();
-            var header = new string[] { "IDJADWAL", "NO", "WAKTU", "IDRUANG", "NAMA RUANG", "IDFILM", "JUDUL FILM"};
+            var header = new string[] { "ID", "NO", "WAKTU", "IDRUANG", "NAMA RUANG", "IDFILM", "JUDUL FILM"};
             int i = 1;
             try
             {
@@ -144,10 +141,14 @@ namespace BioskopCSharp.Controllers
 
         public void Detail(DataTable table)
         {
+            //Fill ComboBox Ruang
             _sql.Query = "SELECT * FROM ruang";
             _sql.FillCombo(_viewact.CboRuang);
+
+            //Fill ComboBox Film
             _sql.Query = "SELECT * FROM film";
             _sql.FillCombo(_viewact.CboFilm);
+
             if (Code != string.Empty)
             {
                 table = table.Select("id LIKE '%" + Code + "%'").CopyToDataTable();
@@ -155,9 +156,9 @@ namespace BioskopCSharp.Controllers
                 {
                     foreach (DataRow tbl in table.Rows)
                     {
-                        //_viewact.TxtNama.Text = tbl[2].ToString();
-                        //_viewact.TxtUsername.Text = tbl[3].ToString();
-                        //_viewact.TxtPassword.Password = tbl[4].ToString();
+                        _viewact.CboRuang.SelectedIndex = Convert.ToInt32(tbl[3].ToString());
+                        _viewact.CboFilm.SelectedIndex = Convert.ToInt32(tbl[5].ToString());
+                        _viewact.TxtWaktu.Text = tbl[2].ToString();
                     }
                 }
             }
