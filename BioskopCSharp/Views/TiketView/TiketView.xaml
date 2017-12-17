@@ -4,13 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.TiketView"
-        mc:Ignorable="d"
-        Title="Tiket" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        mc:Ignorable="d" x:Name="FrmTiket" Loaded="FrmTiket_Loaded" Closing="FrmTiket_Closing"
+        Title="Tiket" Height="300" Width="564" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Height="210" Margin="10,10,0,0" VerticalAlignment="Top" Width="272"/>
-        <Button Content="Cetak" HorizontalAlignment="Left" Margin="21,232,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Laporan" HorizontalAlignment="Left" Margin="108,232,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Kembali" HorizontalAlignment="Left" Margin="200,232,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid x:Name="TblDataTiket" ItemsSource="{Binding}" PreviewKeyDown="TblDataTiket_PreviewKeyDown"
+                  SelectedCellsChanged="TblDataTiket_SelectedCellsChanged" MouseDoubleClick="TblDataTiket_MouseDoubleClick"
+                  HorizontalAlignment="Left" Height="210" Margin="10,10,0,0" VerticalAlignment="Top" Width="533"/>
+        <Button x:Name="BtnPrint" Click="BtnPrint_Click" Content="Cetak" HorizontalAlignment="Left" Margin="21,232,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnLaporan" Click="BtnLaporan_Click" Content="Laporan" HorizontalAlignment="Left" Margin="110,232,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Kembali" HorizontalAlignment="Left" Margin="200,232,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
