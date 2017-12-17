@@ -13,6 +13,7 @@ namespace BioskopCSharp.SetupDBS {
                 using (var state = new Connection_SQLite()) {
                     state.OpenConnection = true;
                     var command = new SQLiteCommand(Query, (SQLiteConnection)state.GetConnex);
+                    Console.WriteLine(Query);
                     var result = command.ExecuteReader();
                     if (result.HasRows) {
                         while (result.Read()) datalist.Add(Entity(result));

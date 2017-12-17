@@ -38,7 +38,8 @@ namespace BioskopCSharp.Views
             UserAktiv.Content = App.UserLog;
             Tgl.Content = today.ToString("yyyy-MM-dd");
             _ctrl = CMain.GetInstance;
-            CboMainDataWaktu.IsEnabled = KursiA1.IsEnabled = false;
+            CboMainDataWaktu.IsEnabled = false;
+            _ctrl.DisableKursi();
 
         }
 
@@ -57,7 +58,10 @@ namespace BioskopCSharp.Views
         {
             switch (e.Column.Header.ToString())
             {
-                case "ID":
+                case "IDJADWAL":
+                    e.Column.Visibility = Visibility.Hidden;
+                    break;
+                case "IDFILM":
                     e.Column.Visibility = Visibility.Hidden;
                     break;
             }
@@ -67,7 +71,8 @@ namespace BioskopCSharp.Views
         {
             if (TblMainDataFilm.SelectedItems.Count > 0)
             {
-                _ctrl.CodeFilm = ((DataRowView)TblMainDataFilm.SelectedItems[0])[0].ToString();
+                _ctrl.CodeJadwal = ((DataRowView)TblMainDataFilm.SelectedItems[0])[0].ToString();
+                _ctrl.CodeFilm = ((DataRowView)TblMainDataFilm.SelectedItems[0])[1].ToString();
                 _ctrl.GetWaktu();
                 CboMainDataWaktu.IsEnabled = true;
             }
@@ -88,11 +93,12 @@ namespace BioskopCSharp.Views
         {
             if(CboMainDataWaktu.SelectedIndex == 0)
             {
-                //TODO: disable semua kursi
+                //DO: Nothing
             }
             else
             {
                 //TODO: ambil kursi dari controller
+                _ctrl.GetKursi();
             }
         }
 

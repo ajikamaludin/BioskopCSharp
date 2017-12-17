@@ -95,6 +95,7 @@
     <Compile Include="Controllers\CUser.cs" />
     <Compile Include="Models\MFilm.cs" />
     <Compile Include="Models\MJadwal.cs" />
+    <Compile Include="Models\MKursi.cs" />
     <Compile Include="Models\MRuang.cs" />
     <Compile Include="Models\MTiket.cs" />
     <Compile Include="Models\MUser.cs" />

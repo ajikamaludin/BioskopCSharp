@@ -61,11 +61,11 @@
             <CheckBox x:Name="KursiC3" Content="C3" HorizontalAlignment="Left" Margin="224,453,0,0" VerticalAlignment="Top"/>
             <CheckBox x:Name="KursiC4" Content="C4" HorizontalAlignment="Left" Margin="317,453,0,0" VerticalAlignment="Top"/>
             <CheckBox x:Name="KursiC5" Content="C5" HorizontalAlignment="Left" Margin="406,453,0,0" VerticalAlignment="Top"/>
-            <CheckBox x:Name="KursiE1" Content="D1" HorizontalAlignment="Left" Margin="38,502,0,0" VerticalAlignment="Top"/>
-            <CheckBox x:Name="KursiE2" Content="D2" HorizontalAlignment="Left" Margin="127,502,0,0" VerticalAlignment="Top"/>
-            <CheckBox x:Name="KursiE3" Content="D3" HorizontalAlignment="Left" Margin="224,502,0,0" VerticalAlignment="Top"/>
-            <CheckBox x:Name="KursiE4" Content="D4" HorizontalAlignment="Left" Margin="317,502,0,0" VerticalAlignment="Top"/>
-            <CheckBox x:Name="KursiE5" Content="D5" HorizontalAlignment="Left" Margin="406,502,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiD1" Content="D1" HorizontalAlignment="Left" Margin="38,502,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiD2" Content="D2" HorizontalAlignment="Left" Margin="127,502,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiD3" Content="D3" HorizontalAlignment="Left" Margin="224,502,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiD4" Content="D4" HorizontalAlignment="Left" Margin="317,502,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiD5" Content="D5" HorizontalAlignment="Left" Margin="406,502,0,0" VerticalAlignment="Top"/>
             <!-- End Kursi -->
 
             <!--Part 2-->

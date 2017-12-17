@@ -107,7 +107,7 @@ namespace BioskopCSharp.Controllers
                         var row = table.NewRow();
                         row[0] = value.IdTiket as int? ?? 0;
                         row[1] = i;
-                        row[2] = value.Kursi as string;
+                        row[2] = value.Kursi as int? ?? 0;
                         row[3] = value.TglTiket as string;
                         row[4] = value.Jadwal.Film.Judul as string;
                         row[5] = value.Jadwal.Film.Harga as int? ?? 0;
