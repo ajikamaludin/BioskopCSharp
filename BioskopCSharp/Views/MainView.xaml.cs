@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,8 @@ namespace BioskopCSharp.Views
     /// </summary>
     public partial class MainView : Window
     {
-        
+        //Class Deklarasi
+        private CMain _ctrl;
 
         //Contructors
         public MainView()
@@ -33,20 +35,48 @@ namespace BioskopCSharp.Views
         private void FrmMain_Loaded(object sender, RoutedEventArgs e)
         {
             UserAktiv.Content = App.UserLog;
+            _ctrl = CMain.GetInstance;
         }
 
         private void FrmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            if(_ctrl != null)
+            {
+                _ctrl.Dispose();
+            }
             GC.Collect();
             App.Current.Shutdown();
         }
 
+        private void TblMainDataFilm_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            switch (e.Column.Header.ToString())
+            {
+                case "ID":
+                    e.Column.Visibility = Visibility.Hidden;
+                    break;
+            }
+        }
+
+        private void TblMainDataFilm_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            if (TblMainDataFilm.SelectedItems.Count > 0)
+            {
+                _ctrl.CodeFilm = ((DataRowView)TblMainDataFilm.SelectedItems[0])[0].ToString();
+                _ctrl.GetWaktu();
+            }
+        }
+
+
+
+
+        // ---------------------------- Menu ------------------------------------->
         //Submenu File
         private void MnuLogout_Click(object sender, RoutedEventArgs e)
         {
             Hide();
             CUser.GetInstance.Index("Register");
-            //App.UserLog = string.Empty;
+            App.UserLog = string.Empty;
         }
 
         private void MnuExit_Click(object sender, RoutedEventArgs e)
@@ -61,7 +91,6 @@ namespace BioskopCSharp.Views
         }
         
         //Submenu Edit
-
         private void MnuRuang_Click(object sender, RoutedEventArgs e)
         {
             CRuang.GetInstance.Index();
@@ -93,11 +122,6 @@ namespace BioskopCSharp.Views
                 " - Harish Setyo Hudnanto ( 16.11.0048 )\n" +
                 " - Arik Andrian Putra Purwajanu ( 16.11.00.55 )",
                 "About", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

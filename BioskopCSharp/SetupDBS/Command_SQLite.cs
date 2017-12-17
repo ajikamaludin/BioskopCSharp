@@ -49,7 +49,12 @@ namespace BioskopCSharp.SetupDBS {
                             list[result.GetValue(0).ToString()] = result.GetString(1);
                         }
                     }
+                    else
+                    {
+                        list["0"] = "<Pilih Satu>";
+                    }
                     state.CloseConnection = (SQLiteConnection)state.GetConnex;
+                    cbo.ItemsSource = null;
                     cbo.Items.Clear();
                     cbo.ItemsSource = list;
                     cbo.DisplayMemberPath = "Value";

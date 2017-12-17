@@ -108,21 +108,6 @@ namespace BioskopCSharp.Controllers
             return table;
         }
 
-        public void Detail(DataTable table)
-        {
-            if (Code != string.Empty)
-            {
-                table = table.Select("id LIKE '%" + Code + "%'").CopyToDataTable();
-                if (table.Rows.Count == 1)
-                {
-                    foreach (DataRow tbl in table.Rows)
-                    {
-                        _view.TxtNama.Text = tbl[2].ToString();
-                    }
-                }
-            }
-        }
-
         public void Create(MRuang data)
         {
             if (IsValidate())

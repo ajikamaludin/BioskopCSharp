@@ -30,50 +30,58 @@
             </MenuItem>
         </Menu>
         <Grid Grid.Row="1">
-            <DataGrid HorizontalAlignment="Left" Height="259" Margin="10,52,0,0" VerticalAlignment="Top" Width="335"/>
-            <ComboBox HorizontalAlignment="Left" Margin="373,52,0,0" VerticalAlignment="Top" Width="120"/>
-            <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="235" Margin="10,325,0,0" Stroke="Black" VerticalAlignment="Top" Width="483"/>
+            <!--User Aktiv-->
+            <Label x:Name="UserAktiv" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <!--User-->
+            
+            <!-- Menu Start -->
+            <DataGrid x:Name="TblMainDataFilm" 
+                      SelectedCellsChanged="TblMainDataFilm_SelectedCellsChanged" AutoGeneratingColumn="TblMainDataFilm_AutoGeneratingColumn"
+                      HorizontalAlignment="Left" Height="259" Margin="10,52,0,0" VerticalAlignment="Top" Width="335"/>
+            <ComboBox x:Name="CboMainDataWaktu" HorizontalAlignment="Left" Margin="373,52,0,0" VerticalAlignment="Top" Width="120"/>
+            <Rectangle x:Name="KotakKursi" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="235" Margin="10,325,0,0" Stroke="Black" VerticalAlignment="Top" Width="483"/>
+            <Button Content="Tambah" HorizontalAlignment="Left" Margin="393,256,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button Content="Batal" HorizontalAlignment="Left" Margin="393,289,0,0" VerticalAlignment="Top" Width="75"/>
+            <!-- End Menu -->
             
             <!-- Start Kursi -->
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,347,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,347,0,0" VerticalAlignment="Top"/>
             <CheckBox Content="A2" HorizontalAlignment="Left" Margin="127,347,0,0" VerticalAlignment="Top"/>
             <CheckBox Content="A3" HorizontalAlignment="Left" Margin="224,347,0,0" VerticalAlignment="Top"/>
             <CheckBox Content="A4" HorizontalAlignment="Left" Margin="317,347,0,0" VerticalAlignment="Top"/>
             <CheckBox Content="A5" HorizontalAlignment="Left" Margin="406,347,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,388,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,431,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,473,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,513,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="127,388,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="127,431,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="127,473,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="127,513,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="224,388,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="224,431,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="224,473,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="224,513,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="317,388,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="317,431,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="317,473,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="317,513,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="406,388,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="406,431,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="406,473,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="406,513,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="B1" HorizontalAlignment="Left" Margin="38,388,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="C1" HorizontalAlignment="Left" Margin="38,431,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="D1" HorizontalAlignment="Left" Margin="38,473,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="E1" HorizontalAlignment="Left" Margin="38,513,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="B2" HorizontalAlignment="Left" Margin="127,388,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="C2" HorizontalAlignment="Left" Margin="127,431,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="D2" HorizontalAlignment="Left" Margin="127,473,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="E2" HorizontalAlignment="Left" Margin="127,513,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="B3" HorizontalAlignment="Left" Margin="224,388,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="C3" HorizontalAlignment="Left" Margin="224,431,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="D3" HorizontalAlignment="Left" Margin="224,473,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="E3" HorizontalAlignment="Left" Margin="224,513,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="B4" HorizontalAlignment="Left" Margin="317,388,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="C4" HorizontalAlignment="Left" Margin="317,431,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="D4" HorizontalAlignment="Left" Margin="317,473,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="E4" HorizontalAlignment="Left" Margin="317,513,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="B5" HorizontalAlignment="Left" Margin="406,388,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="C5" HorizontalAlignment="Left" Margin="406,431,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="D5" HorizontalAlignment="Left" Margin="406,473,0,0" VerticalAlignment="Top"/>
+            <CheckBox Content="E5" HorizontalAlignment="Left" Margin="406,513,0,0" VerticalAlignment="Top"/>
             <!-- End Kursi -->
             
+            <!--Part 2-->
             <DataGrid HorizontalAlignment="Left" Height="335" Margin="649,52,0,0" VerticalAlignment="Top" Width="414"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="927,417,0,0" TextWrapping="Wrap" Text="Uang Bayar" VerticalAlignment="Top" Width="120"/>
             <TextBox HorizontalAlignment="Left" Height="23" Margin="927,465,0,0" TextWrapping="Wrap" Text="Uang Kembali" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-            <Button Content="Tambah" HorizontalAlignment="Left" Margin="393,259,0,0" VerticalAlignment="Top" Width="75"/>
+            
+            <Button Content="Hapus" HorizontalAlignment="Left" Margin="1093,72,0,0" VerticalAlignment="Top" Width="75"/>
             <Button Content="Bayar" HorizontalAlignment="Left" Margin="1093,113,0,0" VerticalAlignment="Top" Width="75"/>
             <Button Content="Cetak" HorizontalAlignment="Left" Margin="1093,149,0,0" VerticalAlignment="Top" Width="75"/>
             <Button Content="Selesai" HorizontalAlignment="Left" Margin="1093,187,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Hapus" HorizontalAlignment="Left" Margin="1093,72,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.187,0.077"/>
-            <Button Content="Batal" HorizontalAlignment="Left" Margin="393,291,0,0" VerticalAlignment="Top" Width="75"/>
-            <Label x:Name="UserAktiv" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-            
-
+           
         </Grid>
     </Grid>
 
