@@ -97,7 +97,6 @@ namespace BioskopCSharp.Views
             }
             else
             {
-                //TODO: ambil kursi dari controller
                 _ctrl.GetKursi();
             }
         }
