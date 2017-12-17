@@ -77,7 +77,12 @@ namespace BioskopCSharp.Views.TiketView
 
         private void TblDataTiket_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-
+            switch (e.Column.Header.ToString())
+            {
+                case "ID":
+                    e.Column.Visibility = Visibility.Hidden;
+                    break;
+            }
         }
     }
 }

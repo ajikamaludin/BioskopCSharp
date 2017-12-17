@@ -36,14 +36,14 @@ namespace BioskopCSharp.Controllers
             var entity = new MTiket()
             {
                 IdTiket = Convert.ToInt32(result[_column[0]]) as int? ?? 0,
-                Kursi = result[_column[1]].ToString(),
-                TglTiket = result[_column[2]].ToString(),
+                Kursi = result[_column[5]].ToString(),
+                TglTiket = result[_column[1]].ToString(),
             };
 
             entity.Jadwal.Waktu = result[_column[6]].ToString();
-            entity.Jadwal.Film.Judul = result[_column[3]].ToString();
-            entity.Jadwal.Film.Harga = Convert.ToInt32(result[_column[4]]) as int? ?? 0;
-            entity.Jadwal.Ruang.Nama = result[_column[5]].ToString();
+            entity.Jadwal.Film.Judul = result[_column[2]].ToString();
+            entity.Jadwal.Film.Harga = Convert.ToInt32(result[_column[3]]) as int? ?? 0;
+            entity.Jadwal.Ruang.Nama = result[_column[4]].ToString();
 
             return entity;
         }
@@ -90,12 +90,12 @@ namespace BioskopCSharp.Controllers
                 "JOIN film ON jadwal.id_film = film.id_film " +
                 "JOIN ruang ON jadwal.id_ruang = ruang.id_ruang";
 
-            _column = new[] { "id_tiket", "kursi", "tgl_tiket", "judul_film","harga_film", "nama_ruang", "waktu" };
+            _column = new[] { "id_tiket", "tgl_tiket", "judul_film","harga_film", "nama_ruang", "kursi", "waktu" };
             _sql.Query = SQL;
             list = _sql.ExecuteQuery(Entity);
 
             var table = new DataTable();
-            var header = new string[] { "ID", "NO" , "NO KURSI", "TANGGAL TIKET","JUDUL FILM","HARGA","NAMA RUANG", "WAKTU" };
+            var header = new string[] { "ID", "NO" , "TANGGAL TIKET","JUDUL FILM","HARGA","NAMA RUANG", "NO KURSI", "WAKTU" };
             int i = 1;
             try
             {
