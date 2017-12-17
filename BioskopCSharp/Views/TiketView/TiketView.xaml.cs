@@ -49,7 +49,10 @@ namespace BioskopCSharp.Views.TiketView
 
         private void TblDataTiket_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-
+            if(TblDataTiket.Items.Count > 0)
+            {
+                BtnPrint.IsEnabled = BtnLaporan.IsEnabled = true;
+            }
         }
 
         private void TblDataTiket_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -70,6 +73,11 @@ namespace BioskopCSharp.Views.TiketView
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void TblDataTiket_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+
         }
     }
 }

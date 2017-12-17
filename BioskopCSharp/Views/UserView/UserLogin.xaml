@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.UserView"
         mc:Ignorable="d" x:Name="FrmUserLogin" Loaded="FrmUserLogin_Loaded" Closing="FrmUserLogin_Closing"
-        Title="Login" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True">
+        Title="Login" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        WindowStyle="None" AllowsTransparency="True" Icon="/BioskopCSharp;component/Asset/logo2.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="71*"/>

@@ -111,24 +111,23 @@ namespace BioskopCSharp.Controllers
         }
 
         //menampilkan waktu dari film yang dipilih
-        private void ReadWaktu(DataTable table)
-        {
-            //Fill ComboBox Ruang
-            _sql.Query = "SELECT id_jadwal,waktu FROM jadwal WHERE id_film ='" + CodeFilm + "'";
-            _sql.FillCombo(_view.CboMainDataWaktu);
-
-        }
-
         public void GetWaktu()
         {
             if(CodeFilm != string.Empty)
             {
-                ReadWaktu(_table);
+                //Fill ComboBox Ruang
+                _sql.Query = "SELECT id_jadwal,waktu FROM jadwal WHERE id_film ='" + CodeFilm + "'";
+                _sql.FillCombo(_view.CboMainDataWaktu);
             }
         }
 
         //menampilkan kursi yang tersedia dan tidak tersedia
         private void ReadKursi(MJadwal data)
+        {
+
+        }
+        //Lempar kursi ke depan
+        public void GetKursi()
         {
 
         }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views"
         mc:Ignorable="d" x:Name="FrmMain" Loaded="FrmMain_Loaded" Closing="FrmMain_Closing"
-        Title="Kasir : BioskopKita" Height="640" Width="1210" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
+        Title="Kasir: BioskopKita" Height="640" Width="1210" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -32,56 +32,54 @@
         <Grid Grid.Row="1">
             <!--User Aktiv-->
             <Label x:Name="UserAktiv" Content="" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="Tgl" Content="" HorizontalAlignment="Left" Margin="204,10,0,0" VerticalAlignment="Top"/>
             <!--User-->
-            
+
             <!-- Menu Start -->
             <DataGrid x:Name="TblMainDataFilm" 
                       SelectedCellsChanged="TblMainDataFilm_SelectedCellsChanged" AutoGeneratingColumn="TblMainDataFilm_AutoGeneratingColumn"
                       HorizontalAlignment="Left" Height="259" Margin="10,52,0,0" VerticalAlignment="Top" Width="335"/>
-            <ComboBox x:Name="CboMainDataWaktu" HorizontalAlignment="Left" Margin="373,52,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox x:Name="CboMainDataWaktu" SelectionChanged="CboMainDataWaktu_SelectionChanged" HorizontalAlignment="Left" Margin="373,52,0,0" VerticalAlignment="Top" Width="120"/>
             <Rectangle x:Name="KotakKursi" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="235" Margin="10,325,0,0" Stroke="Black" VerticalAlignment="Top" Width="483"/>
-            <Button Content="Tambah" HorizontalAlignment="Left" Margin="393,256,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Batal" HorizontalAlignment="Left" Margin="393,289,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="BtnAdd" Click="BtnAdd_Click" Content="Tambah" HorizontalAlignment="Left" Margin="393,256,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="BtnRefresh" Click="BtnRefresh_Click" Content="Batal" HorizontalAlignment="Left" Margin="393,289,0,0" VerticalAlignment="Top" Width="75"/>
             <!-- End Menu -->
-            
+
             <!-- Start Kursi -->
-            <CheckBox Content="A1" HorizontalAlignment="Left" Margin="38,347,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A2" HorizontalAlignment="Left" Margin="127,347,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A3" HorizontalAlignment="Left" Margin="224,347,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A4" HorizontalAlignment="Left" Margin="317,347,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="A5" HorizontalAlignment="Left" Margin="406,347,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="B1" HorizontalAlignment="Left" Margin="38,388,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="C1" HorizontalAlignment="Left" Margin="38,431,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="D1" HorizontalAlignment="Left" Margin="38,473,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="E1" HorizontalAlignment="Left" Margin="38,513,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="B2" HorizontalAlignment="Left" Margin="127,388,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="C2" HorizontalAlignment="Left" Margin="127,431,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="D2" HorizontalAlignment="Left" Margin="127,473,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="E2" HorizontalAlignment="Left" Margin="127,513,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="B3" HorizontalAlignment="Left" Margin="224,388,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="C3" HorizontalAlignment="Left" Margin="224,431,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="D3" HorizontalAlignment="Left" Margin="224,473,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="E3" HorizontalAlignment="Left" Margin="224,513,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="B4" HorizontalAlignment="Left" Margin="317,388,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="C4" HorizontalAlignment="Left" Margin="317,431,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="D4" HorizontalAlignment="Left" Margin="317,473,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="E4" HorizontalAlignment="Left" Margin="317,513,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="B5" HorizontalAlignment="Left" Margin="406,388,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="C5" HorizontalAlignment="Left" Margin="406,431,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="D5" HorizontalAlignment="Left" Margin="406,473,0,0" VerticalAlignment="Top"/>
-            <CheckBox Content="E5" HorizontalAlignment="Left" Margin="406,513,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiA1" Content="A1" HorizontalAlignment="Left" Margin="38,347,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiA2" Content="A2" HorizontalAlignment="Left" Margin="127,347,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiA3" Content="A3" HorizontalAlignment="Left" Margin="224,347,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiA4" Content="A4" HorizontalAlignment="Left" Margin="317,347,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiA5" Content="A5" HorizontalAlignment="Left" Margin="406,347,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiB1" Content="B1" HorizontalAlignment="Left" Margin="38,405,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiB2" Content="B2" HorizontalAlignment="Left" Margin="127,405,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiB3" Content="B3" HorizontalAlignment="Left" Margin="224,405,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiB4" Content="B4" HorizontalAlignment="Left" Margin="317,405,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiB5" Content="B5" HorizontalAlignment="Left" Margin="406,405,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiC1" Content="C1" HorizontalAlignment="Left" Margin="38,453,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiC2" Content="C2" HorizontalAlignment="Left" Margin="127,453,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiC3" Content="C3" HorizontalAlignment="Left" Margin="224,453,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiC4" Content="C4" HorizontalAlignment="Left" Margin="317,453,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiC5" Content="C5" HorizontalAlignment="Left" Margin="406,453,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiE1" Content="D1" HorizontalAlignment="Left" Margin="38,502,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiE2" Content="D2" HorizontalAlignment="Left" Margin="127,502,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiE3" Content="D3" HorizontalAlignment="Left" Margin="224,502,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiE4" Content="D4" HorizontalAlignment="Left" Margin="317,502,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiE5" Content="D5" HorizontalAlignment="Left" Margin="406,502,0,0" VerticalAlignment="Top"/>
             <!-- End Kursi -->
-            
+
             <!--Part 2-->
-            <DataGrid HorizontalAlignment="Left" Height="335" Margin="649,52,0,0" VerticalAlignment="Top" Width="414"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="927,417,0,0" TextWrapping="Wrap" Text="Uang Bayar" VerticalAlignment="Top" Width="120"/>
-            <TextBox HorizontalAlignment="Left" Height="23" Margin="927,465,0,0" TextWrapping="Wrap" Text="Uang Kembali" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
-            
-            <Button Content="Hapus" HorizontalAlignment="Left" Margin="1093,72,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Bayar" HorizontalAlignment="Left" Margin="1093,113,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Cetak" HorizontalAlignment="Left" Margin="1093,149,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button Content="Selesai" HorizontalAlignment="Left" Margin="1093,187,0,0" VerticalAlignment="Top" Width="75"/>
-           
+            <DataGrid x:Name="TblMainDataKasir" ItemsSource="{Binding}" 
+                      SelectedCellsChanged="TblMainDataKasir_SelectedCellsChanged" PreviewKeyDown="TblMainDataKasir_PreviewKeyDown"
+                      HorizontalAlignment="Left" Height="335" Margin="649,52,0,0" VerticalAlignment="Top" Width="414"/>
+            <TextBox x:Name="TxtUangBayar" HorizontalAlignment="Left" Height="23" Margin="927,417,0,0" TextWrapping="Wrap" Text="Uang Bayar" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="TxtUangKembali" HorizontalAlignment="Left" Height="23" Margin="927,465,0,0" TextWrapping="Wrap" Text="Uang Kembali" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+
+            <Button x:Name="BtnDelete" Click="BtnDelete_Click" Content="Hapus" HorizontalAlignment="Left" Margin="1093,72,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="BtnBayar" Click="BtnBayar_Click" Content="Bayar" HorizontalAlignment="Left" Margin="1093,113,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="BtnPrint" Click="BtnPrint_Click" Content="Cetak" HorizontalAlignment="Left" Margin="1093,149,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="BtnDone" Click="BtnDone_Click" Content="Selesai" HorizontalAlignment="Left" Margin="1093,187,0,0" VerticalAlignment="Top" Width="75"/>
+
         </Grid>
     </Grid>
 

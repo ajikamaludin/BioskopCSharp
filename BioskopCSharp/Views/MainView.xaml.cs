@@ -23,6 +23,7 @@ namespace BioskopCSharp.Views
     {
         //Class Deklarasi
         private CMain _ctrl;
+        private DateTime today = DateTime.Today;
 
         //Contructors
         public MainView()
@@ -35,7 +36,10 @@ namespace BioskopCSharp.Views
         private void FrmMain_Loaded(object sender, RoutedEventArgs e)
         {
             UserAktiv.Content = App.UserLog;
+            Tgl.Content = today.ToString("yyyy-MM-dd");
             _ctrl = CMain.GetInstance;
+            CboMainDataWaktu.IsEnabled = KursiA1.IsEnabled = false;
+
         }
 
         private void FrmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -48,6 +52,7 @@ namespace BioskopCSharp.Views
             App.Current.Shutdown();
         }
 
+        //Pilih Film
         private void TblMainDataFilm_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             switch (e.Column.Header.ToString())
@@ -64,10 +69,66 @@ namespace BioskopCSharp.Views
             {
                 _ctrl.CodeFilm = ((DataRowView)TblMainDataFilm.SelectedItems[0])[0].ToString();
                 _ctrl.GetWaktu();
+                CboMainDataWaktu.IsEnabled = true;
+            }
+        }
+
+        //Kasir Punya
+        private void TblMainDataKasir_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+
+        }
+
+        private void TblMainDataKasir_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void CboMainDataWaktu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(CboMainDataWaktu.SelectedIndex == 0)
+            {
+                //TODO: disable semua kursi
+            }
+            else
+            {
+                //TODO: ambil kursi dari controller
             }
         }
 
 
+        //Click
+        //Pilih Film
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //Kasir Punya
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnBayar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnPrint_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDone_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 
 
         // ---------------------------- Menu ------------------------------------->
@@ -123,5 +184,6 @@ namespace BioskopCSharp.Views
                 " - Arik Andrian Putra Purwajanu ( 16.11.00.55 )",
                 "About", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+        
     }
 }
