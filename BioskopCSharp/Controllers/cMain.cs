@@ -34,26 +34,26 @@ namespace BioskopCSharp.Controllers
             _view = new MainView();
             ListKursi = new List<MKursi>();
             #region List Kursi Data
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiA1 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiA2 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiA3 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiA4 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiA5 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiB1 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiB2 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiB3 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiB4 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiB5 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiC1 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiC2 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiC3 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiC4 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiC5 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiD1 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiD2 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiD3 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiD4 });
-            ListKursi.Add(new MKursi() { Kursi = _view.KursiD5 });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiA1, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiA2, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiA3, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiA4, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiA5, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiB1, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiB2, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiB3, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiB4, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiB5, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiC1, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiC2, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiC3, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiC4, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiC5, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiD1, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiD2, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiD3, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiD4, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiD5, Database = false });
             #endregion
         }
 
@@ -188,6 +188,7 @@ namespace BioskopCSharp.Controllers
                         {
                             ListKursi[value.Kursi - 1].Kursi.IsEnabled = false;
                             ListKursi[value.Kursi - 1].Kursi.IsChecked = true;
+                            ListKursi[value.Kursi - 1].Database = true;
                         }
                         
                     }
@@ -205,15 +206,6 @@ namespace BioskopCSharp.Controllers
         public void GetKursi()
         {
             ListKursi = ReadKursi();
-            int i = 0;
-            foreach(var value in ListKursi.ToArray())
-            {
-                i++;
-                if (value.Kursi.IsChecked == true)
-                {
-                    Console.WriteLine("index ke: " + i);
-                }
-            }
         }
 
         public void DisableKursi()
@@ -224,6 +216,22 @@ namespace BioskopCSharp.Controllers
                 value.Kursi.IsChecked = false;
             }
         }
-        
+
+        //Ambil tiket
+        public void GetTiket()
+        {
+            int i = 0;
+            foreach (var value in ListKursi.ToArray())
+            {
+                i++;
+                if (value.Kursi.IsChecked == true)
+                {
+                    if (!value.Database)
+                    {
+                        Console.WriteLine("index ke: " + i);
+                    }
+                }
+            }
+        }
     }
 }
