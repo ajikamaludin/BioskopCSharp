@@ -46,7 +46,7 @@
             <!-- End Menu -->
 
             <!-- Start Kursi -->
-            <CheckBox x:Name="KursiA1" Content="A1" HorizontalAlignment="Left" Margin="38,347,0,0" VerticalAlignment="Top"/>
+            <CheckBox x:Name="KursiA1" Checked="KursiA1_Checked" Content="A1" HorizontalAlignment="Left" Margin="38,347,0,0" VerticalAlignment="Top"/>
             <CheckBox x:Name="KursiA2" Content="A2" HorizontalAlignment="Left" Margin="127,347,0,0" VerticalAlignment="Top"/>
             <CheckBox x:Name="KursiA3" Content="A3" HorizontalAlignment="Left" Margin="224,347,0,0" VerticalAlignment="Top"/>
             <CheckBox x:Name="KursiA4" Content="A4" HorizontalAlignment="Left" Margin="317,347,0,0" VerticalAlignment="Top"/>

@@ -171,24 +171,25 @@ namespace BioskopCSharp.Controllers
             list = _sql.ExecuteQuery(EntityTiket);
             
             int x = 0;
+            foreach (var value in ListKursi.ToArray())
+            {
+                ListKursi[x].Kursi.IsEnabled = true;
+                ListKursi[x].Kursi.IsChecked = false;
+                x++;
+            }
             try
             {
-                Console.WriteLine(list.Count);
                 if (list.Count > 0)
                 {
+
                     foreach (var value in list.ToArray())
                     {
                         if (value.Kursi > 0)
                         {
-                            ListKursi[value.Kursi + 1].Kursi.IsEnabled = false;
-                            ListKursi[value.Kursi + 1].Kursi.IsChecked = true;
-                            x++;
+                            ListKursi[value.Kursi - 1].Kursi.IsEnabled = false;
+                            ListKursi[value.Kursi - 1].Kursi.IsChecked = true;
                         }
-                        else
-                        {
-                            ListKursi[x + 1].Kursi.IsEnabled = true;
-                            x++;
-                        }
+                        
                     }
                 }
             }
@@ -204,6 +205,15 @@ namespace BioskopCSharp.Controllers
         public void GetKursi()
         {
             ListKursi = ReadKursi();
+            int i = 0;
+            foreach(var value in ListKursi.ToArray())
+            {
+                i++;
+                if (value.Kursi.IsChecked == true)
+                {
+                    Console.WriteLine("index ke: " + i);
+                }
+            }
         }
 
         public void DisableKursi()
@@ -211,6 +221,7 @@ namespace BioskopCSharp.Controllers
             foreach(var value in ListKursi)
             {
                 value.Kursi.IsEnabled = false;
+                value.Kursi.IsChecked = false;
             }
         }
         

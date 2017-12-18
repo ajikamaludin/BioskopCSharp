@@ -71,7 +71,6 @@ namespace BioskopCSharp.Views
         {
             if (TblMainDataFilm.SelectedItems.Count > 0)
             {
-                _ctrl.CodeJadwal = ((DataRowView)TblMainDataFilm.SelectedItems[0])[0].ToString();
                 _ctrl.CodeFilm = ((DataRowView)TblMainDataFilm.SelectedItems[0])[1].ToString();
                 _ctrl.GetWaktu();
                 CboMainDataWaktu.IsEnabled = true;
@@ -91,13 +90,15 @@ namespace BioskopCSharp.Views
 
         private void CboMainDataWaktu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(CboMainDataWaktu.SelectedIndex == 0)
+            if(CboMainDataWaktu.SelectedIndex > 0)
             {
-                //DO: Nothing
+                _ctrl.CodeJadwal = CboMainDataWaktu.SelectedValue.ToString();
+                //Console.WriteLine(CboMainDataWaktu.SelectedValue.ToString());
+                _ctrl.GetKursi();
             }
             else
             {
-                _ctrl.GetKursi();
+                _ctrl.DisableKursi();
             }
         }
 
@@ -189,6 +190,12 @@ namespace BioskopCSharp.Views
                 " - Arik Andrian Putra Purwajanu ( 16.11.00.55 )",
                 "About", MessageBoxButton.OK, MessageBoxImage.Information);
         }
-        
+
+
+        // Event On Checked
+        private void KursiA1_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

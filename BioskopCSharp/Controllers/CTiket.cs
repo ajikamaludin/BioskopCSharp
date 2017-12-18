@@ -36,8 +36,8 @@ namespace BioskopCSharp.Controllers
             var entity = new MTiket()
             {
                 IdTiket = Convert.ToInt32(result[_column[0]]) as int? ?? 0,
-                Kursi = result[_column[5]].ToString(),
-                TglTiket = result[_column[1]].ToString(),
+                Kursi = Convert.ToInt32(result[_column[5]]) as int? ?? 0,
+                TglTiket = result[_column[1]].ToString()
             };
 
             entity.Jadwal.Waktu = result[_column[6]].ToString();
@@ -81,10 +81,10 @@ namespace BioskopCSharp.Controllers
         {
             List<MTiket> list = null;
 
-            string SQL = "SELECT tiket.id_tiket, tiket.kursi, tiket.tgl_tiket, " +
-                "jadwal.waktu , " +
-                "film.judul_film,film.harga_film, " +
-                "ruang.nama_ruang " +
+            string SQL = "SELECT tiket.id_tiket, tiket.tgl_tiket, tiket.kursi," +
+                "film.judul_film, film.harga_film, " +
+                "ruang.nama_ruang, " +
+                "jadwal.waktu " +
                 "FROM tiket " +
                 "JOIN jadwal ON tiket.id_jadwal = jadwal.id_jadwal " +
                 "JOIN film ON jadwal.id_film = film.id_film " +
@@ -107,11 +107,11 @@ namespace BioskopCSharp.Controllers
                         var row = table.NewRow();
                         row[0] = value.IdTiket as int? ?? 0;
                         row[1] = i;
-                        row[2] = value.Kursi as int? ?? 0;
-                        row[3] = value.TglTiket as string;
-                        row[4] = value.Jadwal.Film.Judul as string;
-                        row[5] = value.Jadwal.Film.Harga as int? ?? 0;
-                        row[6] = value.Jadwal.Ruang.Nama as string;
+                        row[2] = value.TglTiket as string;
+                        row[3] = value.Jadwal.Film.Judul as string;
+                        row[4] = value.Jadwal.Film.Harga as int? ?? 0;
+                        row[5] = value.Jadwal.Ruang.Nama as string;
+                        row[6] = value.Kursi as int? ?? 0;
                         row[7] = value.Jadwal.Waktu as string;
                         table.Rows.Add(row);
                         i++;
