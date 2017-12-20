@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using BioskopCSharp.Controllers;
 
 namespace BioskopCSharp.Views
@@ -23,7 +24,7 @@ namespace BioskopCSharp.Views
     {
         //Class Deklarasi
         private CMain _ctrl;
-        private DateTime today = DateTime.Today;
+        private DispatcherTimer _timer;
 
         //Contructors
         public MainView()
@@ -35,12 +36,21 @@ namespace BioskopCSharp.Views
         //Event On Window
         private void FrmMain_Loaded(object sender, RoutedEventArgs e)
         {
-            UserAktiv.Content = App.UserLog;
-            Tgl.Content = today.ToString("yyyy-MM-dd");
+            //Time Set
+            _timer = new DispatcherTimer();
+            _timer.Tick += new EventHandler(TmrTimer_Tick);
+            _timer.Interval = new TimeSpan(0, 0, 1);
+            _timer.Start();
             _ctrl = CMain.GetInstance;
             CboMainDataWaktu.IsEnabled = false;
             _ctrl.DisableKursi();
+            _ctrl.GetTiket();
 
+        }
+
+        public void TmrTimer_Tick(object sender, EventArgs e)
+        {
+            Tgl.Content = Convert.ToDateTime(DateTime.Now).ToString("dd-MMMM-yyyy / HH:mm:s");
         }
 
         private void FrmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -105,9 +115,18 @@ namespace BioskopCSharp.Views
 
         //Click
         //Pilih Film
+        private void TblMainDataKasir_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            switch (e.Column.Header.ToString())
+            {
+                case "IDTIKET":
+                    e.Column.Visibility = Visibility.Hidden;
+                    break;
+            }
+        }
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            _ctrl.SetTiket();
+            _ctrl.CreateTiket();
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
@@ -123,7 +142,7 @@ namespace BioskopCSharp.Views
 
         private void BtnBayar_Click(object sender, RoutedEventArgs e)
         {
-
+            _ctrl.GetKembalian();
         }
 
         private void BtnPrint_Click(object sender, RoutedEventArgs e)
@@ -141,6 +160,7 @@ namespace BioskopCSharp.Views
         //Submenu File
         private void MnuLogout_Click(object sender, RoutedEventArgs e)
         {
+            UserAktiv.Content = string.Empty;
             Hide();
             CUser.GetInstance.Index("Register");
             App.UserLog = string.Empty;
@@ -197,5 +217,7 @@ namespace BioskopCSharp.Views
         {
 
         }
+
+        
     }
 }

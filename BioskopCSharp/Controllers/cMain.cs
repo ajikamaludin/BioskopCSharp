@@ -22,6 +22,7 @@ namespace BioskopCSharp.Controllers
 
         //Variable
         private string[] _column;
+        private int THarga;
         public string CodeFilm { get; set; }
         public string CodeJadwal { get; set; }
         public string CodeTiket { get; set; }
@@ -88,14 +89,21 @@ namespace BioskopCSharp.Controllers
             var entity = new MTiket()
             {
                 IdTiket = Convert.ToInt32(result[_column[0]]) as int? ?? 0,
-                Kursi = Convert.ToInt32(result[_column[1]]) as int? ?? 0,
-                TglTiket = result[_column[2]].ToString() as string,
+                Kursi = Convert.ToInt32(result[_column[3]]) as int? ?? 0,
+                TglTiket = result[_column[6]].ToString() as string,
             };
+
+            entity.Jadwal.Film.Judul = result[_column[1]].ToString() as string;
+            entity.Jadwal.Ruang.Nama = result[_column[2]].ToString() as string;
+            entity.Jadwal.Waktu = result[_column[4]].ToString() as string;
+            entity.Jadwal.Film.Harga = Convert.ToInt32(result[_column[5]]) as int? ?? 0;
+
             return entity;
         }
 
         public void Index()
         {
+            _view.UserAktiv.Content = App.UserLog;
             _tableJadwalFilm = ReadFilm();
             _view.Show();
         }
@@ -165,12 +173,17 @@ namespace BioskopCSharp.Controllers
         //menampilkan kursi yang tersedia dan tidak tersedia
         private List<MKursi> ReadKursi()
         {
-            List<MTiket> list = null;
+
             string today = DateTime.Today.ToString("yyyy-MM-dd");
 
-            _column = new[] { "id_tiket", "kursi", "tgl_tiket" };
-            _sql.Query = "SELECT tiket.id_tiket, tiket.kursi, tiket.tgl_tiket FROM tiket WHERE id_jadwal = '" + CodeJadwal +"' AND tgl_tiket LIKE '%" + today + "%'";
-            list = _sql.ExecuteQuery(EntityTiket);
+            _column = new[] { "id_tiket", "judul_film", "nama_ruang", "kursi", "waktu", "harga_film", "tgl_tiket" };
+            _sql.Query = "SELECT tiket.id_tiket, film.judul_film, ruang.nama_ruang, tiket.kursi, jadwal.waktu, film.harga_film, tiket.tgl_tiket " +
+                "FROM tiket " +
+                "JOIN jadwal ON tiket.id_jadwal = jadwal.id_jadwal " +
+                "JOIN film ON jadwal.id_film = film.id_film " +
+                "JOIN ruang ON jadwal.id_ruang = ruang.id_ruang " +
+                "WHERE tiket.id_jadwal = '" + CodeJadwal +"' AND tiket.tgl_tiket LIKE '%" + today + "%'";
+            ListTiket = _sql.ExecuteQuery(EntityTiket);
             
             int x = 0;
             foreach (var value in ListKursi.ToArray())
@@ -181,10 +194,10 @@ namespace BioskopCSharp.Controllers
             }
             try
             {
-                if (list.Count > 0)
+                if (ListTiket.Count > 0)
                 {
 
-                    foreach (var value in list.ToArray())
+                    foreach (var value in ListTiket.ToArray())
                     {
                         if (value.Kursi > 0)
                         {
@@ -208,32 +221,42 @@ namespace BioskopCSharp.Controllers
         //Read Tiket Lempar ke Datagrid Kasir
         private List<MTiket> ReadTiket()
         {
-            List<MTiket> list = null;
-            //TODO: Baca tiket yang statusnya masih 1 di database kemudian tampikan
-            _column = new[] { "id_tiket", "kursi", "tgl_tiket" };
 
-                //benahi
-            _sql.Query = "SELECT tiket.id_tiket, tiket.kursi, tiket.tgl_tiket FROM tiket WHERE status = '1'";
-            list = _sql.ExecuteQuery(EntityTiket);
+            _column = new[] { "id_tiket", "judul_film", "nama_ruang", "kursi", "waktu", "harga_film", "tgl_tiket" };
+            _sql.Query = "SELECT tiket.id_tiket, film.judul_film, ruang.nama_ruang, tiket.kursi, jadwal.waktu, film.harga_film, tiket.tgl_tiket " +
+                "FROM tiket " +
+                "JOIN jadwal ON tiket.id_jadwal = jadwal.id_jadwal " +
+                "JOIN film ON jadwal.id_film = film.id_film " +
+                "JOIN ruang ON jadwal.id_ruang = ruang.id_ruang " +
+                "WHERE status = '1'";
+            ListTiket = _sql.ExecuteQuery(EntityTiket);
 
             var table = new DataTable();
-            var header = new string[] { "IDTIKET", "NO", "KURSI", "TANGGAL TIKET" };
+            var header = new string[] { "IDTIKET", "NO","JUDUL", "RUANG", "KURSI", "JAM", "HARGA" };
             int i = 1;
+            THarga = 0;
             try
             {
                 foreach (var value in header) table.Columns.Add(value);
-                if (list.Count > 0)
+                if (ListTiket.Count > 0)
                 {
-                    foreach (var value in list.ToArray())
+                    foreach (var value in ListTiket.ToArray())
                     {
                         var row = table.NewRow();
                         row[0] = value.IdTiket as int? ?? 0;
                         row[1] = i;
-                        row[2] = value.Kursi as int? ?? 0;
-                        row[3] = value.TglTiket as string;
+                        row[2] = value.Jadwal.Film.Judul as string;
+                        row[3] = value.Jadwal.Ruang.Nama as string;
+                        row[4] = ConvertKursi(value.Kursi as int? ?? 0);
+                        row[5] = value.Jadwal.Waktu as string;
+                        row[6] = value.Jadwal.Film.Harga as int? ?? 0;
+                        THarga += value.Jadwal.Film.Harga as int? ?? 0;
                         table.Rows.Add(row);
                         i++;
                     }
+                    // Total Harga
+                    _view.LbTotalHarga.Content = THarga;
+
                 }
             }
             catch (Exception ex)
@@ -247,7 +270,86 @@ namespace BioskopCSharp.Controllers
                 _view.TblMainDataKasir.CanUserAddRows = false;
             }
 
-            return list;
+            return ListTiket;
+        }
+
+        private string ConvertKursi(int x)
+        {
+            string NamaKursi;
+            #region Swicth Case Kursi
+            switch (x)
+            {
+                case 1:
+                    NamaKursi = "A1";
+                    break;
+                case 2:
+                    NamaKursi = "A2";
+                    break;
+                case 3:
+                    NamaKursi = "A3";
+                    break;
+                case 4:
+                    NamaKursi = "A4";
+                    break;
+                case 5:
+                    NamaKursi = "A5";
+                    break;
+                case 6:
+                    NamaKursi = "B1";
+                    break;
+                case 7:
+                    NamaKursi = "B2";
+                    break;
+                case 8:
+                    NamaKursi = "B3";
+                    break;
+                case 9:
+                    NamaKursi = "B4";
+                    break;
+                case 10:
+                    NamaKursi = "B5";
+                    break;
+                case 11:
+                    NamaKursi = "C1";
+                    break;
+                case 12:
+                    NamaKursi = "C2";
+                    break;
+                case 13:
+                    NamaKursi = "C3";
+                    break;
+                case 14:
+                    NamaKursi = "C4";
+                    break;
+                case 15:
+                    NamaKursi = "C5";
+                    break;
+                case 16:
+                    NamaKursi = "D1";
+                    break;
+                case 17:
+                    NamaKursi = "D2";
+                    break;
+                case 18:
+                    NamaKursi = "D3";
+                    break;
+                case 19:
+                    NamaKursi = "D4";
+                    break;
+                case 20:
+                    NamaKursi = "D5";
+                    break;
+                default:
+                    NamaKursi = "00";
+                    break;
+            }
+            #endregion
+            return NamaKursi;
+        }
+
+        public void GetTiket()
+        {
+            ListTiket = ReadTiket();
         }
 
         //Lempar kursi ke depan
@@ -266,7 +368,7 @@ namespace BioskopCSharp.Controllers
         }
 
         //Ambil tiket
-        public void SetTiket()
+        public void CreateTiket()
         {
             bool flag = true;
             bool isflaged = false;
@@ -284,10 +386,13 @@ namespace BioskopCSharp.Controllers
             foreach (var value in ListKursi.ToArray())
             {
                 i++;
-                if (value.Kursi.IsChecked == true && !value.Database)
+                if (value.Kursi.IsChecked == true)
                 {
-                    _sql.Query = string.Format("INSERT INTO tiket (`id_jadwal`,`kursi`,`status`) VALUES ('{0}', '{1}', '1')",CodeJadwal, i);
-                    isflaged = _sql.ExecuteUpdate();
+                    if (!value.Database)
+                    {
+                        _sql.Query = string.Format("INSERT INTO tiket (`id_jadwal`,`kursi`,`status`) VALUES ('{0}', '{1}', '1')", CodeJadwal, i);
+                        isflaged = _sql.ExecuteUpdate();
+                    }
                     flag = false;
                 }
             }
@@ -307,10 +412,35 @@ namespace BioskopCSharp.Controllers
         {
             CodeFilm = null;
             CodeJadwal = null;
+            THarga = 0;
             DisableKursi();
             _view.CboMainDataWaktu.ItemsSource = null;
             _view.CboMainDataWaktu.Items.Clear();
             _view.CboMainDataWaktu.IsEnabled = false;
+        }
+
+        //Kembalian
+        public void GetKembalian()
+        {
+            if (_view.TxtUangBayar.Text == string.Empty)
+            {
+                MessageBox.Show("Anda Belum Memasukan Uang Pembawayan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+
+            int UangBayar = Convert.ToInt32(_view.TxtUangBayar.Text) as int? ?? 0;
+
+            if(UangBayar == 0)
+            {
+                MessageBox.Show("Anda Belum Memasukan Uang Pembawayan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+            if(UangBayar < THarga)
+            {
+                MessageBox.Show("Uang Pembawayan Kurang", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+            _view.LbKembalian.Content = UangBayar - THarga;
         }
     }
 }
