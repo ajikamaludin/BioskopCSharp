@@ -13,7 +13,7 @@ namespace BioskopCSharp.SetupDBS {
                 using (var state = new Connection_SQLite()) {
                     state.OpenConnection = true;
                     var command = new SQLiteCommand(Query, (SQLiteConnection)state.GetConnex);
-                    Console.WriteLine(Query);
+                    //Console.WriteLine(Query);
                     var result = command.ExecuteReader();
                     if (result.HasRows) {
                         while (result.Read()) datalist.Add(Entity(result));
@@ -79,23 +79,6 @@ namespace BioskopCSharp.SetupDBS {
                 dataset = data;
                 state.CloseConnection = (SQLiteConnection)state.GetConnex;
             }
-        }
-
-        public string Generate() {
-            var list = string.Empty;
-            using (var state = new Connection_SQLite()) {
-                state.OpenConnection = true;
-                var command = new SQLiteCommand(Query, (SQLiteConnection)state.GetConnex);
-                var result = command.ExecuteReader();
-                if (result.HasRows) {
-                    while (result.Read()) {
-                        var n = result.GetInt32(0) + 1;
-                        list = n.ToString();
-                    }
-                }
-                state.CloseConnection = (SQLiteConnection)state.GetConnex;
-            }
-            return list;
         }
 
         public object Report(string srctable) {

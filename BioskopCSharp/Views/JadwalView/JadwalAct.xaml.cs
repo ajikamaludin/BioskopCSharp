@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 using BioskopCSharp.Controllers;
 using BioskopCSharp.Models;
 
@@ -33,6 +34,13 @@ namespace BioskopCSharp.Views.JadwalView
         public JadwalAct()
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         private void FrmJadwalEditor_Loaded(object sender, RoutedEventArgs e)

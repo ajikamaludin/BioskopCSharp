@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using BioskopCSharp.Models;
 using BioskopCSharp.Controllers;
+using System.Windows.Input;
 
 namespace BioskopCSharp.Views.UserView
 {
@@ -13,6 +14,7 @@ namespace BioskopCSharp.Views.UserView
         public UserAct()
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 
         private MUser CreateModel
@@ -26,6 +28,12 @@ namespace BioskopCSharp.Views.UserView
                     Password = TxtPassword.Password
                 };
             }
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         private void BtnSimpan_Click(object sender, RoutedEventArgs e)

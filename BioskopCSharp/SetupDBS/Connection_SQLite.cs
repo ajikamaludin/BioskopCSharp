@@ -44,7 +44,7 @@ namespace BioskopCSharp.SetupDBS {
         protected virtual void Dispose(bool disposing) {
             if (!disposedValue) {
                 if (disposing) {
-                    // TODO: dispose managed state (managed objects).
+                    // dilakukan: dispose managed state (managed objects).
                 }
                 disposedValue = true;
             }

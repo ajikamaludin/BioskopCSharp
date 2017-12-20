@@ -24,6 +24,7 @@ namespace BioskopCSharp.Controllers
         private string[] _column;
         public string CodeFilm { get; set; }
         public string CodeJadwal { get; set; }
+        public string CodeTiket { get; set; }
 
         private DataTable _tableJadwalFilm;
         private List<MKursi> ListKursi; //Ini List Model Tiket Digunakan untuk menampilkan kursi
@@ -270,6 +271,16 @@ namespace BioskopCSharp.Controllers
             bool flag = true;
             bool isflaged = false;
             int i = 0;
+            if(CodeFilm == null)
+            {
+                MessageBox.Show("Anda Belum Memilih Film", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
+            if (CodeJadwal == null)
+            {
+                MessageBox.Show("Anda Belum Memilih Waktu", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                return;
+            }
             foreach (var value in ListKursi.ToArray())
             {
                 i++;

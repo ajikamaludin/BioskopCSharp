@@ -89,17 +89,17 @@ namespace BioskopCSharp.SetupRDBMS
             {
                 if (disposing)
                 {
-                    // TODO: dispose managed state (managed objects).
+                    // dilakukan: dispose managed state (managed objects).
                 }
 
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
+                // dilakukan: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // dilakukan: set large fields to null.
 
                 disposedValue = true;
             }
         }
 
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // dilakukan: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
         // ~Command() {
         //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
         //   Dispose(false);
@@ -110,7 +110,7 @@ namespace BioskopCSharp.SetupRDBMS
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
+            // dilakukan: uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
         }
         #endregion
