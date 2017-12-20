@@ -26,7 +26,8 @@ namespace BioskopCSharp.Controllers
         public string CodeJadwal { get; set; }
 
         private DataTable _tableJadwalFilm;
-        private List<MKursi> ListKursi;
+        private List<MKursi> ListKursi; //Ini List Model Tiket Digunakan untuk menampilkan kursi
+        private List<MTiket> ListTiket;
 
         public CMain()
         {
@@ -202,6 +203,52 @@ namespace BioskopCSharp.Controllers
 
 
         }
+
+        //Read Tiket Lempar ke Datagrid Kasir
+        private List<MTiket> ReadTiket()
+        {
+            List<MTiket> list = null;
+            //TODO: Baca tiket yang statusnya masih 1 di database kemudian tampikan
+            _column = new[] { "id_tiket", "kursi", "tgl_tiket" };
+
+                //benahi
+            _sql.Query = "SELECT tiket.id_tiket, tiket.kursi, tiket.tgl_tiket FROM tiket WHERE status = '1'";
+            list = _sql.ExecuteQuery(EntityTiket);
+
+            var table = new DataTable();
+            var header = new string[] { "IDTIKET", "NO", "KURSI", "TANGGAL TIKET" };
+            int i = 1;
+            try
+            {
+                foreach (var value in header) table.Columns.Add(value);
+                if (list.Count > 0)
+                {
+                    foreach (var value in list.ToArray())
+                    {
+                        var row = table.NewRow();
+                        row[0] = value.IdTiket as int? ?? 0;
+                        row[1] = i;
+                        row[2] = value.Kursi as int? ?? 0;
+                        row[3] = value.TglTiket as string;
+                        table.Rows.Add(row);
+                        i++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                _view.TblMainDataKasir.ItemsSource = table.DefaultView;
+                _view.TblMainDataKasir.AutoGenerateColumns = true;
+                _view.TblMainDataKasir.CanUserAddRows = false;
+            }
+
+            return list;
+        }
+
         //Lempar kursi ke depan
         public void GetKursi()
         {
@@ -218,20 +265,41 @@ namespace BioskopCSharp.Controllers
         }
 
         //Ambil tiket
-        public void GetTiket()
+        public void SetTiket()
         {
+            bool flag = true;
+            bool isflaged = false;
             int i = 0;
             foreach (var value in ListKursi.ToArray())
             {
                 i++;
-                if (value.Kursi.IsChecked == true)
+                if (value.Kursi.IsChecked == true && !value.Database)
                 {
-                    if (!value.Database)
-                    {
-                        Console.WriteLine("index ke: " + i);
-                    }
+                    _sql.Query = string.Format("INSERT INTO tiket (`id_jadwal`,`kursi`,`status`) VALUES ('{0}', '{1}', '1')",CodeJadwal, i);
+                    isflaged = _sql.ExecuteUpdate();
+                    flag = false;
                 }
             }
+            if (isflaged)
+            {
+                SetClear();
+                ListTiket = ReadTiket();
+            }
+            if (flag)
+            {
+                MessageBox.Show("Anda Belum Memilih Kursi", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+        }
+
+        //Clear All
+        public void SetClear()
+        {
+            CodeFilm = null;
+            CodeJadwal = null;
+            DisableKursi();
+            _view.CboMainDataWaktu.ItemsSource = null;
+            _view.CboMainDataWaktu.Items.Clear();
+            _view.CboMainDataWaktu.IsEnabled = false;
         }
     }
 }

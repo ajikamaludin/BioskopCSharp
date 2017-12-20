@@ -107,12 +107,12 @@ namespace BioskopCSharp.Views
         //Pilih Film
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            _ctrl.GetTiket();
+            _ctrl.SetTiket();
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            
+            _ctrl.SetClear();
         }
 
         //Kasir Punya
