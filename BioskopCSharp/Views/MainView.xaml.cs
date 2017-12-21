@@ -227,6 +227,7 @@ namespace BioskopCSharp.Views
         private void MnuAbout_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine(App.UserLog);
+            //Daftar Nama Anggota
             MessageBox.Show("FrameWork menggunakan MVC-DesignPattern\n Oleh: Fairul@Amikom \n\nAplikasi Dikerjakan Oleh : \n" +
                 " - Aji Kamaludin ( 16.11.0051 ) \n" +
                 " - Evriyana Indra Saputra ( 16.11.0014 ) \n" +
