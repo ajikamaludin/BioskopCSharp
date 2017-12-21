@@ -262,6 +262,7 @@ namespace BioskopCSharp.Controllers
                 }
                 else if(ListTiket.Count == 0)
                 {
+                    _view.BtnDone.IsEnabled = _view.BtnPrint.IsEnabled = false;
                     _view.LbTotalHarga.Content = THarga;
                     _view.LbKembalian.Content = "0";
                 }
@@ -444,6 +445,7 @@ namespace BioskopCSharp.Controllers
             CodeTiket = null;
             THarga = 0;
             DisableKursi();
+            _view.TxtUangBayar.Text = " ";
             _view.CboMainDataWaktu.ItemsSource = null;
             _view.CboMainDataWaktu.Items.Clear();
             _view.CboMainDataWaktu.IsEnabled = false;
