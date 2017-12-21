@@ -101,6 +101,7 @@ namespace BioskopCSharp.Controllers
             return entity;
         }
 
+        //call this window
         public void Index()
         {
             _view.UserAktiv.Content = App.UserLog;
@@ -108,6 +109,7 @@ namespace BioskopCSharp.Controllers
             _view.Show();
         }
 
+        //null class
         public void Dispose()
         {
             if(_ctrl != null)
@@ -256,7 +258,12 @@ namespace BioskopCSharp.Controllers
                     }
                     // Total Harga
                     _view.LbTotalHarga.Content = THarga;
-
+                    _view.LbKembalian.Content = "0";
+                }
+                else if(ListTiket.Count == 0)
+                {
+                    _view.LbTotalHarga.Content = THarga;
+                    _view.LbKembalian.Content = "0";
                 }
             }
             catch (Exception ex)
@@ -273,6 +280,7 @@ namespace BioskopCSharp.Controllers
             return ListTiket;
         }
 
+        //Konversi dari kursi ke angka
         private string ConvertKursi(int x)
         {
             string NamaKursi;
@@ -347,6 +355,7 @@ namespace BioskopCSharp.Controllers
             return NamaKursi;
         }
 
+        //mengambil tiket
         public void GetTiket()
         {
             ListTiket = ReadTiket();
@@ -358,6 +367,7 @@ namespace BioskopCSharp.Controllers
             ListKursi = ReadKursi();
         }
 
+        //disable semua kursi
         public void DisableKursi()
         {
             foreach(var value in ListKursi)
@@ -407,11 +417,31 @@ namespace BioskopCSharp.Controllers
             }
         }
 
+        //Delete Tiket
+        public void DeleteTiket()
+        {
+            var msg = MessageBox.Show("Yakin akan menghapus tiket ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                _sql.Query = string.Format("DELETE FROM tiket WHERE id_tiket = '{0}'", CodeTiket);
+                bool isflaged = _sql.ExecuteUpdate();
+                if (isflaged)
+                {
+                    ListTiket = ReadTiket();
+                }
+                else
+                {
+                    MessageBox.Show("System Mengalami Kesalahan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+        }
+
         //Clear All
         public void SetClear()
         {
             CodeFilm = null;
             CodeJadwal = null;
+            CodeTiket = null;
             THarga = 0;
             DisableKursi();
             _view.CboMainDataWaktu.ItemsSource = null;
@@ -420,12 +450,12 @@ namespace BioskopCSharp.Controllers
         }
 
         //Kembalian
-        public void GetKembalian()
+        public bool GetKembalian()
         {
             if (_view.TxtUangBayar.Text == string.Empty)
             {
                 MessageBox.Show("Anda Belum Memasukan Uang Pembawayan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                return;
+                return false;
             }
 
             int UangBayar = Convert.ToInt32(_view.TxtUangBayar.Text) as int? ?? 0;
@@ -433,14 +463,44 @@ namespace BioskopCSharp.Controllers
             if(UangBayar == 0)
             {
                 MessageBox.Show("Anda Belum Memasukan Uang Pembawayan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                return;
+                return false;
             }
+
             if(UangBayar < THarga)
             {
                 MessageBox.Show("Uang Pembawayan Kurang", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-                return;
+                return false;
             }
-            _view.LbKembalian.Content = UangBayar - THarga;
+
+            var msg = MessageBox.Show("Yakin akan melakukan pembayaran ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                _view.LbKembalian.Content = UangBayar - THarga;
+            }
+            return true;
         }
+
+        //Transaksi Selesai
+        public void DoneTrans()
+        {
+            var msg = MessageBox.Show("Yakin akan menyelesaikan transaksi ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                _sql.Query = string.Format("UPDATE tiket SET status = ''");
+                bool isflaged = _sql.ExecuteUpdate();
+                if (isflaged)
+                {
+                    ListTiket = ReadTiket();
+                    _view.BtnAdd.IsEnabled = _view.BtnRefresh.IsEnabled = true;
+                    _view.BtnDone.IsEnabled = _view.BtnDone.IsEnabled = _view.BtnDelete.IsEnabled = _view.BtnPrint.IsEnabled = false;
+                    SetClear();
+                }
+                else
+                {
+                    MessageBox.Show("System Mengalami Kesalahan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+            }
+        }
+        
     }
 }

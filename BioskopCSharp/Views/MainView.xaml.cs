@@ -30,7 +30,6 @@ namespace BioskopCSharp.Views
         public MainView()
         {
             InitializeComponent();
-            
         }
 
         //Event On Window
@@ -41,13 +40,15 @@ namespace BioskopCSharp.Views
             _timer.Tick += new EventHandler(TmrTimer_Tick);
             _timer.Interval = new TimeSpan(0, 0, 1);
             _timer.Start();
+
             _ctrl = CMain.GetInstance;
-            CboMainDataWaktu.IsEnabled = false;
+            CboMainDataWaktu.IsEnabled = BtnDelete.IsEnabled = BtnPrint.IsEnabled = BtnDone.IsEnabled = false;
             _ctrl.DisableKursi();
             _ctrl.GetTiket();
 
         }
 
+        //Date And Timer
         public void TmrTimer_Tick(object sender, EventArgs e)
         {
             Tgl.Content = Convert.ToDateTime(DateTime.Now).ToString("dd-MMMM-yyyy / HH:mm:s");
@@ -90,7 +91,10 @@ namespace BioskopCSharp.Views
         //Kasir Punya
         private void TblMainDataKasir_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-
+            if (TblMainDataKasir.SelectedItems.Count > 0)
+            {
+                BtnDelete.IsEnabled = true;
+            }
         }
 
         private void TblMainDataKasir_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -103,7 +107,6 @@ namespace BioskopCSharp.Views
             if(CboMainDataWaktu.SelectedIndex > 0)
             {
                 _ctrl.CodeJadwal = CboMainDataWaktu.SelectedValue.ToString();
-                //Console.WriteLine(CboMainDataWaktu.SelectedValue.ToString());
                 _ctrl.GetKursi();
             }
             else
@@ -124,9 +127,10 @@ namespace BioskopCSharp.Views
                     break;
             }
         }
+
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            _ctrl.CreateTiket();
+           _ctrl.CreateTiket();
         }
 
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
@@ -137,12 +141,33 @@ namespace BioskopCSharp.Views
         //Kasir Punya
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            if (TblMainDataKasir.SelectedItems.Count > 0)
+            {
+                _ctrl.CodeTiket = ((DataRowView)TblMainDataKasir.SelectedItems[0])[0].ToString();
+                _ctrl.DeleteTiket();
+            }
+            else
+            {
+                MessageBox.Show("Apa yang mau anda hapus ?", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                BtnDelete.IsEnabled = false;
+            }
         }
 
         private void BtnBayar_Click(object sender, RoutedEventArgs e)
         {
-            _ctrl.GetKembalian();
+            
+            if (TblMainDataKasir.Items.Count > 0)
+            {
+                if (_ctrl.GetKembalian())
+                {
+                    BtnPrint.IsEnabled = BtnDone.IsEnabled = true;
+                    BtnAdd.IsEnabled = BtnRefresh.IsEnabled = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Apa yang mau anda bayar ?", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void BtnPrint_Click(object sender, RoutedEventArgs e)
@@ -152,7 +177,7 @@ namespace BioskopCSharp.Views
 
         private void BtnDone_Click(object sender, RoutedEventArgs e)
         {
-
+            _ctrl.DoneTrans();
         }
 
 
@@ -218,6 +243,16 @@ namespace BioskopCSharp.Views
 
         }
 
+        //To Decor Withd Table Of All
+        private void TblDecor_Film()
+        {
+
+        }
+
+        private void TblDecor_Kasir()
+        {
+
+        }
         
     }
 }
