@@ -1,3 +1,0 @@
-film waktu ==> tambah 
-setelah di hapus button ubah diklik error ==> all
-setelah edit=> film=> baru kosong terjadi error ( mungkin berlaku untuk semua crud )

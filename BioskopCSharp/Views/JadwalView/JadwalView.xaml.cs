@@ -16,6 +16,13 @@ namespace BioskopCSharp.Views.JadwalView
         public JadwalView()
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         private void TblDataJadwal_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -99,7 +106,8 @@ namespace BioskopCSharp.Views.JadwalView
             {
                 _ctrl.Code = ((DataRowView)TblDataJadwal.SelectedItems[0])[0].ToString();
             }
-            _ctrl.Delete(); ;
+            _ctrl.Delete();
+            BtnDelete.IsEnabled = BtnEdit.IsEnabled = false;
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)

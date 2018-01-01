@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Data;
 using BioskopCSharp.Models;
 using BioskopCSharp.Controllers;
+using System.Windows.Input;
 
 namespace BioskopCSharp.Views.RuangView
 {
@@ -18,6 +19,13 @@ namespace BioskopCSharp.Views.RuangView
         public RuangView()
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         private MRuang CreateModel
@@ -119,6 +127,7 @@ namespace BioskopCSharp.Views.RuangView
                 _ctrl.Code = ((DataRowView)TblDataRuang.SelectedItems[0])[0].ToString();
             }
             _ctrl.Delete();
+            BtnDelete.IsEnabled = BtnEdit.IsEnabled = false;
         }
 
         private void BtnCancel_Click(object sender, RoutedEventArgs e)

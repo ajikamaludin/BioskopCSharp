@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="User Editor" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Grid>
-        <TextBox x:Name="TxtNama" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TxtUsername" HorizontalAlignment="Left" Height="23" Margin="90,91,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TxtNama" HorizontalAlignment="Left" Height="23" Margin="90,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TxtUsername" HorizontalAlignment="Left" Height="23" Margin="90,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left"  Width="120" Height="23" Margin="90,127,0,0" VerticalAlignment="Top"/>
         <Button x:Name="BtnSimpan" Click="BtnSimpan_Click" Content="Simpan" HorizontalAlignment="Left" Margin="108,176,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="BtnBatal" Click="BtnBatal_Click" Content="Batal" HorizontalAlignment="Left" Margin="108,209,0,0" VerticalAlignment="Top" Width="75"/>

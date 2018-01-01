@@ -56,11 +56,25 @@ namespace BioskopCSharp.Views.FilmView
         {
             if(CFilm.GetInstance.Code != string.Empty)
             {
-                CFilm.GetInstance.Update(CreateModel);
+                
+                    CFilm.GetInstance.Update(CreateModel);
             }
             else if(CFilm.GetInstance.Code == string.Empty)
             {
-                CFilm.GetInstance.Create(CreateModel);
+                if (TxtJudul.Text == string.Empty)
+                {
+                    MessageBox.Show("Judul masih kosong!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    TxtJudul.Focus();
+                }
+                else if (TxtHarga.Text == string.Empty)
+                {
+                    MessageBox.Show("Harga masih kosong!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    TxtHarga.Focus();
+                }
+                else
+                {
+                    CFilm.GetInstance.Create(CreateModel);
+                }
             }
             else
             {

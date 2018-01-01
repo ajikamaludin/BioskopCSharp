@@ -26,12 +26,19 @@ namespace BioskopCSharp.Views.TiketView
         public TiketView()
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 
         private void FrmTiket_Loaded(object sender, RoutedEventArgs e)
         {
             _ctrl = CTiket.GetInstance;
             BtnPrint.IsEnabled = BtnLaporan.IsEnabled = false;
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         private void FrmTiket_Closing(object sender, System.ComponentModel.CancelEventArgs e)

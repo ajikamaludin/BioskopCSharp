@@ -17,6 +17,13 @@ namespace BioskopCSharp.Views.UserView
         public UserView()
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         //Window Event
@@ -103,10 +110,12 @@ namespace BioskopCSharp.Views.UserView
             {
                 _ctrl.Code = ((DataRowView)TblDataUser.SelectedItems[0])[0].ToString();
                 _ctrl.Delete();
+                BtnDelete.IsEnabled = BtnEdit.IsEnabled = false;
             }
             else if(_ctrl.Code != string.Empty)
             {
                 _ctrl.Delete();
+                BtnDelete.IsEnabled = BtnEdit.IsEnabled = false;
             }
             else
             {

@@ -17,6 +17,13 @@ namespace BioskopCSharp.Views.FilmView
         public FilmView()
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         private void FrmFilm_Loaded(object sender, RoutedEventArgs e)
@@ -98,10 +105,12 @@ namespace BioskopCSharp.Views.FilmView
             {
                 _ctrl.Code = ((DataRowView)TblDataFilm.SelectedItems[0])[0].ToString();
                 _ctrl.Delete();
+                BtnDelete.IsEnabled = BtnEdit.IsEnabled = false;
             }
             else if (_ctrl.Code != string.Empty)
             {
                 _ctrl.Delete();
+                BtnDelete.IsEnabled = BtnEdit.IsEnabled = false;
             }
             else
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows;
+using System.Windows.Input;
 using BioskopCSharp.Controllers;
 
 namespace BioskopCSharp.Views.UserView
@@ -17,6 +18,13 @@ namespace BioskopCSharp.Views.UserView
         public UserLogin()
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         //Window On Event

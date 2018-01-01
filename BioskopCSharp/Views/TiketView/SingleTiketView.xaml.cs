@@ -25,6 +25,13 @@ namespace BioskopCSharp.Views.TiketView
         public SingleTiketView()
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         private void FrmSingleTiket_Loaded(object sender, RoutedEventArgs e)
