@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Data;
 using BioskopCSharp.Views;
+using BioskopCSharp.Views.TiketView;
 using BioskopCSharp.Models;
 using BioskopCSharp.SetupDBS;
+using Microsoft.Reporting.WinForms;
 
 namespace BioskopCSharp.Controllers
 {
@@ -16,6 +18,7 @@ namespace BioskopCSharp.Controllers
     {
         //Class
         private MainView _view;
+        private SingleTiketView _viewPrintTiket;
         private Command_SQLite _sql;
 
         private static CMain _ctrl;
@@ -109,6 +112,20 @@ namespace BioskopCSharp.Controllers
             _view.Show();
         }
 
+        //call print window
+        public void Index(string act)
+        {
+            //Dispose();
+            _viewPrintTiket = new SingleTiketView();
+            if (act == "PrintTiket")
+            {
+                _viewPrintTiket.Show();
+            }else if(act == "ReadFilm")
+            {
+                _tableJadwalFilm = ReadFilm();
+            }
+        }
+
         //null class
         public void Dispose()
         {
@@ -142,7 +159,9 @@ namespace BioskopCSharp.Controllers
                         row[1] = value.Film.Id as int? ?? 0;
                         row[2] = i;
                         row[3] = value.Film.Judul as string;
-                        row[4] = value.Film.Harga as int? ?? 0;
+                        string Harga = "Rp. ";
+                        Harga += value.Film.Harga as int? ?? 0;
+                        row[4] = Harga;
                         table.Rows.Add(row);
                         i++;
                     }
@@ -251,7 +270,9 @@ namespace BioskopCSharp.Controllers
                         row[3] = value.Jadwal.Ruang.Nama as string;
                         row[4] = ConvertKursi(value.Kursi as int? ?? 0);
                         row[5] = value.Jadwal.Waktu as string;
-                        row[6] = value.Jadwal.Film.Harga as int? ?? 0;
+                        string Harga = "Rp. ";
+                        Harga += value.Jadwal.Film.Harga as int? ?? 0;
+                        row[6] = Harga;
                         THarga += value.Jadwal.Film.Harga as int? ?? 0;
                         table.Rows.Add(row);
                         i++;
@@ -454,15 +475,23 @@ namespace BioskopCSharp.Controllers
         //Kembalian
         public bool GetKembalian()
         {
+            int UangBayar;
             if (_view.TxtUangBayar.Text == string.Empty)
             {
                 MessageBox.Show("Anda Belum Memasukan Uang Pembawayan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
             }
 
-            int UangBayar = Convert.ToInt32(_view.TxtUangBayar.Text) as int? ?? 0;
+            if (_view.TxtUangBayar.Text == string.Empty)
+            {
+                UangBayar = 0;
+            }
+            else
+            {
+                UangBayar = Convert.ToInt32(_view.TxtUangBayar.Text) as int? ?? 0;
+            }
 
-            if(UangBayar == 0)
+            if (UangBayar == 0)
             {
                 MessageBox.Show("Anda Belum Memasukan Uang Pembawayan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 return false;
@@ -478,12 +507,17 @@ namespace BioskopCSharp.Controllers
             if (msg == MessageBoxResult.Yes)
             {
                 _view.LbKembalian.Content = UangBayar - THarga;
+                return true;
             }
-            return true;
+            else
+            {
+                return false;
+            }
+            
         }
 
         //Transaksi Selesai
-        public void DoneTrans()
+        public bool DoneTrans()
         {
             var msg = MessageBox.Show("Yakin akan menyelesaikan transaksi ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (msg == MessageBoxResult.Yes)
@@ -496,13 +530,50 @@ namespace BioskopCSharp.Controllers
                     _view.BtnAdd.IsEnabled = _view.BtnRefresh.IsEnabled = true;
                     _view.BtnDone.IsEnabled = _view.BtnDone.IsEnabled = _view.BtnDelete.IsEnabled = _view.BtnPrint.IsEnabled = false;
                     SetClear();
+                    return isflaged;
                 }
                 else
                 {
                     MessageBox.Show("System Mengalami Kesalahan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                    return false;
                 }
             }
+            else
+            {
+                return false;
+            }
         }
-        
+
+        public void Export(string datasetname, string filename, string srctable, ReportViewer rpt)
+        {
+            Console.WriteLine("CODE TIKET ::::: " + CodeTiket);
+            try
+            {
+                var data = new DataSet();
+                
+                _sql.Query = "SELECT tiket.id_tiket as IdTiket, " +
+                    "film.judul_film as Judul, " +
+                    "ruang.nama_ruang as Ruang, " +
+                    "tiket.kursi as Kursi, " +
+                    "jadwal.waktu as Waktu, " +
+                    "film.harga_film as Harga, " +
+                    "tiket.tgl_tiket as TglTiket " +
+                    "FROM tiket JOIN jadwal ON tiket.id_jadwal = jadwal.id_jadwal " +
+                    "JOIN film ON jadwal.id_film = film.id_film JOIN ruang ON jadwal.id_ruang = ruang.id_ruang WHERE tiket.id_tiket = '" + CodeTiket + "'";
+                _sql.Report(srctable, out data);
+
+                var datasource = new ReportDataSource(datasetname, data.Tables[srctable]);
+                rpt.LocalReport.ReportPath = AppDomain.CurrentDomain.BaseDirectory + filename;
+                rpt.ProcessingMode = ProcessingMode.Local;
+
+                rpt.LocalReport.DataSources.Clear();
+                rpt.LocalReport.DataSources.Add(datasource);
+                rpt.RefreshReport();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: Controller.FillDataReport at " + e.StackTrace);
+            }
+        }
     }
 }

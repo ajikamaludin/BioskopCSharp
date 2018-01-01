@@ -109,7 +109,9 @@ namespace BioskopCSharp.Controllers
                         row[1] = i;
                         row[2] = value.TglTiket as string;
                         row[3] = value.Jadwal.Film.Judul as string;
-                        row[4] = value.Jadwal.Film.Harga as int? ?? 0;
+                        string Harga = "Rp. ";
+                        Harga += value.Jadwal.Film.Harga as int? ?? 0;
+                        row[4] = Harga;
                         row[5] = value.Jadwal.Ruang.Nama as string;
                         row[6] = value.Kursi as int? ?? 0;
                         row[7] = value.Jadwal.Waktu as string;

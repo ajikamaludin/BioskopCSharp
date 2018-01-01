@@ -175,6 +175,7 @@ namespace BioskopCSharp.Controllers
                 if (isflaged)
                 {
                     _table = Read();
+                    CMain.GetInstance.Index("ReadFilm");
                     _viewact.Close();
                 }
                 else
@@ -195,6 +196,7 @@ namespace BioskopCSharp.Controllers
                 if (isflaged)
                 {
                     _table = Read();
+                    CMain.GetInstance.Index("ReadFilm");
                     _viewact.Close();
                 }
                 else
@@ -218,6 +220,7 @@ namespace BioskopCSharp.Controllers
                     if (isflaged)
                     {
                         _table = Read();
+                        CMain.GetInstance.Index("ReadFilm");
                     }
                     else
                     {

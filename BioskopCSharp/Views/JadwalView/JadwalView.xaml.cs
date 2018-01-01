@@ -61,8 +61,11 @@ namespace BioskopCSharp.Views.JadwalView
 
         private void TblDataJadwal_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            _ctrl.Code = ((DataRowView)TblDataJadwal.SelectedItems[0])[0].ToString();
-            _ctrl.Index("Action");
+            if (TblDataJadwal.SelectedItems.Count > 0)
+            {
+                _ctrl.Code = ((DataRowView)TblDataJadwal.SelectedItems[0])[0].ToString();
+                _ctrl.Index("Action");
+            }
         }
 
         private void FrmJadwal_Closing(object sender, System.ComponentModel.CancelEventArgs e)

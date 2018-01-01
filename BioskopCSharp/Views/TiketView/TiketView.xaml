@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.TiketView"
         mc:Ignorable="d" x:Name="FrmTiket" Loaded="FrmTiket_Loaded" Closing="FrmTiket_Closing"
-        Title="Tiket" Height="300" Width="564" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
+        Title="Tiket" Height="300" Width="595.333" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
     <Grid>
         <DataGrid x:Name="TblDataTiket" ItemsSource="{Binding}" 
                   AutoGeneratingColumn="TblDataTiket_AutoGeneratingColumn" PreviewKeyDown="TblDataTiket_PreviewKeyDown"
                   SelectedCellsChanged="TblDataTiket_SelectedCellsChanged" MouseDoubleClick="TblDataTiket_MouseDoubleClick"
-                  HorizontalAlignment="Left" Height="210" Margin="10,10,0,0" VerticalAlignment="Top" Width="533"/>
+                  HorizontalAlignment="Left" Height="210" Margin="10,10,0,0" VerticalAlignment="Top" Width="569"/>
         <Button x:Name="BtnPrint" Click="BtnPrint_Click" Content="Cetak" HorizontalAlignment="Left" Margin="21,232,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="BtnLaporan" Click="BtnLaporan_Click" Content="Laporan" HorizontalAlignment="Left" Margin="110,232,0,0" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Kembali" HorizontalAlignment="Left" Margin="200,232,0,0" VerticalAlignment="Top" Width="75"/>

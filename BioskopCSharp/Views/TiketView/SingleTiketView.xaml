@@ -1,0 +1,16 @@
+﻿<Window x:Class="BioskopCSharp.Views.TiketView.SingleTiketView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:if="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration" 
+        xmlns:rpt="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BioskopCSharp.Views.TiketView"
+        mc:Ignorable="d" x:Name="FrmSingleTiket" Loaded="FrmSingleTiket_Loaded"
+        Title="Tiket PrintPriview" Height="365.333" Width="501.333" ResizeMode="NoResize" WindowStyle="ToolWindow" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <if:WindowsFormsHost Grid.Row="1">
+            <rpt:ReportViewer x:Name="RptViewer" />
+        </if:WindowsFormsHost>
+    </Grid>
+</Window>

@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using BioskopCSharp.Controllers;
 
@@ -25,7 +17,7 @@ namespace BioskopCSharp.Views
         //Class Deklarasi
         private CMain _ctrl;
         private DispatcherTimer _timer;
-
+        private bool Pay = false;
         //Contructors
         public MainView()
         {
@@ -45,23 +37,32 @@ namespace BioskopCSharp.Views
             CboMainDataWaktu.IsEnabled = BtnDelete.IsEnabled = BtnPrint.IsEnabled = BtnDone.IsEnabled = false;
             _ctrl.DisableKursi();
             _ctrl.GetTiket();
-
+            TxtUangBayar.Text = string.Empty;
         }
 
         //Date And Timer
         public void TmrTimer_Tick(object sender, EventArgs e)
         {
-            Tgl.Content = Convert.ToDateTime(DateTime.Now).ToString("dd-MMMM-yyyy / HH:mm:s");
+            Tgl.Content = Convert.ToDateTime(DateTime.Now).ToString("dd-MM-yyyy");
+            Tgl2.Content = Convert.ToDateTime(DateTime.Now).ToString("HH:mm:s");
         }
 
         private void FrmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(_ctrl != null)
+            var msg = MessageBox.Show("Yakin anda ingin menutup aplikasi ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
             {
-                _ctrl.Dispose();
+                if (_ctrl != null)
+                {
+                    _ctrl.Dispose();
+                }
+                GC.Collect();
+                App.Current.Shutdown();
             }
-            GC.Collect();
-            App.Current.Shutdown();
+            else
+            {
+                e.Cancel = true;
+            }
         }
 
         //Pilih Film
@@ -80,11 +81,14 @@ namespace BioskopCSharp.Views
 
         private void TblMainDataFilm_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
-            if (TblMainDataFilm.SelectedItems.Count > 0)
+            if (!Pay)
             {
-                _ctrl.CodeFilm = ((DataRowView)TblMainDataFilm.SelectedItems[0])[1].ToString();
-                _ctrl.GetWaktu();
-                CboMainDataWaktu.IsEnabled = true;
+                if (TblMainDataFilm.SelectedItems.Count > 0)
+                {
+                    _ctrl.CodeFilm = ((DataRowView)TblMainDataFilm.SelectedItems[0])[1].ToString();
+                    _ctrl.GetWaktu();
+                    CboMainDataWaktu.IsEnabled = true;
+                }
             }
         }
 
@@ -93,13 +97,40 @@ namespace BioskopCSharp.Views
         {
             if (TblMainDataKasir.SelectedItems.Count > 0)
             {
-                BtnDelete.IsEnabled = true;
+                _ctrl.CodeTiket = ((DataRowView)TblMainDataKasir.SelectedItems[0])[0].ToString();
+                if (!Pay)
+                {
+                    BtnDelete.IsEnabled = true;
+                }
+                if (Pay)
+                {
+                    BtnPrint.IsEnabled = true;
+                }
+            }
+        }
+
+        private void TblMainDataKasir_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (Pay) { 
+                if (TblMainDataKasir.SelectedItems.Count > 0)
+                {
+                    _ctrl.CodeTiket = ((DataRowView)TblMainDataKasir.SelectedItems[0])[0].ToString();
+                    _ctrl.Index("PrintTiket");
+                    BtnPrint.IsEnabled = false;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bayar Terlebih Dahulu", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
 
         private void TblMainDataKasir_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-
+            if (TblMainDataKasir.SelectedItems.Count > 0)
+            {
+                _ctrl.CodeTiket = ((DataRowView)TblMainDataKasir.SelectedItems[0])[0].ToString();
+            }
         }
 
         private void CboMainDataWaktu_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -145,6 +176,7 @@ namespace BioskopCSharp.Views
             {
                 _ctrl.CodeTiket = ((DataRowView)TblMainDataKasir.SelectedItems[0])[0].ToString();
                 _ctrl.DeleteTiket();
+                BtnDelete.IsEnabled = false;
             }
             else
             {
@@ -153,15 +185,28 @@ namespace BioskopCSharp.Views
             }
         }
 
+        private void TxtUangBayar_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
         private void BtnBayar_Click(object sender, RoutedEventArgs e)
         {
-            
             if (TblMainDataKasir.Items.Count > 0)
-            {
-                if (_ctrl.GetKembalian())
+            {   
+                if (TxtUangBayar.Text == string.Empty)
                 {
-                    BtnPrint.IsEnabled = BtnDone.IsEnabled = true;
-                    BtnAdd.IsEnabled = BtnRefresh.IsEnabled = false;
+                    MessageBox.Show("Anda Belum Memasukan Uang Pembawayan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    TxtUangBayar.Text =  TxtUangBayar.Text.Trim();
+                    if (_ctrl.GetKembalian())
+                    {
+                        BtnDone.IsEnabled = Pay = true;
+                        BtnAdd.IsEnabled = BtnRefresh.IsEnabled = BtnBayar.IsEnabled = BtnDelete.IsEnabled = false;
+                    }
                 }
             }
             else
@@ -172,12 +217,22 @@ namespace BioskopCSharp.Views
 
         private void BtnPrint_Click(object sender, RoutedEventArgs e)
         {
-
+            if (TblMainDataKasir.SelectedItems.Count > 0)
+            {
+                _ctrl.CodeTiket = ((DataRowView)TblMainDataKasir.SelectedItems[0])[0].ToString();
+                _ctrl.Index("PrintTiket");
+                BtnPrint.IsEnabled = false;
+            }
         }
 
         private void BtnDone_Click(object sender, RoutedEventArgs e)
         {
-            _ctrl.DoneTrans();
+            
+            if (_ctrl.DoneTrans())
+            {
+                Pay = false;
+                BtnBayar.IsEnabled = true;
+            }
         }
 
 
@@ -185,16 +240,28 @@ namespace BioskopCSharp.Views
         //Submenu File
         private void MnuLogout_Click(object sender, RoutedEventArgs e)
         {
-            UserAktiv.Content = string.Empty;
-            Hide();
-            CUser.GetInstance.Index("Register");
-            App.UserLog = string.Empty;
+            var msg = MessageBox.Show("Yakin anda ingin keluar ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                UserAktiv.Content = string.Empty;
+                Hide();
+                CUser.GetInstance.Index("Register");
+                App.UserLog = string.Empty;
+            }
         }
 
         private void MnuExit_Click(object sender, RoutedEventArgs e)
         {
-            GC.Collect();
-            App.Current.Shutdown();
+            var msg = MessageBox.Show("Yakin anda ingin menutup aplikasi ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                if (_ctrl != null)
+                {
+                    _ctrl.Dispose();
+                }
+                GC.Collect();
+                App.Current.Shutdown();
+            }
         }
 
         private void MnuAdmin_Click(object sender, RoutedEventArgs e)
@@ -237,13 +304,6 @@ namespace BioskopCSharp.Views
                 "About", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-
-        // Event On Checked
-        private void KursiA1_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         //To Decor Withd Table Of All
         private void TblDecor_Film()
         {
@@ -254,6 +314,6 @@ namespace BioskopCSharp.Views
         {
 
         }
-        
+
     }
 }

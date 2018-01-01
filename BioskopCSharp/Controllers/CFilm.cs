@@ -104,7 +104,9 @@ namespace BioskopCSharp.Controllers
                         row[0] = value.Id as int? ?? 0;
                         row[1] = i;
                         row[2] = value.Judul as string;
-                        row[3] = value.Harga as int? ?? 0;
+                        string Harga = "Rp. ";
+                        Harga += value.Harga as int? ?? 0;
+                        row[3] = Harga;
                         table.Rows.Add(row);
                         i++;
                     }
