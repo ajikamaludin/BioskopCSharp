@@ -45,6 +45,8 @@ namespace BioskopCSharp.Views
         {
             Tgl.Content = Convert.ToDateTime(DateTime.Now).ToString("dd-MM-yyyy");
             Tgl2.Content = Convert.ToDateTime(DateTime.Now).ToString("HH:mm:s");
+            string Date = Convert.ToDateTime(DateTime.Now).ToString("dd-MM-yyyy / HH:mm:s");
+            //Console.WriteLine(Date);
         }
 
         private void FrmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)

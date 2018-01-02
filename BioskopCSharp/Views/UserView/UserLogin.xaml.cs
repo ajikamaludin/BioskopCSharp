@@ -18,7 +18,6 @@ namespace BioskopCSharp.Views.UserView
         public UserLogin()
         {
             InitializeComponent();
-            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
         }
 
         private void HandleEsc(object sender, KeyEventArgs e)
@@ -32,12 +31,6 @@ namespace BioskopCSharp.Views.UserView
         {
             _ctrl = CUser.GetInstance;
             _mctrl = CMain.GetInstance;
-        }
-
-        private void FrmUserLogin_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            GC.Collect();
-            App.Current.Shutdown();
         }
 
         //User Interaction
@@ -65,10 +58,12 @@ namespace BioskopCSharp.Views.UserView
 
         private void Btnkeluar_Click(object sender, RoutedEventArgs e)
         {
-            GC.Collect();
-            App.Current.Shutdown();
+            var msg = MessageBox.Show("Yakin anda ingin menutup aplikasi ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                GC.Collect();
+                App.Current.Shutdown();
+            }
         }
-
-        
     }
 }

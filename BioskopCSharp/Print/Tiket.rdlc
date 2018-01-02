@@ -365,6 +365,10 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
+                <Value>Rp. </Value>
+                <Style />
+              </TextRun>
+              <TextRun>
                 <Value>=First(Fields!Harga.Value, "TiketDataset")</Value>
                 <Style />
               </TextRun>
@@ -391,7 +395,7 @@
     <Height>5cm</Height>
     <Style />
   </Body>
-  <Width>10.43813cm</Width>
+  <Width>7cm</Width>
   <Page>
     <PageHeight>5cm</PageHeight>
     <PageWidth>7cm</PageWidth>

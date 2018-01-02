@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.Data;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using BioskopCSharp.Controllers;
 
 namespace BioskopCSharp.Views.TiketView
@@ -32,7 +24,7 @@ namespace BioskopCSharp.Views.TiketView
         private void FrmTiket_Loaded(object sender, RoutedEventArgs e)
         {
             _ctrl = CTiket.GetInstance;
-            BtnPrint.IsEnabled = BtnLaporan.IsEnabled = false;
+            BtnPrint.IsEnabled = false;
         }
 
         private void HandleEsc(object sender, KeyEventArgs e)
@@ -51,14 +43,19 @@ namespace BioskopCSharp.Views.TiketView
 
         private void TblDataTiket_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            if (TblDataTiket.Items.Count > 0)
+            {
+                CMain.GetInstance.CodeTiket = ((DataRowView)TblDataTiket.SelectedItems[0])[0].ToString();
+                CMain.GetInstance.Index("PrintTiket");
+            }
         }
 
         private void TblDataTiket_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             if(TblDataTiket.Items.Count > 0)
             {
-                BtnPrint.IsEnabled = BtnLaporan.IsEnabled = true;
+               CMain.GetInstance.CodeTiket = ((DataRowView)TblDataTiket.SelectedItems[0])[0].ToString();
+                BtnPrint.IsEnabled = true;
             }
         }
 
@@ -69,12 +66,17 @@ namespace BioskopCSharp.Views.TiketView
 
         private void BtnPrint_Click(object sender, RoutedEventArgs e)
         {
-
+            if (TblDataTiket.Items.Count > 0)
+            {
+                CMain.GetInstance.CodeTiket = ((DataRowView)TblDataTiket.SelectedItems[0])[0].ToString();
+                CMain.GetInstance.Index("PrintTiket");
+            }
+            BtnPrint.IsEnabled = false;
         }
 
         private void BtnLaporan_Click(object sender, RoutedEventArgs e)
         {
-
+            _ctrl.Index("Print");
         }
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)

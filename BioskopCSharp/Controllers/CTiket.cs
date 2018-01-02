@@ -7,6 +7,7 @@ using System.Data;
 using BioskopCSharp.SetupDBS;
 using BioskopCSharp.Models;
 using BioskopCSharp.Views.TiketView;
+using BioskopCSharp.Views.CetakView;
 
 namespace BioskopCSharp.Controllers
 {
@@ -14,6 +15,8 @@ namespace BioskopCSharp.Controllers
     {
         //Class
         private TiketView _view;
+        private CetakViewAct _viewCatakAct;
+        private CetakPreview _viewCetakPreview;
         private Command_SQLite _sql;
 
         private static CTiket _ctrl;
@@ -24,6 +27,8 @@ namespace BioskopCSharp.Controllers
         private static DataTable _table;
 
         public string Code { get; set; }
+        public string DateStart { get; set; }
+        public string DateEnd { get; set; }
 
         public CTiket()
         {
@@ -65,6 +70,20 @@ namespace BioskopCSharp.Controllers
             _view.Show();
         }
 
+        public void Index(string act)
+        {
+            if(act == "Print")
+            {
+                _viewCatakAct = new CetakViewAct();
+                _viewCatakAct.Show();
+            }
+            else if(act == "Preview")
+            {
+                _viewCetakPreview = new CetakPreview();
+                _viewCetakPreview.Show();
+            }
+        }
+
         public void Dispose()
         {
             if (_ctrl != null)
@@ -88,7 +107,7 @@ namespace BioskopCSharp.Controllers
                 "FROM tiket " +
                 "JOIN jadwal ON tiket.id_jadwal = jadwal.id_jadwal " +
                 "JOIN film ON jadwal.id_film = film.id_film " +
-                "JOIN ruang ON jadwal.id_ruang = ruang.id_ruang";
+                "JOIN ruang ON jadwal.id_ruang = ruang.id_ruang WHERE status = ''";
 
             _column = new[] { "id_tiket", "tgl_tiket", "judul_film","harga_film", "nama_ruang", "kursi", "waktu" };
             _sql.Query = SQL;
@@ -132,5 +151,7 @@ namespace BioskopCSharp.Controllers
             }
             return table;
         }
+
+
     }
 }

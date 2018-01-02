@@ -568,7 +568,9 @@ namespace BioskopCSharp.Controllers
 
                 rpt.LocalReport.DataSources.Clear();
                 rpt.LocalReport.DataSources.Add(datasource);
+                rpt.SetDisplayMode(DisplayMode.PrintLayout);
                 rpt.RefreshReport();
+
             }
             catch (Exception e)
             {

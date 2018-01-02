@@ -125,6 +125,12 @@
     <Compile Include="SetupRDBMS\Command.cs" />
     <Compile Include="SetupRDBMS\Connect.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <Compile Include="Views\CetakView\CetakPreview.xaml.cs">
+      <DependentUpon>CetakPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CetakView\CetakViewAct.xaml.cs">
+      <DependentUpon>CetakViewAct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FilmView\FilmAct.xaml.cs">
       <DependentUpon>FilmAct.xaml</DependentUpon>
     </Compile>
@@ -177,7 +183,9 @@
     <EmbeddedResource Include="bin\Debug\Print\Tiket.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Print\Laporan.rdlc" />
+    <EmbeddedResource Include="Print\Laporan.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Print\Tiket.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -205,6 +213,14 @@
     <Resource Include="Asset\logo2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\CetakView\CetakPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CetakView\CetakViewAct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\FilmView\FilmAct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -250,9 +266,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\LaporanView\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Asset\Button\barudiam.png" />
     <Resource Include="Asset\Button\barulewat.png" />
