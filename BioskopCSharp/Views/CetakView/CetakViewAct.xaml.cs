@@ -26,7 +26,7 @@ namespace BioskopCSharp.Views.CetakView
 
         private void BtnCetak_Click(object sender, RoutedEventArgs e)
         {
-            string dateStart = DateStart.SelectedDate.Value.Date.ToShortDateString();
+            string dateStart = DateStart.SelectedDate.Value.Date.ToString("yyyy-MM-dd");
             Console.WriteLine(dateStart);
         }
     }

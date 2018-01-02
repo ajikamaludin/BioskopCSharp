@@ -8,6 +8,7 @@ using BioskopCSharp.SetupDBS;
 using BioskopCSharp.Models;
 using BioskopCSharp.Views.TiketView;
 using BioskopCSharp.Views.CetakView;
+using Microsoft.Reporting.WinForms;
 
 namespace BioskopCSharp.Controllers
 {
@@ -152,6 +153,37 @@ namespace BioskopCSharp.Controllers
             return table;
         }
 
+        public void Export(string datasetname, string filename, string srctable, ReportViewer rpt)
+        {
+            try
+            {
+                var data = new DataSet();
 
+                _sql.Query = "SELECT tiket.id_tiket as IdTiket, " +
+                    "film.judul_film as Judul, " +
+                    "ruang.nama_ruang as Ruang, " +
+                    "tiket.kursi as Kursi, " +
+                    "jadwal.waktu as Waktu, " +
+                    "film.harga_film as Harga, " +
+                    "tiket.tgl_tiket as TglTiket " +
+                    "FROM tiket JOIN jadwal ON tiket.id_jadwal = jadwal.id_jadwal " +
+                    "JOIN film ON jadwal.id_film = film.id_film JOIN ruang ON jadwal.id_ruang = ruang.id_ruang WHERE tiket.id_tiket = '";
+                _sql.Report(srctable, out data);
+
+                var datasource = new ReportDataSource(datasetname, data.Tables[srctable]);
+                rpt.LocalReport.ReportPath = AppDomain.CurrentDomain.BaseDirectory + filename;
+                rpt.ProcessingMode = ProcessingMode.Local;
+
+                rpt.LocalReport.DataSources.Clear();
+                rpt.LocalReport.DataSources.Add(datasource);
+                rpt.SetDisplayMode(DisplayMode.PrintLayout);
+                rpt.RefreshReport();
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("ERROR: Controller.FillDataReport at " + e.StackTrace);
+            }
+        }
     }
 }
