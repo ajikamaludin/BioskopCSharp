@@ -25,14 +25,17 @@ namespace BioskopCSharp.Views.FilmView
                 return new MFilm()
                 {
                     Judul = TxtJudul.Text,
-                    Harga = Convert.ToInt32(TxtHarga.Text) as int? ?? 0,
+                    Harga = Convert.ToInt32(TxtHarga.Text.Substring(4)) as int? ?? 0,
                 };
             }
         }
 
         private void FrmFilm_Loaded(object sender, RoutedEventArgs e)
         {
-
+            if(CFilm.GetInstance.Code == string.Empty)
+            {
+                TxtHarga.Text = "Rp. ";
+            }
         }
 
         private void TxtHarga_PreviewTextInput(object sender, TextCompositionEventArgs e)

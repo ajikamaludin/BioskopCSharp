@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Data;
 using BioskopCSharp.Views;
@@ -203,7 +200,7 @@ namespace BioskopCSharp.Controllers
                 "JOIN jadwal ON tiket.id_jadwal = jadwal.id_jadwal " +
                 "JOIN film ON jadwal.id_film = film.id_film " +
                 "JOIN ruang ON jadwal.id_ruang = ruang.id_ruang " +
-                "WHERE tiket.id_jadwal = '" + CodeJadwal +"' AND tiket.tgl_tiket LIKE '%" + today + "%'";
+                "WHERE tiket.id_jadwal = '" + CodeJadwal +"' AND tiket.tgl_tiket LIKE '" + today + "%'";
             ListTiket = _sql.ExecuteQuery(EntityTiket);
             
             int x = 0;
@@ -422,7 +419,8 @@ namespace BioskopCSharp.Controllers
                 {
                     if (!value.Database)
                     {
-                        _sql.Query = string.Format("INSERT INTO tiket (`id_jadwal`,`kursi`,`status`) VALUES ('{0}', '{1}', '1')", CodeJadwal, i);
+                        string Today = Convert.ToDateTime(DateTime.Now).ToString("yyyy-MM-dd HH:mm:ss");
+                        _sql.Query = string.Format("INSERT INTO tiket (`id_jadwal`,`kursi`,`tgl_tiket`,`status`) VALUES ('{0}', '{1}','{2}' ,'1')", CodeJadwal, i, Today);
                         isflaged = _sql.ExecuteUpdate();
                     }
                     flag = false;
@@ -546,7 +544,6 @@ namespace BioskopCSharp.Controllers
 
         public void Export(string datasetname, string filename, string srctable, ReportViewer rpt)
         {
-            Console.WriteLine("CODE TIKET ::::: " + CodeTiket);
             try
             {
                 var data = new DataSet();
