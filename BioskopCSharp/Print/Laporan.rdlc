@@ -430,7 +430,7 @@
           <BreakLocation>End</BreakLocation>
         </PageBreak>
         <Top>0.26958in</Top>
-        <Left>2.0925in</Left>
+        <Left>0.14458in</Left>
         <Height>0.5in</Height>
         <Width>6in</Width>
         <Style>
@@ -443,7 +443,7 @@
     <Height>2.61146cm</Height>
     <Style />
   </Body>
-  <Width>29.06099cm</Width>
+  <Width>16.38745cm</Width>
   <Page>
     <PageHeader>
       <Height>2.81932cm</Height>
@@ -467,8 +467,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.22792in</Top>
-          <Left>0.51959in</Left>
+          <Top>0.10292in</Top>
+          <Left>0.14459in</Left>
           <Height>0.47917in</Height>
           <Width>4.05208in</Width>
           <Style>
@@ -482,10 +482,10 @@
           </Style>
         </Textbox>
         <Line Name="Line1">
-          <Top>2.11349cm</Top>
+          <Top>1.47849cm</Top>
           <Left>0cm</Left>
           <Height>0cm</Height>
-          <Width>29.06099cm</Width>
+          <Width>15.62016cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -521,7 +521,7 @@
           </Paragraphs>
           <rd:DefaultName>ExecutionTime</rd:DefaultName>
           <Top>0.17639cm</Top>
-          <Left>0.84349cm</Left>
+          <Left>0.20849cm</Left>
           <Height>0.6cm</Height>
           <Width>3.63771cm</Width>
           <Style>
@@ -550,7 +550,7 @@
           </Paragraphs>
           <rd:DefaultName>PageNumber</rd:DefaultName>
           <Top>0.17639cm</Top>
-          <Left>25.82016cm</Left>
+          <Left>13.12016cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <ZIndex>1</ZIndex>
