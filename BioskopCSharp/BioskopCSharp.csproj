@@ -193,6 +193,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="bin\Debug\bioskop.db" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\BioskopCSharp.Models.MFilm.datasource" />
     <None Include="Properties\DataSources\BioskopCSharp.Models.MJadwal.datasource" />
@@ -272,34 +273,53 @@
     <Resource Include="Asset\Button\barulewat.png" />
     <Resource Include="Asset\Button\barupencet.png" />
     <Resource Include="Asset\Button\bataldiam.png" />
+    <Resource Include="Asset\Button\bataldisable.png" />
     <Resource Include="Asset\Button\batallewat.png" />
     <Resource Include="Asset\Button\batalpencet.png" />
+    <Resource Include="Asset\Button\bayardiam.png" />
+    <Resource Include="Asset\Button\bayardisable.png" />
+    <Resource Include="Asset\Button\bayarlewat.png" />
+    <Resource Include="Asset\Button\bayarpencet.png" />
     <Resource Include="Asset\Button\cetakdiam.png" />
+    <Resource Include="Asset\Button\cetakdisable.png" />
     <Resource Include="Asset\Button\cetaklewat.png" />
     <Resource Include="Asset\Button\cetakpencet.png" />
     <Resource Include="Asset\Button\hapusdiam.png" />
+    <Resource Include="Asset\Button\hapusdisable.png" />
     <Resource Include="Asset\Button\hapuslewat.png" />
     <Resource Include="Asset\Button\hapuspencet.png" />
-    <Resource Include="Asset\Button\keluar.jpg" />
-    <Resource Include="Asset\Button\keluarClicked.jpg" />
-    <Resource Include="Asset\Button\keluarHover.jpg" />
+    <Resource Include="Asset\Button\keluardiam.png" />
+    <Resource Include="Asset\Button\keluardisable.png" />
+    <Resource Include="Asset\Button\keluarlewat.png" />
+    <Resource Include="Asset\Button\keluarpencet.png" />
     <Resource Include="Asset\Button\kembalidiam.png" />
+    <Resource Include="Asset\Button\kembalidisable.png" />
     <Resource Include="Asset\Button\kembalilewat.png" />
     <Resource Include="Asset\Button\kembalipencet.png" />
     <Resource Include="Asset\Button\laporandiam.png" />
+    <Resource Include="Asset\Button\laporandisable.png" />
     <Resource Include="Asset\Button\laporanlewat.png" />
     <Resource Include="Asset\Button\laporanpencet.png" />
-    <Resource Include="Asset\Button\masuk.png" />
-    <Resource Include="Asset\Button\masukClicked.png" />
-    <Resource Include="Asset\Button\masukHover.png" />
+    <Resource Include="Asset\Button\masukdiam.png" />
+    <Resource Include="Asset\Button\masukdisable.png" />
+    <Resource Include="Asset\Button\masuklewat.png" />
+    <Resource Include="Asset\Button\masukpencet.png" />
+    <Resource Include="Asset\Button\selesaidiam.png" />
+    <Resource Include="Asset\Button\selesaidisable.png" />
+    <Resource Include="Asset\Button\selesailewat.png" />
+    <Resource Include="Asset\Button\selesaipencet.png" />
     <Resource Include="Asset\Button\simpandiam.png" />
+    <Resource Include="Asset\Button\simpandisable.png" />
     <Resource Include="Asset\Button\simpanlewat.png" />
     <Resource Include="Asset\Button\simpanpencet.png" />
+    <Resource Include="Asset\Button\tambahdiam.png" />
+    <Resource Include="Asset\Button\tambahdisable.png" />
+    <Resource Include="Asset\Button\tambahlewat.png" />
+    <Resource Include="Asset\Button\tambahpencet.png" />
     <Resource Include="Asset\Button\ubahdiam.png" />
+    <Resource Include="Asset\Button\ubahdisable.png" />
     <Resource Include="Asset\Button\ubahlewat.png" />
     <Resource Include="Asset\Button\ubahpencet.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64NotS\msvcr120.dll" />
     <Content Include="SqlServerTypes\x64NotS\SqlServerSpatial140.dll" />
