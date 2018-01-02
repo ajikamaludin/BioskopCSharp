@@ -320,6 +320,17 @@
     <Resource Include="Asset\Button\ubahdisable.png" />
     <Resource Include="Asset\Button\ubahlewat.png" />
     <Resource Include="Asset\Button\ubahpencet.png" />
+    <Resource Include="Asset\Background\filmact.png" />
+    <Resource Include="Asset\Background\filmview.png" />
+    <Resource Include="Asset\Background\jadwalact.png" />
+    <Resource Include="Asset\Background\jadwalview.png" />
+    <Resource Include="Asset\Background\mainview.png" />
+    <Resource Include="Asset\Background\mainview2.png" />
+    <Resource Include="Asset\Background\ruangview.png" />
+    <Resource Include="Asset\Background\tiketview.png" />
+    <Resource Include="Asset\Background\useract.png" />
+    <Resource Include="Asset\Background\userlogin.png" />
+    <Resource Include="Asset\Background\userview.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64NotS\msvcr120.dll" />
     <Content Include="SqlServerTypes\x64NotS\SqlServerSpatial140.dll" />
