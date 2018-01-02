@@ -57,9 +57,12 @@ namespace BioskopCSharp.Views.FilmView
 
         private void BtnSimpan_Click(object sender, RoutedEventArgs e)
         {
-            if(CFilm.GetInstance.Code != string.Empty)
+            if(TxtHarga.Text.Length <= 4)
             {
-                
+                MessageBox.Show("Harga Salah !!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else if(CFilm.GetInstance.Code != string.Empty)
+            {
                     CFilm.GetInstance.Update(CreateModel);
             }
             else if(CFilm.GetInstance.Code == string.Empty)
