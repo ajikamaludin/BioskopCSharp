@@ -74,11 +74,6 @@ namespace BioskopCSharp.Views.TiketView
             BtnPrint.IsEnabled = false;
         }
 
-        private void BtnLaporan_Click(object sender, RoutedEventArgs e)
-        {
-            _ctrl.Index("Print");
-        }
-
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             Close();

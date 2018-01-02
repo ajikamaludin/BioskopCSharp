@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.CetakView"
-        mc:Ignorable="d"
-        Title="CetakPreview" Height="300" Width="300">
+        xmlns:if="http://schemas.microsoft.com/netfx/2007/xaml/presentation"
+        xmlns:rpt="clr-namespace:Microsoft.Reporting.WinForms;assembly=Microsoft.ReportViewer.WinForms"
+        mc:Ignorable="d" x:Name="FrmPrintLaporanPreview" Loaded="FrmPrintLaporanPreview_Loaded"
+        Title="Cetak Preview" Height="600" Width="400" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
     <Grid>
-        
+        <if:WindowsFormsHost Grid.Row="1">
+            <rpt:ReportViewer x:Name="RptViewer" />
+        </if:WindowsFormsHost>
     </Grid>
 </Window>

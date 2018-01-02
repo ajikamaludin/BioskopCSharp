@@ -12,8 +12,7 @@
                   SelectedCellsChanged="TblDataTiket_SelectedCellsChanged" MouseDoubleClick="TblDataTiket_MouseDoubleClick"
                   HorizontalAlignment="Left" Height="210" Margin="10,10,0,0" VerticalAlignment="Top" Width="569"/>
         <Button x:Name="BtnPrint" Click="BtnPrint_Click" Content="Cetak" HorizontalAlignment="Left" Margin="21,232,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="BtnLaporan" Click="BtnLaporan_Click" Content="Laporan" HorizontalAlignment="Left" Margin="110,232,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Kembali" HorizontalAlignment="Left" Margin="200,232,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Kembali" HorizontalAlignment="Right" Margin="0,232,33,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

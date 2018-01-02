@@ -117,7 +117,8 @@ namespace BioskopCSharp.Controllers
             if (act == "PrintTiket")
             {
                 _viewPrintTiket.Show();
-            }else if(act == "ReadFilm")
+            }
+            else if(act == "ReadFilm")
             {
                 _tableJadwalFilm = ReadFilm();
             }

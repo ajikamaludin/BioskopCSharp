@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.CetakView"
         mc:Ignorable="d"
-        Title="Cetak Laporan" Height="300" Width="300">
+        Title="Cetak Laporan" Height="300" Width="300" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
     <Grid>
         <DatePicker x:Name="DateStart" Margin="10,48,0,0" VerticalAlignment="Top" Height="32" HorizontalAlignment="Left" Width="112"/>
         <DatePicker x:Name="DateEnd" Margin="0,48,10,0" HorizontalAlignment="Right" Height="32" VerticalAlignment="Top" Width="112"/>

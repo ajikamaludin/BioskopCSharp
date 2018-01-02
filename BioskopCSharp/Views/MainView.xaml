@@ -24,7 +24,9 @@
                 <MenuItem Header="_Tiket" x:Name="MnuTiket" Click="MnuTiket_Click"/>
                 <MenuItem Header="_Jadwal" x:Name="MnuAdmin" Click="MnuAdmin_Click" />
             </MenuItem>
-
+            <MenuItem Header="_Report">
+                <MenuItem Header="_Pilih Tanggal" x:Name="MnuLaporan" Click="MnuLaporan_Click" />
+            </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="About" x:Name="MnuAbout" Click="MnuAbout_Click"/>
             </MenuItem>

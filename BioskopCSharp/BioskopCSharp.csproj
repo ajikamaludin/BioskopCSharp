@@ -179,7 +179,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="bin\Debug\Print\Laporan.rdlc" />
+    <EmbeddedResource Include="bin\Debug\Print\Laporan.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="bin\Debug\Print\Tiket.rdlc">
       <SubType>Designer</SubType>
     </EmbeddedResource>
