@@ -410,6 +410,7 @@ namespace BioskopCSharp.Controllers
             {
                 value.Kursi.IsEnabled = false;
                 value.Kursi.IsChecked = false;
+                value.Database = false;
             }
         }
 
@@ -559,6 +560,7 @@ namespace BioskopCSharp.Controllers
             }
         }
 
+        //Export To Print
         public void Export(string datasetname, string filename, string srctable, ReportViewer rpt)
         {
             try
@@ -589,6 +591,39 @@ namespace BioskopCSharp.Controllers
             catch (Exception e)
             {
                 Console.WriteLine("ERROR: Controller.FillDataReport at " + e.StackTrace);
+            }
+        }
+
+        //Shutdown App
+        public void Shutdown()
+        {
+            var msg = MessageBox.Show("Yakin anda ingin menutup aplikasi ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                if (_ctrl != null)
+                {
+                    Dispose();
+                }
+                GC.Collect();
+                App.Current.Shutdown();
+            }
+        }
+
+        public void Shutdown(System.ComponentModel.CancelEventArgs e)
+        {
+            var msg = MessageBox.Show("Yakin anda ingin menutup aplikasi ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (msg == MessageBoxResult.Yes)
+            {
+                if (_ctrl != null)
+                {
+                    Dispose();
+                }
+                GC.Collect();
+                App.Current.Shutdown();
+            }
+            else
+            {
+                e.Cancel = true;
             }
         }
     }

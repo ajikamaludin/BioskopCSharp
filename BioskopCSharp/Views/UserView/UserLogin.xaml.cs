@@ -58,12 +58,7 @@ namespace BioskopCSharp.Views.UserView
 
         private void Btnkeluar_Click(object sender, RoutedEventArgs e)
         {
-            var msg = MessageBox.Show("Yakin anda ingin menutup aplikasi ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (msg == MessageBoxResult.Yes)
-            {
-                GC.Collect();
-                App.Current.Shutdown();
-            }
+            _mctrl.Shutdown();
         }
     }
 }
