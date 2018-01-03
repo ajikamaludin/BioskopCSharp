@@ -20,7 +20,7 @@
         <ImageBrush x:Key="ubah3"
              ImageSource="/BioskopCSharp;component/Asset/Button/ubahpencet.png"/>
         <ImageBrush x:Key="ubah4"
-             ImageSource="/BioskopCSharp;component/Asset/Button/hapusdisable.png"/>
+             ImageSource="/BioskopCSharp;component/Asset/Button/ubahdisable.png"/>
         <ImageBrush x:Key="hapus1"
              ImageSource="/BioskopCSharp;component/Asset/Button/hapusdiam.png"/>
         <ImageBrush x:Key="hapus2"
@@ -76,7 +76,7 @@
                     <Setter TargetName="gridy" Property="Background" Value="{StaticResource hapus3}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="false">
-                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource ubah4}" />
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource hapus4}" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>

@@ -54,9 +54,9 @@
             <ImageBrush ImageSource="/BioskopCSharp;component/Asset/Background/filmact.png"/>
         </Grid.Background>
 
-        <TextBox x:Name="TxtJudul"  HorizontalAlignment="Left" Height="26" Margin="105,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="203" BorderBrush="{x:Null}" Background="{x:Null}"/>
+        <TextBox x:Name="TxtJudul"  HorizontalAlignment="Left" Height="26" Margin="105,180,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="203" BorderBrush="{x:Null}" Background="{x:Null}" BorderThickness="0"/>
         <TextBox x:Name="TxtHarga" PreviewTextInput="TxtHarga_PreviewTextInput"
-                 HorizontalAlignment="Left" Height="26" Margin="108,282,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                 HorizontalAlignment="Left" Height="26" Margin="108,282,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="205" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0"/>
         <Button x:Name="BtnSimpan" Template="{StaticResource imageRollsimpan}" Click="BtnSimpan_Click" Content="" HorizontalAlignment="Left" Margin="86,345,0,0" VerticalAlignment="Top" Width="127" Height="71"/>
         <Button x:Name="BtnBatal" Template="{StaticResource imageRollbatal}" Click="BtnBatal_Click" Content="" HorizontalAlignment="Left" Margin="201,345,0,0" VerticalAlignment="Top" Width="127" Height="71"/>
     </Grid>

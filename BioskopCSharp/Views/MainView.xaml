@@ -53,6 +53,8 @@
              ImageSource="/BioskopCSharp;component/Asset/Button/bayarlewat.png"/>
         <ImageBrush x:Key="bayar3"
              ImageSource="/BioskopCSharp;component/Asset/Button/bayarpencet.png"/>
+        <ImageBrush x:Key="bayar4"
+             ImageSource="/BioskopCSharp;component/Asset/Button/bayardisable.png"/>
         <ControlTemplate TargetType="Button" x:Key="imageRolltambah">
             <Grid Name="gridy" Background="{StaticResource tambah1}">
                 <ContentPresenter  />
@@ -67,7 +69,7 @@
                 <Trigger Property="IsEnabled" Value="false">
                     <Setter TargetName="gridy" Property="Background" Value="{StaticResource tambah4}" />
                 </Trigger>
-                
+
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <ControlTemplate TargetType="Button" x:Key="imageRollbatal">
@@ -145,6 +147,9 @@
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="gridy" Property="Background" Value="{StaticResource bayar3}" />
                 </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource bayar4}" />
+                </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
     </Window.Resources>
@@ -194,53 +199,51 @@
                       SelectedCellsChanged="TblMainDataFilm_SelectedCellsChanged" AutoGeneratingColumn="TblMainDataFilm_AutoGeneratingColumn"
                       HorizontalAlignment="Left" Height="163" Margin="47,139,0,0" VerticalAlignment="Top" Width="377" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF0C0C0C" RowBackground="{x:Null}" FontSize="14" />
             <ComboBox x:Name="CboMainDataWaktu" SelectionChanged="CboMainDataWaktu_SelectionChanged" HorizontalAlignment="Left" Margin="355,184,0,0" VerticalAlignment="Top" Width="120" Height="22" Grid.Column="1" BorderBrush="{x:Null}"  />
-            <Rectangle x:Name="KotakKursi" HorizontalAlignment="Left" Height="212" Margin="53,357,0,0" VerticalAlignment="Top" Width="506" Grid.ColumnSpan="2"/>
+            <Rectangle x:Name="KotakKursi" HorizontalAlignment="Left" Height="212" Margin="53,357,0,0" VerticalAlignment="Top" Width="446" Grid.ColumnSpan="2"/>
             <Button x:Name="BtnAdd" Template="{StaticResource imageRolltambah}" Click="BtnAdd_Click" HorizontalAlignment="Left" Margin="339,219,0,0" VerticalAlignment="Top" Width="144" Height="76" Grid.Column="1"/>
             <Button x:Name="BtnRefresh" Template="{StaticResource imageRollbatal}" Click="BtnRefresh_Click"  HorizontalAlignment="Left" Margin="337,269,0,0" VerticalAlignment="Top" Width="144" Height="76" Grid.Column="1"/>
             <!-- End Menu -->
 
             <!-- Start Kursi -->
-            <CheckBox x:Name="KursiA1" Content="" HorizontalAlignment="Left" Margin="65,414,0,0" VerticalAlignment="Top" Height="14" Width="30" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiA2" Content="" HorizontalAlignment="Left" Margin="127,414,0,0" VerticalAlignment="Top" Height="14" Width="30" RenderTransformOrigin="-0.7,3.923" Grid.ColumnSpan="2" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiA3" Content="" HorizontalAlignment="Left" Margin="60,414,0,0" VerticalAlignment="Top" Height="14" Width="37" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiA4" Content="" HorizontalAlignment="Left" Margin="182,413,0,0" VerticalAlignment="Top" Height="14" Width="31" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiA5" Content="" HorizontalAlignment="Left" Margin="246,414,0,0" VerticalAlignment="Top" Height="14" Width="30" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiB1" Content="" HorizontalAlignment="Left" Margin="65,450,0,0" VerticalAlignment="Top" Height="15" Width="29" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiB2" Content="" HorizontalAlignment="Left" Margin="127,450,0,0" VerticalAlignment="Top" Height="15" Width="30" Grid.ColumnSpan="2" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiB3" Content="" HorizontalAlignment="Left" Margin="59,452,0,0" VerticalAlignment="Top" Height="14" Width="36" Grid.Column="1" RenderTransformOrigin="-1.2,2.786" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiB4" Content="" HorizontalAlignment="Left" Margin="183,450,0,0" VerticalAlignment="Top" Height="15" Width="30" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiB5" Content="" HorizontalAlignment="Left" Margin="246,450,0,0" VerticalAlignment="Top" Height="15" Width="29" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiC1" Content="" HorizontalAlignment="Left" Margin="65,487,0,0" VerticalAlignment="Top" Height="15" Width="30" RenderTransformOrigin="-0.7,2.643" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiC2" Content="" HorizontalAlignment="Left" Margin="127,487,0,0" VerticalAlignment="Top" Height="15" Width="30" Grid.ColumnSpan="2" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiC3" Content="" HorizontalAlignment="Left" Margin="59,487,0,0" VerticalAlignment="Top" Height="15" Width="37" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiC4" Content="" HorizontalAlignment="Left" Margin="184,487,0,0" VerticalAlignment="Top" Height="15" Width="31" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiC5" Content="" HorizontalAlignment="Left" Margin="246,487,0,0" VerticalAlignment="Top" Height="15" Width="30" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiD1" Content="" HorizontalAlignment="Left" Margin="66,523,0,0" VerticalAlignment="Top" Height="14" Width="31" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiD2" Content="" HorizontalAlignment="Left" Margin="128,523,0,0" VerticalAlignment="Top" Height="14" Width="31" Grid.ColumnSpan="2" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiD3" Content="" HorizontalAlignment="Left" Margin="59,523,0,0" VerticalAlignment="Top" Height="14" Width="38" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiD4" Content="" HorizontalAlignment="Left" Margin="184,523,0,0" VerticalAlignment="Top" Height="14" Width="32" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiD5" Content="" HorizontalAlignment="Left" Margin="246,524,0,0" VerticalAlignment="Top" Height="14" Width="31" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiA6" Content="" HorizontalAlignment="Left" Margin="310,415,0,0" VerticalAlignment="Top" Height="14" Width="30" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiB6" Content="" HorizontalAlignment="Left" Margin="309,453,0,0" VerticalAlignment="Top" Height="14" Width="29" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiC6" Content="" HorizontalAlignment="Left" Margin="309,487,0,0" VerticalAlignment="Top" Height="15" Width="30" Grid.Column="1" Background="{x:Null}"/>
-            <CheckBox x:Name="KursiD6" Content="" HorizontalAlignment="Left" Margin="310,523,0,0" VerticalAlignment="Top" Height="14" Width="31" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiA1" Content="" HorizontalAlignment="Left" Margin="65,414,0,0" VerticalAlignment="Top" Height="27" Width="41" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiA2" Content="" HorizontalAlignment="Left" Margin="127,414,0,0" VerticalAlignment="Top" Height="27" Width="41" RenderTransformOrigin="-0.7,3.923" Grid.ColumnSpan="2" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiA3" Content="" HorizontalAlignment="Left" Margin="60,414,0,0" VerticalAlignment="Top" Height="21" Width="44" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiA4" Content="" HorizontalAlignment="Left" Margin="182,413,0,0" VerticalAlignment="Top" Height="22" Width="46" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiA5" Content="" HorizontalAlignment="Left" Margin="246,414,0,0" VerticalAlignment="Top" Height="21" Width="45" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiB1" Content="" HorizontalAlignment="Left" Margin="65,450,0,0" VerticalAlignment="Top" Height="32" Width="41" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiB2" Content="" HorizontalAlignment="Left" Margin="127,450,0,0" VerticalAlignment="Top" Height="23" Width="41" Grid.ColumnSpan="2" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiB3" Content="" HorizontalAlignment="Left" Margin="59,452,0,0" VerticalAlignment="Top" Height="21" Width="45" Grid.Column="1" RenderTransformOrigin="-1.2,2.786" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiB4" Content="" HorizontalAlignment="Left" Margin="183,450,0,0" VerticalAlignment="Top" Height="23" Width="45" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiB5" Content="" HorizontalAlignment="Left" Margin="246,450,0,0" VerticalAlignment="Top" Height="23" Width="45" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiC1" Content="" HorizontalAlignment="Left" Margin="65,487,0,0" VerticalAlignment="Top" Height="23" Width="41" RenderTransformOrigin="-0.7,2.643" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiC2" Content="" HorizontalAlignment="Left" Margin="127,487,0,0" VerticalAlignment="Top" Height="23" Width="41" Grid.ColumnSpan="2" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiC3" Content="" HorizontalAlignment="Left" Margin="59,487,0,0" VerticalAlignment="Top" Height="23" Width="45" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiC4" Content="" HorizontalAlignment="Left" Margin="184,487,0,0" VerticalAlignment="Top" Height="21" Width="44" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiC5" Content="" HorizontalAlignment="Left" Margin="246,487,0,0" VerticalAlignment="Top" Height="23" Width="45" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiD1" Content="" HorizontalAlignment="Left" Margin="66,523,0,0" VerticalAlignment="Top" Height="28" Width="40" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiD2" Content="" HorizontalAlignment="Left" Margin="128,523,0,0" VerticalAlignment="Top" Height="22" Width="40" Grid.ColumnSpan="2" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiD3" Content="" HorizontalAlignment="Left" Margin="59,523,0,0" VerticalAlignment="Top" Height="22" Width="45" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiD4" Content="" HorizontalAlignment="Left" Margin="184,523,0,0" VerticalAlignment="Top" Height="22" Width="44" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiD5" Content="" HorizontalAlignment="Left" Margin="246,524,0,0" VerticalAlignment="Top" Height="21" Width="45" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiA6" Content="" HorizontalAlignment="Left" Margin="310,415,0,0" VerticalAlignment="Top" Height="26" Width="47" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiB6" Content="" HorizontalAlignment="Left" Margin="309,453,0,0" VerticalAlignment="Top" Height="29" Width="48" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiC6" Content="" HorizontalAlignment="Left" Margin="309,487,0,0" VerticalAlignment="Top" Height="23" Width="42" Grid.Column="1" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiD6" Content="" HorizontalAlignment="Left" Margin="310,523,0,0" VerticalAlignment="Top" Height="28" Width="41" Grid.Column="1" Background="{x:Null}"/>
             <!-- End Kursi -->
 
             <!--Part 2-->
             <DataGrid x:Name="TblMainDataKasir" ItemsSource="{Binding}" AutoGeneratingColumn="TblMainDataKasir_AutoGeneratingColumn"
                       SelectedCellsChanged="TblMainDataKasir_SelectedCellsChanged" PreviewKeyDown="TblMainDataKasir_PreviewKeyDown"
-                      HorizontalAlignment="Left" Height="221" Margin="536,138,0,0" VerticalAlignment="Top" Width="366" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" RowBackground="{x:Null}" FontSize="14"/>
-            <TextBox x:Name="TxtUangBayar" HorizontalAlignment="Left" Height="23" Margin="726,427,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14"/>
+                      HorizontalAlignment="Left" Height="221" Margin="536,138,0,0" VerticalAlignment="Top" Width="366" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" RowBackground="{x:Null}" FontSize="14"
+                      MouseDoubleClick="TblMainDataKasir_MouseDoubleClick"/>
+            <TextBox x:Name="TxtUangBayar" HorizontalAlignment="Left" Height="23" Margin="696,431,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" BorderThickness="0"/>
 
             <Button x:Name="BtnDelete" Template="{StaticResource imageRollhapus}" Click="BtnDelete_Click" HorizontalAlignment="Left" Margin="907,117,0,0" VerticalAlignment="Top" Width="144" Grid.Column="1" Height="76"/>
             <Button x:Name="BtnBayar" Click="BtnBayar_Click" Template="{StaticResource imageRollbayar}" HorizontalAlignment="Left" Margin="790,498,0,0" VerticalAlignment="Top" Width="144" Height="76" Grid.Column="1"/>
             <Button x:Name="BtnPrint" Click="BtnPrint_Click" Template="{StaticResource imageRollcetak}" HorizontalAlignment="Left" Margin="666,498,0,0" VerticalAlignment="Top" Width="144" Grid.Column="1" Height="76"/>
             <Button x:Name="BtnDone" Template="{StaticResource imageRollselesai}" Click="BtnDone_Click" HorizontalAlignment="Left" Margin="906,164,0,0" VerticalAlignment="Top" Width="144" Grid.Column="1" Height="76"/>
-            <Label Content="Rp." Grid.Column="1" HorizontalAlignment="Left" Margin="695,425,0,0" VerticalAlignment="Top" FontSize="14"/>
-            <Label Content="Rp." Grid.Column="1" HorizontalAlignment="Left" Margin="695,466,0,0" VerticalAlignment="Top" FontSize="14"/>
-            <Label Content="Rp." Grid.Column="1" HorizontalAlignment="Left" Margin="693,383,0,0" VerticalAlignment="Top" FontSize="14"/>
-            <Label x:Name="LbTotalHarga" Content="0" Grid.Column="1" HorizontalAlignment="Left" Margin="726,383,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.438,-0.026" FontSize="14"/>
-            <Label x:Name="LbKembalian" Content="0" Grid.Column="1" HorizontalAlignment="Left" Margin="728,466,0,0" VerticalAlignment="Top" FontSize="14"/>
+            <Label x:Name="LbTotalHarga" Content="0" Grid.Column="1" HorizontalAlignment="Left" Margin="693,383,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.438,-0.026" FontSize="14"/>
+            <Label x:Name="LbKembalian" Content="0" Grid.Column="1" HorizontalAlignment="Left" Margin="695,466,0,0" VerticalAlignment="Top" FontSize="14"/>
         </Grid>
     </Grid>
 

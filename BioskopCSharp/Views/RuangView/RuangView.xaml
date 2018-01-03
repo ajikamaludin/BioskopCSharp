@@ -26,7 +26,7 @@
         <ImageBrush x:Key="ubah3"
              ImageSource="/BioskopCSharp;component/Asset/Button/ubahpencet.png"/>
         <ImageBrush x:Key="ubah4"
-             ImageSource="/BioskopCSharp;component/Asset/Button/hapusdisable.png"/>
+             ImageSource="/BioskopCSharp;component/Asset/Button/ubahdisable.png"/>
         <ImageBrush x:Key="hapus1"
              ImageSource="/BioskopCSharp;component/Asset/Button/hapusdiam.png"/>
         <ImageBrush x:Key="hapus2"
@@ -101,7 +101,7 @@
                     <Setter TargetName="gridy" Property="Background" Value="{StaticResource hapus3}" />
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="false">
-                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource ubah4}" />
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource hapus4}" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -141,9 +141,9 @@
         </Grid.ColumnDefinitions>
         <DataGrid x:Name="TblDataRuang" ItemsSource="{Binding}" SelectedCellsChanged="TblDataRuang_SelectedCellsChanged"
                   AutoGeneratingColumn="TblDataRuang_AutoGeneratingColumn"
-                  HorizontalAlignment="Left" Height="182" Margin="42,127,0,0" VerticalAlignment="Top" Width="334" Foreground="Black" RowBackground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}"/>
+                  HorizontalAlignment="Left" Height="182" Margin="42,127,0,0" VerticalAlignment="Top" Width="334" Foreground="Black" RowBackground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14"/>
         <Button x:Name="BtnNew" Template="{StaticResource imageRollbaru}" Click="BtnNew_Click" Content="" HorizontalAlignment="Left" Margin="25,353,0,0" VerticalAlignment="Top" Width="127" Height="71" />
-        <TextBox x:Name="TxtNama" HorizontalAlignment="Left" Height="18" Margin="159,335,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.992,0.543" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" SelectionBrush="{x:Null}"/>
+        <TextBox x:Name="TxtNama" HorizontalAlignment="Left" Height="18" Margin="159,335,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.992,0.543" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" SelectionBrush="{x:Null}" BorderThickness="0"/>
         <Button x:Name="BtnSav" Template="{StaticResource imageRollsimpan}" Click="BtnSav_Click" Content="" HorizontalAlignment="Left" Margin="25,353,0,0" VerticalAlignment="Top" Width="127" Height="71"/>
         <Button x:Name="BtnEdit" Template="{StaticResource imageRollubah}" Click="BtnEdit_Click" Content="" HorizontalAlignment="Left" Margin="142,354,0,0" VerticalAlignment="Top" Width="127" Height="71"/>
         <Button x:Name="BtnDelete" Template="{StaticResource imageRollhapus}" Click="BtnDelete_Click" Content="" HorizontalAlignment="Left" Margin="260,354,0,0" VerticalAlignment="Top" Width="127" Height="71"/>

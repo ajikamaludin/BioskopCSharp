@@ -133,6 +133,10 @@ namespace BioskopCSharp.Views
             {
                 _ctrl.CodeTiket = ((DataRowView)TblMainDataKasir.SelectedItems[0])[0].ToString();
             }
+            else
+            {
+                MessageBox.Show("Payment salah");
+            }
         }
 
         private void CboMainDataWaktu_SelectionChanged(object sender, SelectionChangedEventArgs e)
