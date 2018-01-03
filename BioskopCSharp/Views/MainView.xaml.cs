@@ -292,6 +292,11 @@ namespace BioskopCSharp.Views
             CFilm.GetInstance.Index();
         }
 
+        private void MnuLaporan_Click(object sender, RoutedEventArgs e)
+        {
+            CTiket.GetInstance.Index("Laporan");
+        }
+
         //Menu About
         private void MnuAbout_Click(object sender, RoutedEventArgs e)
         {
@@ -316,6 +321,5 @@ namespace BioskopCSharp.Views
         {
 
         }
-
     }
 }

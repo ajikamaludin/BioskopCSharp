@@ -28,6 +28,7 @@ namespace BioskopCSharp.Controllers
         private static DataTable _table;
 
         public string Code { get; set; }
+
         public string DateStart { get; set; }
         public string DateEnd { get; set; }
 
@@ -73,7 +74,7 @@ namespace BioskopCSharp.Controllers
 
         public void Index(string act)
         {
-            if(act == "Print")
+            if(act == "Laporan")
             {
                 _viewCatakAct = new CetakViewAct();
                 _viewCatakAct.Show();
@@ -167,7 +168,8 @@ namespace BioskopCSharp.Controllers
                     "film.harga_film as Harga, " +
                     "tiket.tgl_tiket as TglTiket " +
                     "FROM tiket JOIN jadwal ON tiket.id_jadwal = jadwal.id_jadwal " +
-                    "JOIN film ON jadwal.id_film = film.id_film JOIN ruang ON jadwal.id_ruang = ruang.id_ruang WHERE tiket.id_tiket = '";
+                    "JOIN film ON jadwal.id_film = film.id_film JOIN ruang ON jadwal.id_ruang = ruang.id_ruang " +
+                    "WHERE tiket.tgl_tiket >= '" + DateStart +"' AND tiket.tgl_tiket <= '" + DateEnd + "'";
                 _sql.Report(srctable, out data);
 
                 var datasource = new ReportDataSource(datasetname, data.Tables[srctable]);

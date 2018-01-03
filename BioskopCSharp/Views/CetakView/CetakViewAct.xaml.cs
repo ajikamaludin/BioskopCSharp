@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using BioskopCSharp.Controllers;
 
 namespace BioskopCSharp.Views.CetakView
 {
@@ -22,12 +12,40 @@ namespace BioskopCSharp.Views.CetakView
         public CetakViewAct()
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
+        }
+
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
 
         private void BtnCetak_Click(object sender, RoutedEventArgs e)
         {
-            string dateStart = DateStart.SelectedDate.Value.Date.ToString("yyyy-MM-dd");
-            Console.WriteLine(dateStart);
+            if (DateStart.SelectedDate == null)
+            {
+                MessageBox.Show("Anda Belum Memilih Tanggal Awal", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else if(DateEnd.SelectedDate == null)
+            {
+                MessageBox.Show("Anda Belum Memilih Tanggal Akhir", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            else
+            {
+                string dateStart = DateStart.SelectedDate.Value.Date.ToString("yyyy-MM-dd");
+                string dateEnd = DateEnd.SelectedDate.Value.Date.ToString("yyyy-MM-dd");
+                if (dateEnd.Length < 10 || dateStart.Length < 10)
+                {
+                    MessageBox.Show("System Mengalami Kesalahan", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                }
+                else
+                {
+                    CTiket.GetInstance.DateStart = dateStart;
+                    CTiket.GetInstance.DateEnd = dateEnd;
+                    CTiket.GetInstance.Index("Preview");
+                }
+            }
         }
     }
 }
