@@ -13,12 +13,16 @@
              ImageSource="/BioskopCSharp;component/Asset/Button/tambahlewat.png"/>
         <ImageBrush x:Key="tambah3"
              ImageSource="/BioskopCSharp;component/Asset/Button/tambahpencet.png"/>
+        <ImageBrush x:Key="tambah4"
+             ImageSource="/BioskopCSharp;component/Asset/Button/tambahdisable.png"/>
         <ImageBrush x:Key="batal1"
              ImageSource="/BioskopCSharp;component/Asset/Button/bataldiam.png"/>
         <ImageBrush x:Key="batal2"
              ImageSource="/BioskopCSharp;component/Asset/Button/batallewat.png"/>
         <ImageBrush x:Key="batal3"
              ImageSource="/BioskopCSharp;component/Asset/Button/batalpencet.png"/>
+        <ImageBrush x:Key="batal4"
+             ImageSource="/BioskopCSharp;component/Asset/Button/bataldisable.png"/>
         <ImageBrush x:Key="hapus1"
              ImageSource="/BioskopCSharp;component/Asset/Button/hapusdiam.png"/>
         <ImageBrush x:Key="hapus2"
@@ -60,6 +64,10 @@
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="gridy" Property="Background" Value="{StaticResource tambah3}" />
                 </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource tambah4}" />
+                </Trigger>
+                
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <ControlTemplate TargetType="Button" x:Key="imageRollbatal">
@@ -72,6 +80,9 @@
                 </Trigger>
                 <Trigger Property="IsPressed" Value="True">
                     <Setter TargetName="gridy" Property="Background" Value="{StaticResource batal3}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource batal4}" />
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -155,7 +166,9 @@
                 <MenuItem Header="_Tiket" x:Name="MnuTiket" Click="MnuTiket_Click"/>
                 <MenuItem Header="_Jadwal" x:Name="MnuAdmin" Click="MnuAdmin_Click" />
             </MenuItem>
-
+            <MenuItem Header="_Report">
+                <MenuItem Header="_Pilih Tanggal" x:Name="MnuLaporan" Click="MnuLaporan_Click" />
+            </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="About" x:Name="MnuAbout" Click="MnuAbout_Click"/>
             </MenuItem>
@@ -172,7 +185,8 @@
             </Grid.ColumnDefinitions>
             <!--User Aktiv-->
             <Label x:Name="UserAktiv" Content="User" HorizontalAlignment="Left" Margin="952,-24,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.268,-0.473" Height="26" Grid.Column="1"/>
-            <Label x:Name="Tgl" Content="Timer" HorizontalAlignment="Left" Margin="36,93,0,0" VerticalAlignment="Top" Height="26" Grid.ColumnSpan="2" Width="130"/>
+            <Label x:Name="Tgl" Content="Timer" HorizontalAlignment="Left" Margin="65,84,0,0" VerticalAlignment="Top" Height="25" Grid.ColumnSpan="2" Width="132"/>
+            <Label x:Name="Tgl2" Content="Timer2" HorizontalAlignment="Left" Margin="73,97,0,0" VerticalAlignment="Top" Height="26" Grid.ColumnSpan="2" Width="132"/>
             <!--User-->
 
             <!-- Menu Start -->
@@ -186,7 +200,7 @@
             <!-- End Menu -->
 
             <!-- Start Kursi -->
-            <CheckBox x:Name="KursiA1" Checked="KursiA1_Checked" Content="" HorizontalAlignment="Left" Margin="65,414,0,0" VerticalAlignment="Top" Height="14" Width="30" Background="{x:Null}"/>
+            <CheckBox x:Name="KursiA1" Content="" HorizontalAlignment="Left" Margin="65,414,0,0" VerticalAlignment="Top" Height="14" Width="30" Background="{x:Null}"/>
             <CheckBox x:Name="KursiA2" Content="" HorizontalAlignment="Left" Margin="127,414,0,0" VerticalAlignment="Top" Height="14" Width="30" RenderTransformOrigin="-0.7,3.923" Grid.ColumnSpan="2" Background="{x:Null}"/>
             <CheckBox x:Name="KursiA3" Content="" HorizontalAlignment="Left" Margin="60,414,0,0" VerticalAlignment="Top" Height="14" Width="37" Grid.Column="1" Background="{x:Null}"/>
             <CheckBox x:Name="KursiA4" Content="" HorizontalAlignment="Left" Margin="182,413,0,0" VerticalAlignment="Top" Height="14" Width="31" Grid.Column="1" Background="{x:Null}"/>
