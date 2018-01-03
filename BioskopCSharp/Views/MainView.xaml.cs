@@ -51,19 +51,9 @@ namespace BioskopCSharp.Views
 
         private void FrmMain_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            var msg = MessageBox.Show("Yakin anda ingin menutup aplikasi ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (msg == MessageBoxResult.Yes)
+            if(_ctrl != null)
             {
-                if (_ctrl != null)
-                {
-                    _ctrl.Dispose();
-                }
-                GC.Collect();
-                App.Current.Shutdown();
-            }
-            else
-            {
-                e.Cancel = true;
+                _ctrl.Shutdown(e);
             }
         }
 
@@ -119,6 +109,10 @@ namespace BioskopCSharp.Views
                     _ctrl.CodeTiket = ((DataRowView)TblMainDataKasir.SelectedItems[0])[0].ToString();
                     _ctrl.Index("PrintTiket");
                     BtnPrint.IsEnabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("Payment salah");
                 }
             }
             else
@@ -258,16 +252,7 @@ namespace BioskopCSharp.Views
 
         private void MnuExit_Click(object sender, RoutedEventArgs e)
         {
-            var msg = MessageBox.Show("Yakin anda ingin menutup aplikasi ?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (msg == MessageBoxResult.Yes)
-            {
-                if (_ctrl != null)
-                {
-                    _ctrl.Dispose();
-                }
-                GC.Collect();
-                App.Current.Shutdown();
-            }
+            _ctrl.Shutdown();
         }
 
         private void MnuAdmin_Click(object sender, RoutedEventArgs e)
