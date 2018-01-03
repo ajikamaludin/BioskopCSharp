@@ -5,14 +5,87 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.TiketView"
         mc:Ignorable="d" x:Name="FrmTiket" Loaded="FrmTiket_Loaded" Closing="FrmTiket_Closing"
-        Title="Tiket" Height="300" Width="595.333" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
+        Title="Tiket" Height="500" Width="762" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Icon="/BioskopCSharp;component/Asset/logo2.png">
+    <Window.Resources>
+        <ImageBrush x:Key="cetak1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/cetakdiam.png"/>
+        <ImageBrush x:Key="cetak2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/cetaklewat.png"/>
+        <ImageBrush x:Key="cetak3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/cetakpencet.png"/>
+        <ImageBrush x:Key="cetak4"
+             ImageSource="/BioskopCSharp;component/Asset/Button/cetakdisable.png"/>
+        <ImageBrush x:Key="laporan1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/laporandiam.png"/>
+        <ImageBrush x:Key="laporan2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/laporanlewat.png"/>
+        <ImageBrush x:Key="laporan3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/laporanpencet.png"/>
+        <ImageBrush x:Key="laporan4"
+             ImageSource="/BioskopCSharp;component/Asset/Button/laporandisable.png"/>
+        <ImageBrush x:Key="kembali1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/kembalidiam.png"/>
+        <ImageBrush x:Key="kembali2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/kembalilewat.png"/>
+        <ImageBrush x:Key="kembali3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/kembalipencet.png"/>
+        <ControlTemplate TargetType="Button" x:Key="imageRollcetak">
+            <Grid Name="gridy" Background="{StaticResource cetak1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource cetak2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource cetak3}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource cetak4}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="imageRolllaporan">
+            <Grid Name="gridy" Background="{StaticResource laporan1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource laporan2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource laporan3}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource laporan4}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="imageRollkembali">
+            <Grid Name="gridy" Background="{StaticResource kembali1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource kembali2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource kembali3}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/BioskopCSharp;component/Asset/Background/tiketview.png"/>
+        </Grid.Background>
         <DataGrid x:Name="TblDataTiket" ItemsSource="{Binding}" 
                   AutoGeneratingColumn="TblDataTiket_AutoGeneratingColumn" PreviewKeyDown="TblDataTiket_PreviewKeyDown"
                   SelectedCellsChanged="TblDataTiket_SelectedCellsChanged" MouseDoubleClick="TblDataTiket_MouseDoubleClick"
-                  HorizontalAlignment="Left" Height="210" Margin="10,10,0,0" VerticalAlignment="Top" Width="569"/>
-        <Button x:Name="BtnPrint" Click="BtnPrint_Click" Content="Cetak" HorizontalAlignment="Left" Margin="21,232,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Kembali" HorizontalAlignment="Right" Margin="0,232,33,0" VerticalAlignment="Top" Width="75"/>
+                  HorizontalAlignment="Left" Height="240" Margin="47,132,0,0" VerticalAlignment="Top" Width="653" Foreground="Black" RowBackground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" SelectionChanged="TblDataTiket_SelectionChanged" />
+        <Button x:Name="BtnPrint" Click="BtnPrint_Click" Template="{StaticResource imageRollcetak}" Content="" HorizontalAlignment="Left" Margin="197,379,0,0" VerticalAlignment="Top" Width="125" Height="68"/>
+        <Button x:Name="BtnLaporan" Click="BtnLaporan_Click" Template="{StaticResource imageRolllaporan}" Content="" HorizontalAlignment="Left" Margin="314,379,0,0" VerticalAlignment="Top" Width="125" Height="68"/>
+        <Button x:Name="BtnClose" Click="BtnClose_Click" Template="{StaticResource imageRollkembali}" Content="" HorizontalAlignment="Left" Margin="429,379,0,0" VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.453,1.05" Height="68"/>
 
     </Grid>
 </Window>

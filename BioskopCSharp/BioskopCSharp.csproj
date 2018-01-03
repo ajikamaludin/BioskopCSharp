@@ -327,7 +327,6 @@
     <Resource Include="Asset\Background\jadwalact.png" />
     <Resource Include="Asset\Background\jadwalview.png" />
     <Resource Include="Asset\Background\mainview.png" />
-    <Resource Include="Asset\Background\mainview2.png" />
     <Resource Include="Asset\Background\ruangview.png" />
     <Resource Include="Asset\Background\tiketview.png" />
     <Resource Include="Asset\Background\useract.png" />

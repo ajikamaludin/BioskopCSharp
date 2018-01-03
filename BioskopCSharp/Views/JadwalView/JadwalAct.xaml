@@ -5,13 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.JadwalView"
         mc:Ignorable="d" x:Name="FrmJadwalEditor" Loaded="FrmJadwalEditor_Loaded" Closing="FrmJadwalEditor_Closing"
-        Title="Jadwal Editor" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
+        Title="Jadwal Editor" Height="500" Width="435" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="ToolWindow">
+    <Window.Resources>
+        <ImageBrush x:Key="simpan1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/simpandiam.png"/>
+        <ImageBrush x:Key="simpan2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/simpanlewat.png"/>
+        <ImageBrush x:Key="simpan3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/simpanpencet.png"/>
+        <ImageBrush x:Key="batal1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/bataldiam.png"/>
+        <ImageBrush x:Key="batal2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/batallewat.png"/>
+        <ImageBrush x:Key="batal3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/batalpencet.png"/>
+        <ControlTemplate TargetType="Button" x:Key="imageRollsimpan">
+            <Grid Name="gridy" Background="{StaticResource simpan1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource simpan2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource simpan3}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="imageRollbatal">
+            <Grid Name="gridy" Background="{StaticResource batal1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource batal2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource batal3}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
-        <ComboBox x:Name="CboRuang" HorizontalAlignment="Left" Margin="90,58,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox x:Name="CboFilm" HorizontalAlignment="Left" Margin="90,100,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="TxtWaktu" MaxLength="5" HorizontalAlignment="Left" Height="23" Margin="90,140,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="BtnSave" Click="BtnSave_Click" Content="Simpan" HorizontalAlignment="Left" Margin="44,204,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Batal" HorizontalAlignment="Left" Margin="184,204,0,0" VerticalAlignment="Top" Width="75"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="/BioskopCSharp;component/Asset/Background/jadwalact.png"/>
+        </Grid.Background>
+        <ComboBox x:Name="CboRuang" HorizontalAlignment="Left" Margin="153,143,0,0" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}"/>
+        <ComboBox x:Name="CboFilm" HorizontalAlignment="Left" Margin="153,241,0,0" VerticalAlignment="Top" Width="120" Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.883,1.682"/>
+        <TextBox x:Name="TxtWaktu" MaxLength="5" HorizontalAlignment="Left" Height="27" Margin="106,329,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="207" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Button x:Name="BtnSave" Template="{StaticResource imageRollsimpan}" Click="BtnSave_Click" Content="" HorizontalAlignment="Left" Margin="87,375,0,0" VerticalAlignment="Top" Width="127" Height="71"/>
+        <Button x:Name="BtnClose" Template="{StaticResource imageRollbatal}" Click="BtnClose_Click" Content="" HorizontalAlignment="Left" Margin="202,375,0,0" VerticalAlignment="Top" Width="127" Height="71" RenderTransformOrigin="0.623,0.5"/>
 
     </Grid>
 </Window>

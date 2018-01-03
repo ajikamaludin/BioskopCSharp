@@ -5,16 +5,110 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.UserView"
         mc:Ignorable="d" x:Name="FrmUser" Loaded="FrmUser_Loaded" Closing="FrmUser_Closing"
-        Title="User" Height="300" Width="349" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/BioskopCSharp;component/Asset/logo2.png">
-    <Grid>
+        Title="User" Height="500" Width="435" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/BioskopCSharp;component/Asset/logo2.png">
+    <Window.Resources>
+        <ImageBrush x:Key="baru1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/barudiam.png"/>
+        <ImageBrush x:Key="baru2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/barulewat.png"/>
+        <ImageBrush x:Key="baru3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/barupencet.png"/>
+        <ImageBrush x:Key="ubah1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/ubahdiam.png"/>
+        <ImageBrush x:Key="ubah2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/ubahlewat.png"/>
+        <ImageBrush x:Key="ubah3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/ubahpencet.png"/>
+        <ImageBrush x:Key="ubah4"
+             ImageSource="/BioskopCSharp;component/Asset/Button/hapusdisable.png"/>
+        <ImageBrush x:Key="hapus1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/hapusdiam.png"/>
+        <ImageBrush x:Key="hapus2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/hapuslewat.png"/>
+        <ImageBrush x:Key="hapus3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/hapuspencet.png"/>
+        <ImageBrush x:Key="hapus4"
+             ImageSource="/BioskopCSharp;component/Asset/Button/hapusdisable.png"/>
+        <ImageBrush x:Key="kembali1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/kembalidiam.png"/>
+        <ImageBrush x:Key="kembali2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/kembalilewat.png"/>
+        <ImageBrush x:Key="kembali3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/kembalipencet.png"/>
+        <ControlTemplate TargetType="Button" x:Key="imageRollbaru">
+            <Grid Name="gridy" Background="{StaticResource baru1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource baru2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource baru3}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="imageRollubah">
+            <Grid Name="gridy" Background="{StaticResource ubah1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource ubah2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource ubah3}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource ubah4}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="imageRollhapus">
+            <Grid Name="gridy" Background="{StaticResource hapus1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource hapus2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource hapus3}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource ubah4}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="imageRollkembali">
+            <Grid Name="gridy" Background="{StaticResource kembali1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource kembali2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource kembali3}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid Margin="-2,-1,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/BioskopCSharp;component/Asset/Background/userview.png"/>
+        </Grid.Background>
         <DataGrid x:Name="TblDataUser" ItemsSource="{Binding}" 
-                  EnableRowVirtualization="False" HeadersVisibility="Column" AutoGeneratingColumn="TblDataUser_AutoGeneratingColumn"  
+                  EnableRowVirtualization="False" AutoGeneratingColumn="TblDataUser_AutoGeneratingColumn"  
                   SelectedCellsChanged="TblDataUser_SelectedCellsChanged" MouseDoubleClick="TblDataUser_MouseDoubleClick" PreviewKeyDown="TblDataUser_PreviewKeyDown"
-                  HorizontalGridLinesBrush="Gray" HorizontalAlignment="Left" Height="156" Margin="10,10,0,0" VerticalAlignment="Top" Width="318" />
-        <Button x:Name="BtnNew" Click="BtnNew_Click" Content="Baru" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.04,-0.55"/>
-        <Button x:Name="BtnEdit" Click="BtnEdit_Click" Content="Ubah" HorizontalAlignment="Left" Margin="90,221,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="BtnDelete" Click="BtnDelete_Click" Content="Hapus" HorizontalAlignment="Left" Margin="170,221,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Kembali" HorizontalAlignment="Left" Margin="253,221,0,0" VerticalAlignment="Top" Width="75"/>
+                  HorizontalGridLinesBrush="Gray" HorizontalAlignment="Left" Height="198" Margin="41,133,0,0" VerticalAlignment="Top" Width="337" Background="{x:Null}" BorderBrush="{x:Null}" RowBackground="{x:Null}" Foreground="Black" FontSize="14"/>
+        <Button x:Name="BtnNew" Click="BtnNew_Click" Template="{StaticResource imageRollbaru}" Content="" HorizontalAlignment="Left" Margin="24,334,0,0" VerticalAlignment="Top" Width="127" Height="71" />
+        <Button x:Name="BtnEdit" Click="BtnEdit_Click" Template="{StaticResource imageRollubah}" Content="" HorizontalAlignment="Left" Margin="142,334,0,0" VerticalAlignment="Top" Width="127" Height="71"/>
+        <Button x:Name="BtnDelete" Click="BtnDelete_Click" Template="{StaticResource imageRollhapus}" Content="" HorizontalAlignment="Left" Margin="260,334,0,0" VerticalAlignment="Top" Width="127" Height="71"/>
+        <Button x:Name="BtnClose" Click="BtnClose_Click" Template="{StaticResource imageRollkembali}" Content="" HorizontalAlignment="Left" Margin="141,383,0,0" VerticalAlignment="Top" Width="127" Height="71" RenderTransformOrigin="1.229,0.231"/>
 
     </Grid>
 </Window>

@@ -4,18 +4,60 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.UserView"
-        mc:Ignorable="d" x:Name="FrmUserLogin" Loaded="FrmUserLogin_Loaded"
-        Title="Login" Height="300" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        mc:Ignorable="d" x:Name="FrmUserLogin" Loaded="FrmUserLogin_Loaded" Closing="FrmUserLogin_Closing"
+        Title="Login" Height="640" Width="1210" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
         WindowStyle="None" AllowsTransparency="True" Icon="/BioskopCSharp;component/Asset/logo2.png">
+    <Window.Resources>
+        <ImageBrush x:Key="masuk1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/masukdiam.png"/>
+        <ImageBrush x:Key="masuk2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/masuklewat.png"/>
+        <ImageBrush x:Key="masuk3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/masukpencet.png"/>
+        <ImageBrush x:Key="keluar1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/keluardiam.png"/>
+        <ImageBrush x:Key="keluar2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/keluarlewat.png"/>
+        <ImageBrush x:Key="keluar3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/keluarpencet.png"/>
+        <ControlTemplate TargetType="Button" x:Key="imageRollmasuk">
+            <Grid Name="gridy" Background="{StaticResource masuk1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource masuk2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource masuk3}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="imageRollkeluar">
+            <Grid Name="gridy" Background="{StaticResource keluar1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource keluar2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource keluar3}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/BioskopCSharp;component/Asset/Background/userlogin.png"/>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="71*"/>
-            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="TxtNama" HorizontalAlignment="Left" Height="23" Margin="90,69,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Height="23" Margin="90,116,0,0" Width="120" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Button x:Name="BtnLogin" Click="BtnLogin_Click" Content="Masuk" HorizontalAlignment="Left" Margin="115,157,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2"/>
-        <Button x:Name="Btnkeluar" Click="Btnkeluar_Click"  Content="Keluar" HorizontalAlignment="Left" Margin="115,193,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="TxtNama" HorizontalAlignment="Left" Height="24" Margin="542,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="White" FontSize="14" TextAlignment="Center"/>
+        <PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Height="23" Margin="542,352,0,0" Width="158" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="White" FontSize="14"/>
+        <Button x:Name="BtnLogin" Click="BtnLogin_Click" Content="" Template="{StaticResource imageRollmasuk}" HorizontalAlignment="Left" Margin="546,382,0,0" VerticalAlignment="Top" Width="140" Height="82"/>
+        <Button x:Name="Btnkeluar" Click="Btnkeluar_Click"  Content="" Template="{StaticResource imageRollkeluar}" HorizontalAlignment="Left" Margin="546,432,0,0" VerticalAlignment="Top" Width="140" Height="82"/>
 
     </Grid>
 </Window>

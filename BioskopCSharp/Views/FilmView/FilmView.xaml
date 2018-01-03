@@ -5,16 +5,126 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BioskopCSharp.Views.FilmView"
         mc:Ignorable="d" x:Name="FrmFilm" Loaded="FrmFilm_Loaded" Closing="FrmFilm_Closing"
-        Title="Film" Height="300" Width="387" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/BioskopCSharp;component/Asset/logo2.png">
+        Title="Film" Height="500" Width="435" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/BioskopCSharp;component/Asset/logo2.png">
+    <Window.Resources>
+        <ImageBrush x:Key="baru1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/barudiam.png"/>
+        <ImageBrush x:Key="baru2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/barulewat.png"/>
+        <ImageBrush x:Key="baru3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/barupencet.png"/>
+        <ImageBrush x:Key="simpan1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/simpandiam.png"/>
+        <ImageBrush x:Key="simpan2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/simpanlewat.png"/>
+        <ImageBrush x:Key="simpan3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/simpanpencet.png"/>
+        <ImageBrush x:Key="ubah1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/ubahdiam.png"/>
+        <ImageBrush x:Key="ubah2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/ubahlewat.png"/>
+        <ImageBrush x:Key="ubah3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/ubahpencet.png"/>
+        <ImageBrush x:Key="ubah4"
+             ImageSource="/BioskopCSharp;component/Asset/Button/hapusdisable.png"/>
+        <ImageBrush x:Key="hapus1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/hapusdiam.png"/>
+        <ImageBrush x:Key="hapus2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/hapuslewat.png"/>
+        <ImageBrush x:Key="hapus3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/hapuspencet.png"/>
+        <ImageBrush x:Key="hapus4"
+             ImageSource="/BioskopCSharp;component/Asset/Button/hapusdisable.png"/>
+        <ImageBrush x:Key="kembali1"
+             ImageSource="/BioskopCSharp;component/Asset/Button/kembalidiam.png"/>
+        <ImageBrush x:Key="kembali2"
+             ImageSource="/BioskopCSharp;component/Asset/Button/kembalilewat.png"/>
+        <ImageBrush x:Key="kembali3"
+             ImageSource="/BioskopCSharp;component/Asset/Button/kembalipencet.png"/>
+        <ControlTemplate TargetType="Button" x:Key="imageRollbaru">
+            <Grid Name="gridy" Background="{StaticResource baru1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource baru2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource baru3}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="imageRollsimpan">
+            <Grid Name="gridy" Background="{StaticResource simpan1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource simpan2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource simpan3}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="imageRollubah">
+            <Grid Name="gridy" Background="{StaticResource ubah1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource ubah2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource ubah3}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource ubah4}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="imageRollhapus">
+            <Grid Name="gridy" Background="{StaticResource hapus1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource hapus2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource hapus3}" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource ubah4}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate TargetType="Button" x:Key="imageRollkembali">
+            <Grid Name="gridy" Background="{StaticResource kembali1}">
+                <ContentPresenter  />
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource kembali2}" />
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="gridy" Property="Background" Value="{StaticResource kembali3}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/BioskopCSharp;component/Asset/Background/filmview.png"/>
+        </Grid.Background>
         <DataGrid x:Name="TblDataFilm" ItemsSource="{Binding}" AutoGeneratingColumn="TblDataFilm_AutoGeneratingColumn"
                   SelectedCellsChanged="TblDataFilm_SelectedCellsChanged" MouseDoubleClick="TblDataFilm_MouseDoubleClick"
                   PreviewKeyDown="TblDataFilm_PreviewKeyDown"
-                  HorizontalAlignment="Left" Height="189" Margin="10,10,0,0" VerticalAlignment="Top" Width="359"/>
-        <Button x:Name="BtnNew" Click="BtnNew_Click" Content="Baru" HorizontalAlignment="Left" Margin="13,225,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.16,-0.2"/>
-        <Button x:Name="BtnEdit" Click="BtnEdit_Click" Content="Edit" HorizontalAlignment="Left" Margin="108,225,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="BtnDelete" Click="BtnDelete_Click" Content="Hapus" HorizontalAlignment="Left" Margin="201,225,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="BtnClose" Click="BtnClose_Click" Content="Kembali" HorizontalAlignment="Left" Margin="289,225,0,0" VerticalAlignment="Top" Width="75"/>
+                  HorizontalAlignment="Left" Height="189" Margin="42,133,0,0" VerticalAlignment="Top" Width="334" Foreground="Black" RowBackground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14"/>
+        <Button x:Name="BtnNew" Template="{StaticResource imageRollbaru}" Click="BtnNew_Click" Content="" HorizontalAlignment="Left" Margin="24,332,0,0" VerticalAlignment="Top" Width="127" Height="71"/>
+        <Button x:Name="BtnEdit" Template="{StaticResource imageRollubah}" Click="BtnEdit_Click" Content="" HorizontalAlignment="Left" Margin="142,332,0,0" VerticalAlignment="Top" Width="127"  Height="71"/>
+        <Button x:Name="BtnDelete" Template="{StaticResource imageRollhapus}" Click="BtnDelete_Click" Content="" HorizontalAlignment="Left" Margin="260,332,0,0" VerticalAlignment="Top" Width="127" Height="71"/>
+        <Button x:Name="BtnClose" Template="{StaticResource imageRollkembali}" Click="BtnClose_Click" Content="" HorizontalAlignment="Left" Margin="141,381,0,0" VerticalAlignment="Top" Width="127" Height="71"/>
 
     </Grid>
 </Window>
