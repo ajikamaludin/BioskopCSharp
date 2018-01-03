@@ -83,8 +83,8 @@
                   AutoGeneratingColumn="TblDataTiket_AutoGeneratingColumn" PreviewKeyDown="TblDataTiket_PreviewKeyDown"
                   SelectedCellsChanged="TblDataTiket_SelectedCellsChanged" MouseDoubleClick="TblDataTiket_MouseDoubleClick"
                   HorizontalAlignment="Left" Height="240" Margin="47,132,0,0" VerticalAlignment="Top" Width="653" Foreground="Black" RowBackground="{x:Null}" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14" />
-        <Button x:Name="BtnPrint" Click="BtnPrint_Click" Template="{StaticResource imageRollcetak}" Content="" HorizontalAlignment="Left" Margin="197,379,0,0" VerticalAlignment="Top" Width="125" Height="68"/>
-        <Button x:Name="BtnClose" Click="BtnClose_Click" Template="{StaticResource imageRollkembali}" Content="" HorizontalAlignment="Left" Margin="429,379,0,0" VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.453,1.05" Height="68"/>
+        <Button x:Name="BtnPrint" Click="BtnPrint_Click" Template="{StaticResource imageRollcetak}" Content="" HorizontalAlignment="Left" Margin="245,379,0,0" VerticalAlignment="Top" Width="125" Height="68"/>
+        <Button x:Name="BtnClose" Click="BtnClose_Click" Template="{StaticResource imageRollkembali}" Content="" HorizontalAlignment="Left" Margin="371,379,0,0" VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.453,1.05" Height="68"/>
 
     </Grid>
 </Window>
