@@ -120,6 +120,10 @@ namespace BioskopCSharp.Views
                     _ctrl.Index("PrintTiket");
                     BtnPrint.IsEnabled = false;
                 }
+                else
+                {
+                    MessageBox.Show("Payment salah");
+                }
             }
             else
             {

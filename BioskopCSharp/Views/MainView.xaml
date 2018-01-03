@@ -229,6 +229,7 @@
             <!--Part 2-->
             <DataGrid x:Name="TblMainDataKasir" ItemsSource="{Binding}" AutoGeneratingColumn="TblMainDataKasir_AutoGeneratingColumn"
                       SelectedCellsChanged="TblMainDataKasir_SelectedCellsChanged" PreviewKeyDown="TblMainDataKasir_PreviewKeyDown"
+                      MouseDoubleClick="TblMainDataKasir_MouseDoubleClick"
                       HorizontalAlignment="Left" Height="221" Margin="536,138,0,0" VerticalAlignment="Top" Width="366" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black" RowBackground="{x:Null}" FontSize="14"/>
             <TextBox x:Name="TxtUangBayar" HorizontalAlignment="Left" Height="23" Margin="726,427,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="14"/>
 

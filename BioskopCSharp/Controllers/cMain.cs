@@ -42,21 +42,25 @@ namespace BioskopCSharp.Controllers
             ListKursi.Add(new MKursi() { Kursi = _view.KursiA3, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiA4, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiA5, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiA6, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiB1, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiB2, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiB3, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiB4, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiB5, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiB6, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiC1, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiC2, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiC3, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiC4, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiC5, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiC6, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiD1, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiD2, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiD3, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiD4, Database = false });
             ListKursi.Add(new MKursi() { Kursi = _view.KursiD5, Database = false });
+            ListKursi.Add(new MKursi() { Kursi = _view.KursiD6, Database = false });
             #endregion
         }
 
@@ -323,49 +327,61 @@ namespace BioskopCSharp.Controllers
                     NamaKursi = "A5";
                     break;
                 case 6:
-                    NamaKursi = "B1";
+                    NamaKursi = "A6";
                     break;
                 case 7:
-                    NamaKursi = "B2";
+                    NamaKursi = "B1";
                     break;
                 case 8:
-                    NamaKursi = "B3";
+                    NamaKursi = "B2";
                     break;
                 case 9:
-                    NamaKursi = "B4";
+                    NamaKursi = "B3";
                     break;
                 case 10:
-                    NamaKursi = "B5";
+                    NamaKursi = "B4";
                     break;
                 case 11:
-                    NamaKursi = "C1";
+                    NamaKursi = "B5";
                     break;
                 case 12:
-                    NamaKursi = "C2";
+                    NamaKursi = "B6";
                     break;
                 case 13:
-                    NamaKursi = "C3";
+                    NamaKursi = "C1";
                     break;
                 case 14:
-                    NamaKursi = "C4";
+                    NamaKursi = "C2";
                     break;
                 case 15:
-                    NamaKursi = "C5";
+                    NamaKursi = "C3";
                     break;
                 case 16:
-                    NamaKursi = "D1";
+                    NamaKursi = "C4";
                     break;
                 case 17:
-                    NamaKursi = "D2";
+                    NamaKursi = "C5";
                     break;
                 case 18:
-                    NamaKursi = "D3";
+                    NamaKursi = "C6";
                     break;
                 case 19:
-                    NamaKursi = "D4";
+                    NamaKursi = "D1";
                     break;
                 case 20:
+                    NamaKursi = "D2";
+                    break;
+                case 21:
+                    NamaKursi = "D3";
+                    break;
+                case 22:
+                    NamaKursi = "D4";
+                    break;
+                case 23:
                     NamaKursi = "D5";
+                    break;
+                case 24:
+                    NamaKursi = "D6";
                     break;
                 default:
                     NamaKursi = "00";
