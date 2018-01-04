@@ -54,8 +54,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="TxtNama" HorizontalAlignment="Left" Height="24" Margin="542,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="White" FontSize="14" TextAlignment="Center" BorderThickness="0"/>
-        <PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Height="23" Margin="542,352,0,0" Width="158" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="White" FontSize="14" BorderThickness="0"/>
+        <TextBox x:Name="TxtNama" HorizontalAlignment="Left" Height="24" Margin="542,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="158" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="White" FontSize="14" TextAlignment="Left" BorderThickness="0"/>
+        <PasswordBox x:Name="TxtPassword" HorizontalAlignment="Left" Height="23" Margin="542,352,0,0" Width="158" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="White" FontSize="14" BorderThickness="0" />
         <Button x:Name="BtnLogin" Click="BtnLogin_Click" Content="" Template="{StaticResource imageRollmasuk}" HorizontalAlignment="Left" Margin="546,382,0,0" VerticalAlignment="Top" Width="140" Height="82"/>
         <Button x:Name="Btnkeluar" Click="Btnkeluar_Click"  Content="" Template="{StaticResource imageRollkeluar}" HorizontalAlignment="Left" Margin="546,432,0,0" VerticalAlignment="Top" Width="140" Height="82"/>
 

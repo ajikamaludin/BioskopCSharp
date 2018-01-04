@@ -50,8 +50,8 @@
         <Grid.Background>
             <ImageBrush ImageSource="/BioskopCSharp;component/Asset/Background/jadwalact.png"/>
         </Grid.Background>
-        <ComboBox x:Name="CboRuang" HorizontalAlignment="Left" Margin="153,143,0,0" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}"/>
-        <ComboBox x:Name="CboFilm" HorizontalAlignment="Left" Margin="153,241,0,0" VerticalAlignment="Top" Width="120" Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.883,1.682"/>
+        <ComboBox x:Name="CboRuang" HorizontalAlignment="Left" Margin="153,143,0,0" VerticalAlignment="Top" Width="120" BorderBrush="{x:Null}" FontSize="14"/>
+        <ComboBox x:Name="CboFilm" HorizontalAlignment="Left" Margin="153,241,0,0" VerticalAlignment="Top" Width="120" Background="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.883,1.682" FontSize="14"/>
         <TextBox x:Name="TxtWaktu" MaxLength="5" HorizontalAlignment="Left" Height="27" Margin="106,329,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="207" Background="{x:Null}" BorderBrush="{x:Null}" BorderThickness="0" FontSize="14" TextAlignment="Center"/>
         <Button x:Name="BtnSave" Template="{StaticResource imageRollsimpan}" Click="BtnSave_Click" Content="" HorizontalAlignment="Left" Margin="87,375,0,0" VerticalAlignment="Top" Width="127" Height="71"/>
         <Button x:Name="BtnClose" Template="{StaticResource imageRollbatal}" Click="BtnClose_Click" Content="" HorizontalAlignment="Left" Margin="202,375,0,0" VerticalAlignment="Top" Width="127" Height="71" RenderTransformOrigin="0.623,0.5"/>
