@@ -34,7 +34,7 @@ namespace BioskopCSharp.Views.FilmView
         {
             if(CFilm.GetInstance.Code == string.Empty)
             {
-                TxtHarga.Text = "IDR ";
+                TxtHarga.Text = "Rp. ";
             }
         }
 

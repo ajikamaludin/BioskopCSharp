@@ -38,7 +38,7 @@
             <ImageBrush ImageSource="/BioskopCSharp;component/Asset/Background/cetakview.png"/>
         </Grid.Background>
         <DatePicker x:Name="DateStart" Margin="81,185,0,0" VerticalAlignment="Top" Height="32" HorizontalAlignment="Left" Width="216" FontSize="14" BorderBrush="{x:Null}" BorderThickness="0"/>
-        <DatePicker x:Name="DateEnd" Margin="0,316,90,0" HorizontalAlignment="Right" Height="32" VerticalAlignment="Top" Width="216" BorderBrush="{x:Null}" BorderThickness="0" FontSize="14"/>
+        <DatePicker x:Name="DateEnd" Margin="0,316,90,0" HorizontalAlignment="Right" Height="32" VerticalAlignment="Top" Width="216" BorderBrush="{x:Null}" BorderThickness="0"/>
         <Button x:Name="BtnCetak" Template="{StaticResource imageRollcetak}" Click="BtnCetak_Click" Content="" Margin="106,0,118,29" VerticalAlignment="Bottom" Height="94"/>
     </Grid>
 </Window>
