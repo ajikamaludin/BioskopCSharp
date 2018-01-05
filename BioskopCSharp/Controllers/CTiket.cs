@@ -12,7 +12,7 @@ using Microsoft.Reporting.WinForms;
 
 namespace BioskopCSharp.Controllers
 {
-    class CTiket
+    public class CTiket
     {
         //Class
         private TiketView _view;

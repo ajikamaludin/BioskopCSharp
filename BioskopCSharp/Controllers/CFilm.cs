@@ -8,7 +8,7 @@ using BioskopCSharp.SetupDBS;
 
 namespace BioskopCSharp.Controllers
 {
-    class CFilm
+    public class CFilm
     {
         //Class
         private FilmView _view;
@@ -143,8 +143,8 @@ namespace BioskopCSharp.Controllers
 
         public void Create(MFilm data)
         {
-            if (IsValidate())
-            {
+            //if (IsValidate())
+            //{
                 var isflaged = false;
 
                 _sql.Query = string.Format("INSERT INTO film (`judul_film`,`harga_film`) VALUES ('{0}', '{1}')", data.Judul, data.Harga);
@@ -153,42 +153,43 @@ namespace BioskopCSharp.Controllers
                 if (isflaged)
                 {
                     _table = Read();
-                    _viewact.Close();
+                    //_viewact.Close();
                 }
                 else
                 {
                     MessageBox.Show("Proses simpan gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
-            }
+            //}
         }
 
         public void Update(MFilm data)
         {
-            if (IsValidate())
-            {
+            //if (IsValidate())
+            //{
                 var isflaged = false;
                 _sql.Query = string.Format("UPDATE film SET judul_film = '{0}', harga_film = '{1}' WHERE id_film = '{2}'", data.Judul, data.Harga, Code);
                 isflaged = _sql.ExecuteUpdate();
 
                 if (isflaged)
                 {
-                    GetInstance.Index();
-                    _viewact.Close();
+                    _table = Read();
+                    //GetInstance.Index();
+                    //_viewact.Close();
                 }
                 else
                 {
                     MessageBox.Show("Proses update gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
-            }
+            //}
         }
 
         public void Delete()
         {
             if (Code != string.Empty)
             {
-                var msg = MessageBox.Show("Yakin akan dihapus?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (msg == MessageBoxResult.Yes)
-                {
+                //var msg = MessageBox.Show("Yakin akan dihapus?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                //if (msg == MessageBoxResult.Yes)
+                //{
                     var isflaged = false;
                     _sql.Query = string.Format("DELETE FROM film WHERE id_film = '{0}'", Code);
                     isflaged = _sql.ExecuteUpdate();
@@ -201,7 +202,7 @@ namespace BioskopCSharp.Controllers
                     {
                         MessageBox.Show("Proses hapus gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
-                }
+                //}
             }
         }
 
