@@ -8,7 +8,7 @@ using BioskopCSharp.SetupDBS;
 
 namespace BioskopCSharp.Controllers
 {
-    public class CJadwal
+    class CJadwal
     {
         //Class
         private JadwalView _view;

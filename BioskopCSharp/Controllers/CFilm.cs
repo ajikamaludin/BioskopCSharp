@@ -8,7 +8,7 @@ using BioskopCSharp.SetupDBS;
 
 namespace BioskopCSharp.Controllers
 {
-    public class CFilm
+    class CFilm
     {
         //Class
         private FilmView _view;

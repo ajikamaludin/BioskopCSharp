@@ -8,7 +8,7 @@ using BioskopCSharp.Views.UserView;
 
 namespace BioskopCSharp.Controllers
 {
-    public class CUser
+    class CUser
     {
         //Class
         private UserView _view;

@@ -8,7 +8,7 @@ using BioskopCSharp.Views.RuangView;
 
 namespace BioskopCSharp.Controllers
 {
-    public class CRuang
+    class CRuang
     {
         //Class
         private RuangView _view;
