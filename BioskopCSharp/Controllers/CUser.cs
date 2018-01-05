@@ -201,8 +201,8 @@ namespace BioskopCSharp.Controllers
 
         public void Create(MUser data)
         {
-            //if (IsValidate())
-            //{
+            if (IsValidate())
+            {
                 var isflaged = false;
 
                 _sql.Query = string.Format("INSERT INTO user (`nama_user`,`username_user`,`password_user`) VALUES ('{0}', '{1}', '{2}')", data.Nama, data.Username , data.Password);
@@ -211,19 +211,19 @@ namespace BioskopCSharp.Controllers
                 if (isflaged)
                 {
                     _table = Read();
-                    //_viewact.Close();
+                    _viewact.Close();
                 }
                 else
                 {
                     MessageBox.Show("Proses simpan gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
-            //}
+            }
         }
 
         public void Update(MUser data)
         {
-            //if (IsValidate())
-            //{
+            if (IsValidate())
+            {
                 var isflaged = false;
                 _sql.Query = string.Format("UPDATE user SET nama_user = '{0}', username_user = '{1}', password_user = '{2}' WHERE id_user = '{3}'", data.Nama, data.Username ,data.Password, Code);
                     isflaged = _sql.ExecuteUpdate();
@@ -232,22 +232,22 @@ namespace BioskopCSharp.Controllers
                 {
                     //GetInstance.Index();
                     _table = Read();
-                    //_viewact.Close();
+                    _viewact.Close();
                 }
                 else
                 {
                     MessageBox.Show("Proses update gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
-            //}
+            }
         }
 
         public void Delete()
         {
             if (Code != string.Empty)
             {
-                //var msg = MessageBox.Show("Yakin akan dihapus?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                //if (msg == MessageBoxResult.Yes)
-                //{
+                var msg = MessageBox.Show("Yakin akan dihapus?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (msg == MessageBoxResult.Yes)
+                {
                     var isflaged = false;
                     _sql.Query = string.Format("DELETE FROM user WHERE id_user = '{0}'", Code);
                     isflaged = _sql.ExecuteUpdate();
@@ -260,7 +260,7 @@ namespace BioskopCSharp.Controllers
                     {
                         MessageBox.Show("Proses hapus gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
-                //}
+                }
             }
         }
 

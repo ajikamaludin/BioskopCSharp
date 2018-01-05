@@ -110,8 +110,8 @@ namespace BioskopCSharp.Controllers
 
         public void Create(MRuang data)
         {
-            //if (IsValidate())
-            //{
+            if (IsValidate())
+            {
                 var isflaged = false;
 
                 _sql.Query = string.Format("INSERT INTO ruang (`nama_ruang`) VALUES ('{0}')", data.Nama);
@@ -125,13 +125,13 @@ namespace BioskopCSharp.Controllers
                 {
                     MessageBox.Show("Proses simpan gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
-            //}
+            }
         }
 
         public void Update(MRuang data)
         {
-            //if (IsValidate())
-            //{
+            if (IsValidate())
+            {
                 var isflaged = false;
                 _sql.Query = string.Format("UPDATE ruang SET nama_ruang = '{0}' WHERE id_ruang = '{1}'", data.Nama, Code);
                 isflaged = _sql.ExecuteUpdate();
@@ -144,16 +144,16 @@ namespace BioskopCSharp.Controllers
                 {
                     MessageBox.Show("Proses update gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
-            //}
+            }
         }
 
         public void Delete()
         {
             if (Code != string.Empty)
             {
-                //var msg = MessageBox.Show("Yakin akan dihapus?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                //if (msg == MessageBoxResult.Yes)
-                //{
+                var msg = MessageBox.Show("Yakin akan dihapus?", "Pertanyaan", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (msg == MessageBoxResult.Yes)
+                {
                     var isflaged = false;
                     _sql.Query = string.Format("DELETE FROM ruang WHERE id_ruang = '{0}'", Code);
                     isflaged = _sql.ExecuteUpdate();
@@ -166,7 +166,7 @@ namespace BioskopCSharp.Controllers
                     {
                         MessageBox.Show("Proses hapus gagal!!!", "Peringatan", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                     }
-                //}
+                }
             }
         }
 
